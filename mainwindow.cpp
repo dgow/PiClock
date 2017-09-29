@@ -9,13 +9,9 @@ MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
-
-
     ui->setupUi(this);
-   // ui->mainWidget->setStyleSheet("background-image: url(:/images/image.png)");
-    ui->centralWidget->setStyleSheet("background-image: url(:/images/image.png)");
-    //ui->mainWidget->setStyleSheet("background-color: black");
-
+//    ui->centralWidget->setStyleSheet("background-image: url(:/images/image.png)");
+    ui->centralWidget->setStyleSheet("background-image: url(:/images/kurt.jpg)");
 
     ui->timeLabel->setAttribute(Qt::WA_TranslucentBackground);
     ui->weatherLabel->setAttribute(Qt::WA_TranslucentBackground);
@@ -24,13 +20,13 @@ MainWindow::MainWindow(QWidget *parent) :
 
     QTimer *timer = new QTimer(this);
     connect(timer, SIGNAL(timeout()), this, SLOT(UpdateTime()));
-    timer->start(1000);
-
+    timer->start(10000);
+    UpdateTime();
 }
 
 void MainWindow::UpdateTime()
 {
-    qDebug() << "YEAH";
+//    qDebug() << "YEAH";
 
     QDateTime time = QDateTime::currentDateTime();
     ui->timeLabel->setText(time.toString("hh:mm"));
