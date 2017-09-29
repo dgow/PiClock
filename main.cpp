@@ -11,7 +11,7 @@ int main(int argc, char *argv[])
 
     qDebug() << QHostInfo::localHostName();
 
-    if( QHostInfo::localHostName() != "johanns-imac")
+    if( QHostInfo::localHostName() == "raspiclock")
     {
         w.setWindowState(Qt::WindowFullScreen);
     }

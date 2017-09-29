@@ -1,6 +1,8 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
+#include <QDateTime>
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -15,9 +17,16 @@ MainWindow::MainWindow(QWidget *parent) :
 
     ui->timeLabel->setAttribute(Qt::WA_TranslucentBackground);
     ui->weatherLabel->setAttribute(Qt::WA_TranslucentBackground);
+    ui->dateLabel->setAttribute(Qt::WA_TranslucentBackground);
 
-    ui->timeLabel->setText("10:01");
-    ui->weatherLabel->setText("10°");
+    QDateTime time = QDateTime::currentDateTime();
+    ui->timeLabel->setText(time.toString("hh:mm"));
+
+    ui->dateLabel->setText(time.toString("dddd d. MMMM"));
+
+    ui->weatherLabel->setText("-");
+
+
 }
 
 MainWindow::~MainWindow()
