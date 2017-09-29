@@ -60,11 +60,11 @@
       <property name="font">
        <font>
         <family>American Typewriter</family>
-        <pointsize>100</pointsize>
+        <pointsize>120</pointsize>
        </font>
       </property>
       <property name="text">
-       <string>TextLabel</string>
+       <string>-</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
@@ -116,7 +116,7 @@
        </font>
       </property>
       <property name="text">
-       <string>TextLabel</string>
+       <string>-</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
@@ -168,7 +168,7 @@
        </font>
       </property>
       <property name="text">
-       <string>TextLabel</string>
+       <string>-</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>

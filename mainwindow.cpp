@@ -2,6 +2,8 @@
 #include "ui_mainwindow.h"
 
 #include <QDateTime>
+#include <QTimer>
+#include <QDebug>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -19,14 +21,23 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->weatherLabel->setAttribute(Qt::WA_TranslucentBackground);
     ui->dateLabel->setAttribute(Qt::WA_TranslucentBackground);
 
+
+    QTimer *timer = new QTimer(this);
+    connect(timer, SIGNAL(timeout()), this, SLOT(UpdateTime()));
+    timer->start(1000);
+
+}
+
+void MainWindow::UpdateTime()
+{
+    qDebug() << "YEAH";
+
     QDateTime time = QDateTime::currentDateTime();
     ui->timeLabel->setText(time.toString("hh:mm"));
 
     ui->dateLabel->setText(time.toString("dddd d. MMMM"));
 
     ui->weatherLabel->setText("-");
-
-
 }
 
 MainWindow::~MainWindow()
