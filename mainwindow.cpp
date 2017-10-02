@@ -23,8 +23,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    //    ui->centralWidget->setStyleSheet("background-image: url(:/images/image.png)");
-    ui->centralWidget->setStyleSheet("background-image: url(:/images/kurt.jpg)");
+    ui->centralWidget->setStyleSheet("background-image: url(:/images/kurt_face.jpg); background-size: 80px 60px;background-repeat: no-repeat;");
 
     ui->timeLabel->setAttribute(Qt::WA_TranslucentBackground);
     ui->weatherLabel->setAttribute(Qt::WA_TranslucentBackground);

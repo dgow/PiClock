@@ -3,6 +3,7 @@
         <file>image.png</file>
         <file>kurt_nala.jpg</file>
         <file>kurt.jpg</file>
+        <file>kurt_face.jpg</file>
     </qresource>
     <qresource prefix="/weather">
         <file>weatherIcons/01d.png</file>
