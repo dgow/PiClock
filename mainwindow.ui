@@ -34,7 +34,7 @@
   <widget class="QWidget" name="centralWidget">
    <layout class="QVBoxLayout" name="verticalLayout_2">
     <item>
-     <layout class="QVBoxLayout" name="verticalLayout" stretch="10,1,3">
+     <layout class="QVBoxLayout" name="verticalLayout" stretch="20,1,3">
       <property name="spacing">
        <number>-1</number>
       </property>
