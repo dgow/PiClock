@@ -76,8 +76,8 @@
         </property>
         <property name="font">
          <font>
-          <family>American Typewriter</family>
-          <pointsize>120</pointsize>
+          <family>Arial</family>
+          <pointsize>115</pointsize>
           <strikeout>false</strikeout>
          </font>
         </property>
