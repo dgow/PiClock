@@ -42,7 +42,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     QTimer *weatherTimer = new QTimer(this);
     connect(weatherTimer, SIGNAL(timeout()), this, SLOT(GetWeather()));
-    timer->start(60000);
+    weatherTimer->start(60000);
 
     UpdateTime();
     GetWeather();
