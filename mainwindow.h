@@ -29,6 +29,8 @@ private:
 
     void SetShadow(QLabel *label);
 
+
+    void mousePressEvent (QMouseEvent *event);
 };
 
 #endif // MAINWINDOW_H

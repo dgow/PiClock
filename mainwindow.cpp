@@ -13,8 +13,11 @@
 #include <QJsonArray>
 #include <QColor>
 
+#include <QMouseEvent>
 
 #include <qglobal.h>
+
+#include <QProcess>
 
 #include <QGraphicsDropShadowEffect>
 
@@ -113,6 +116,14 @@ void MainWindow::ReadWeather(QNetworkReply* reply)
     qDebug() << "Weather: " << " " << icon;
 
     ui->weatherIcon->setPixmap(":/weather/weatherIcons/" + icon + ".png");
+}
+
+//void MainWindow::mousePressEvent(QMouseEvent *ev)
+void MainWindow::mousePressEvent(QMouseEvent *event)
+{
+    QProcess process;
+    process.start("mpc toggle");
+    qDebug() << "YEAH " << event->x();
 }
 
 MainWindow::~MainWindow()
