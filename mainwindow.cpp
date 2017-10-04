@@ -122,11 +122,33 @@ void MainWindow::ReadWeather(QNetworkReply* reply)
 //void MainWindow::mousePressEvent(QMouseEvent *ev)
 void MainWindow::mousePressEvent(QMouseEvent *event)
 {
-    QProcess *process = new QProcess(this);
-    QStringList args;
-    args << "toggle";
 
-    process->start("mpc", args);
+    if(event->y() > 150)
+    {
+        if(event->x() < 240)
+        {
+            QProcess *process = new QProcess(this);
+            QStringList args;
+            args << "prev";
+            process->start("mpc", args);
+        } else {
+            QProcess *process = new QProcess(this);
+            QStringList args;
+            args << "next";
+            process->start("mpc", args);
+        }
+
+    }
+    else
+    {
+        QProcess *process = new QProcess(this);
+        QStringList args;
+        args << "toggle";
+        process->start("mpc", args);
+    }
+
+
+
     qDebug() << "YEAH " << event->x();
 }
 
