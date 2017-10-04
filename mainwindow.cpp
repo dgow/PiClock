@@ -2,6 +2,7 @@
 #include "ui_mainwindow.h"
 
 #include <QString>
+#include <QStringList>
 #include <QDateTime>
 #include <QTimer>
 #include <QDebug>
@@ -121,8 +122,11 @@ void MainWindow::ReadWeather(QNetworkReply* reply)
 //void MainWindow::mousePressEvent(QMouseEvent *ev)
 void MainWindow::mousePressEvent(QMouseEvent *event)
 {
-    QProcess process;
-    process.start("mpc toggle");
+    QProcess *process = new QProcess(this);
+    QStringList args;
+    args << "toggle";
+
+    process.start("mpc", args);
     qDebug() << "YEAH " << event->x();
 }
 
