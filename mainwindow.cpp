@@ -126,7 +126,7 @@ void MainWindow::mousePressEvent(QMouseEvent *event)
     QStringList args;
     args << "toggle";
 
-    process.start("mpc", args);
+    process->start("mpc", args);
     qDebug() << "YEAH " << event->x();
 }
 
