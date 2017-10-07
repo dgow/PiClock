@@ -8,9 +8,7 @@ Arsch::Arsch(QWidget *parent) :
     ui(new Ui::Arsch)
 {
     ui->setupUi(this);
-
-    qDebug() << "fotze fotze" << parent;
-
+    ui->timeLabel->setAttribute(Qt::WA_TranslucentBackground);
 }
 
 Arsch::~Arsch()
