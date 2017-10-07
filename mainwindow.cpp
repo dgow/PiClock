@@ -71,8 +71,6 @@ void MainWindow::UpdateTime()
     ui->timeLabel->setText(time.toString("hh:mm"));
 
     ui->dateLabel->setText(time.toString("dddd d. MMMM"));
-
-    PressLightButton();
 }
 
 void MainWindow::GetWeather()
