@@ -8,18 +8,13 @@
 #include <QDebug>
 #include <QNetworkAccessManager>
 #include <QNetworkReply>
-
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QJsonArray>
 #include <QColor>
-
 #include <QMouseEvent>
-
 #include <qglobal.h>
-
 #include <QProcess>
-
 #include <QGraphicsDropShadowEffect>
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -52,6 +47,9 @@ MainWindow::MainWindow(QWidget *parent) :
     lightButtonTimer = new QTimer(this);
     connect(lightButtonTimer, SIGNAL(timeout()), this, SLOT(PressLightButton()));
 
+    manager = new QNetworkAccessManager(this);
+    connect(manager, SIGNAL(finished(QNetworkReply*)), this, SLOT(ReadWeather(QNetworkReply*)));
+
     UpdateTime();
     GetWeather();
 }
@@ -81,15 +79,10 @@ void MainWindow::GetWeather()
 {
     qDebug() << "download weather";
 
-    manager = new QNetworkAccessManager(this);
-
     QString weatherLink = "http://api.openweathermap.org/data/2.5/weather?q=Nuremberg,uk&appid=25879e4404560e805fb4878ea5d57ae2&units=metric&mode=json";
     QUrl url(weatherLink);
     QNetworkRequest request;
     request.setUrl(url);
-
-    connect(manager, SIGNAL(finished(QNetworkReply*)), this, SLOT(ReadWeather(QNetworkReply*)));
-
     manager->get(request);
 }
 
@@ -120,24 +113,6 @@ void MainWindow::ReadWeather(QNetworkReply* reply)
     qDebug() << "Weather icon: " << " " << icon;
 
     ui->weatherIcon->setPixmap(":/weather/weatherIcons/" + icon + ".png");
-
-    /*
-    //sun rise
-    QJsonObject sys = root_object["sys"].toObject();
-    QString sunRise = sys["sunrise"].toString();
-    int sunRiseTime = sys["sunrise"].toInt();
-    qDebug() << "SunRise: " << " " << sunRiseTime;
-
-    QString sunSet = sys["sunset"].toString();
-    int sunSetTime = sys["sunset"].toInt();
-    qDebug() << "SunSet: " << " " << sunSetTime;
-*/
-}
-
-int MainWindow::TargetBrightness()
-{
-    QDateTime time = QDateTime::currentDateTime();
-    return time.isDaylightTime() ? 100 : 0;
 }
 
 void MainWindow::PressLightButton()
@@ -198,6 +173,12 @@ void MainWindow::mousePressEvent(QMouseEvent *event)
     }
 
     qDebug() << "YEAH " << event->x();
+}
+
+int MainWindow::TargetBrightness()
+{
+    QDateTime time = QDateTime::currentDateTime();
+    return time.isDaylightTime() ? 100 : 0;
 }
 
 MainWindow::~MainWindow()
