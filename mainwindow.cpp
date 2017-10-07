@@ -168,6 +168,7 @@ void MainWindow::PressLightButton()
         currentLight = 0;
     }
 
+    QDateTime time = QDateTime::currentDateTime();
     if(time.isDaylightTime())
     {
         if(currentLight == 100)
