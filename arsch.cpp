@@ -2,16 +2,21 @@
 #include "ui_arsch.h"
 
 #include <QDebug>
+#include <QSettings>
+#include <QVariant>
 
 Arsch::Arsch(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::Arsch)
-{
-    hour = 0;
-    minute = 0;
+{   
+    QSettings settings("Arsch", "Fotze");
+    hour = settings.value("hour").toInt();
+    minute = settings.value("minute").toInt();
 
     ui->setupUi(this);
     ui->timeLabel->setAttribute(Qt::WA_TranslucentBackground);
+
+    UpdateTime();
 }
 
 Arsch::~Arsch()
@@ -21,7 +26,19 @@ Arsch::~Arsch()
 
 void Arsch::UpdateTime()
 {
-    if(hour > 24)
+    if(minute > 59)
+    {
+        minute = 0;
+        hour++;
+    }
+
+    if(minute < 0 )
+    {
+        minute = 59;
+        hour--;
+    }
+
+    if(hour > 23)
     {
         hour = 0;
     }
@@ -31,22 +48,18 @@ void Arsch::UpdateTime()
         hour = 23;
     }
 
-    if(minute > 59)
-    {
-        minute = 0;
-    }
-
-    if(minute < 0 )
-    {
-        minute = 59;
-    }
 
 
-    ui->timeLabel->setText(QString::number(this->hour) + " : " + QString::number(this->minute));
+
+    ui->timeLabel->setText(QString::number(this->hour) + ":" + QString::number(this->minute));
 }
 
 void Arsch::on_pushButton_clicked()
 {
+    QSettings settings("Arsch", "Fotze");
+    settings.setValue("hour", QVariant(hour));
+    settings.setValue("minute", QVariant(minute));
+
     emit this->GoBack();
 }
 
