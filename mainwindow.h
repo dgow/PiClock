@@ -25,6 +25,11 @@ public slots:
     void ReadWeather(QNetworkReply* reply);
     void PressLightButton();
 
+    void GoBack();
+
+private slots:
+
+
 private:
 
     int currentLight;

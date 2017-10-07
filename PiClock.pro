@@ -26,13 +26,19 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         main.cpp \
-        mainwindow.cpp
+        mainwindow.cpp \
+    alarmsettings.cpp \
+    arsch.cpp
 
 HEADERS += \
-        mainwindow.h
+        mainwindow.h \
+    alarmsettings.h \
+    arsch.h
 
 FORMS += \
-        mainwindow.ui
+        mainwindow.ui \
+    alarmsettings.ui \
+    arsch.ui
 
 RESOURCES += \
     resourses.qrc

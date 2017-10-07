@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include <arsch.h>
 
 #include <QString>
 #include <QStringList>
@@ -17,10 +18,15 @@
 #include <QProcess>
 #include <QGraphicsDropShadowEffect>
 
+#include "alarmsettings.h"
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
+
+    qDebug() << "Constructor Main";
+
     currentLight = 80;
 
     ui->setupUi(this);
@@ -30,6 +36,8 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->weatherLabel->setAttribute(Qt::WA_TranslucentBackground);
     ui->dateLabel->setAttribute(Qt::WA_TranslucentBackground);
     ui->weatherIcon->setAttribute(Qt::WA_TranslucentBackground);
+
+
 
     SetShadow(ui->timeLabel);
     SetShadow(ui->weatherLabel);
@@ -52,6 +60,10 @@ MainWindow::MainWindow(QWidget *parent) :
 
     UpdateTime();
     GetWeather();
+
+
+    connect(ui->arschPage, SIGNAL(GoBack()), this, SLOT(GoBack()));
+
 }
 
 void MainWindow::SetShadow(QLabel *label)
@@ -173,6 +185,8 @@ void MainWindow::mousePressEvent(QMouseEvent *event)
     }
 
     qDebug() << "YEAH " << event->x();
+
+    ui->stackedWidget->setCurrentIndex(2);
 }
 
 int MainWindow::TargetBrightness()
@@ -185,3 +199,17 @@ MainWindow::~MainWindow()
 {
     delete ui;
 }
+
+void MainWindow::GoBack()
+{
+    qDebug() << "YEAH ";
+    ui->stackedWidget->setCurrentIndex(0);
+}
+
+/*
+void MainWindow::on_backButton_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(0);
+
+}
+*/
