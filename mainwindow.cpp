@@ -135,57 +135,36 @@ void MainWindow::ReadWeather(QNetworkReply* reply)
     qDebug() << "SunSet: " << " " << sunSetTime;
 */
 
+    if(currentLight != TargetBrightness())
+    {
+        lightButtonTimer->start(1000);
+    }
+}
+
+int MainWindow::TargetBrightness()
+{
     QDateTime time = QDateTime::currentDateTime();
-    qDebug() << time.isDaylightTime();
+    return time.isDaylightTime() ? 100 : 0;
 
-
-    if(time.isDaylightTime())
-    {
-        if(currentLight != 100)
-        {
-               lightButtonTimer->start(1000);
-        }
-    }
-    else
-    {
-        if(currentLight != 0)
-        {
-               lightButtonTimer->start(1000);
-        }
-    }
 }
 
 void MainWindow::PressLightButton()
 {
     QProcess *process = new QProcess(this);
-    QStringList args;
-    args << "prev";
-    process->start("/home/pi/Desktop/pressBrightness.sh", args);
+    process->start("/home/pi/Desktop/pressBrightness.sh");
 
-    currentLight+= 10;
+    currentLight += 10;
     if(currentLight > 100)
     {
         currentLight = 0;
     }
 
-    QDateTime time = QDateTime::currentDateTime();
-    if(time.isDaylightTime())
+    if(currentLight == TargetBrightness())
     {
-        if(currentLight == 100)
-        {
-               lightButtonTimer->stop();
-        }
-    }
-    else
-    {
-        if(currentLight == 0)
-        {
-               lightButtonTimer->stop();
-        }
+        lightButtonTimer->stop();
     }
 }
 
-//void MainWindow::mousePressEvent(QMouseEvent *ev)
 void MainWindow::mousePressEvent(QMouseEvent *event)
 {
     if(event->y() < 150)

@@ -34,7 +34,7 @@ private:
     QNetworkAccessManager *manager;
 
     void SetShadow(QLabel *label);
-
+    int TargetBrightness();
 
     void mousePressEvent (QMouseEvent *event);
 
