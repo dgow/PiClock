@@ -18,8 +18,6 @@
 #include <QProcess>
 #include <QGraphicsDropShadowEffect>
 
-#include "alarmsettings.h"
-
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -186,7 +184,7 @@ void MainWindow::mousePressEvent(QMouseEvent *event)
 
     qDebug() << "YEAH " << event->x();
 
-    ui->stackedWidget->setCurrentIndex(2);
+    ui->stackedWidget->setCurrentIndex(1);
 }
 
 int MainWindow::TargetBrightness()
