@@ -49,11 +49,11 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(weatherTimer, SIGNAL(timeout()), this, SLOT(GetWeather()));
     weatherTimer->start(60000);
 
-    UpdateTime();
-    GetWeather();
-
     lightButtonTimer = new QTimer(this);
     connect(lightButtonTimer, SIGNAL(timeout()), this, SLOT(PressLightButton()));
+
+    UpdateTime();
+    GetWeather();
 }
 
 void MainWindow::SetShadow(QLabel *label)
