@@ -141,14 +141,14 @@ void MainWindow::ReadWeather(QNetworkReply* reply)
 
     if(time.isDaylightTime())
     {
-        if(currentLight != 0)
+        if(currentLight != 100)
         {
                lightButtonTimer->start(1000);
         }
     }
     else
     {
-        if(currentLight != 100)
+        if(currentLight != 0)
         {
                lightButtonTimer->start(1000);
         }
@@ -171,26 +171,41 @@ void MainWindow::PressLightButton()
     QDateTime time = QDateTime::currentDateTime();
     if(time.isDaylightTime())
     {
-        if(currentLight == 0)
+        if(currentLight == 100)
         {
                lightButtonTimer->stop();
         }
     }
     else
     {
-        if(currentLight == 100)
+        if(currentLight == 0)
         {
                lightButtonTimer->stop();
         }
     }
-
 }
 
 //void MainWindow::mousePressEvent(QMouseEvent *ev)
 void MainWindow::mousePressEvent(QMouseEvent *event)
 {
+    if(event->y() > 100)
+    {
+        if(event->x() < 240)
+        {
+            //amixer sset 'Speaker' 5%+
 
-    if(event->y() > 150)
+            QProcess *process = new QProcess(this);
+            QStringList args;
+            args << "sset" << "'Speaker'" << "5%+";
+            process->start("amixer", args);
+        } else {
+            QProcess *process = new QProcess(this);
+            QStringList args;
+            args << "sset" << "'Speaker'" << "5%-";
+            process->start("amixer", args);
+        }
+    }
+    else if(event->y() > 200)
     {
         if(event->x() < 240)
         {
@@ -204,7 +219,6 @@ void MainWindow::mousePressEvent(QMouseEvent *event)
             args << "next";
             process->start("mpc", args);
         }
-
     }
     else
     {
@@ -213,8 +227,6 @@ void MainWindow::mousePressEvent(QMouseEvent *event)
         args << "toggle";
         process->start("mpc", args);
     }
-
-
 
     qDebug() << "YEAH " << event->x();
 }
