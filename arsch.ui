@@ -22,8 +22,11 @@
      <height>71</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(255, 255, 255);</string>
+   </property>
    <property name="text">
-    <string>PushButton</string>
+    <string>OK</string>
    </property>
    <property name="default">
     <bool>false</bool>
@@ -36,9 +39,9 @@
    <property name="geometry">
     <rect>
      <x>40</x>
-     <y>20</y>
+     <y>10</y>
      <width>391</width>
-     <height>71</height>
+     <height>101</height>
     </rect>
    </property>
    <property name="font">
