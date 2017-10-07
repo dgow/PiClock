@@ -43,10 +43,13 @@
    </property>
    <property name="font">
     <font>
-     <pointsize>60</pointsize>
+     <pointsize>80</pointsize>
      <weight>75</weight>
      <bold>true</bold>
     </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(255, 255, 255);</string>
    </property>
    <property name="text">
     <string>12:30</string>
@@ -158,13 +161,16 @@ color: rgb(255, 255, 255);</string>
      <x>30</x>
      <y>110</y>
      <width>411</width>
-     <height>51</height>
+     <height>71</height>
     </rect>
    </property>
    <property name="orientation">
     <enum>Qt::Horizontal</enum>
    </property>
    <widget class="QPushButton" name="pushButton_9">
+    <property name="styleSheet">
+     <string notr="true">color: rgb(255, 255, 255);</string>
+    </property>
     <property name="text">
      <string>&lt;</string>
     </property>
@@ -173,6 +179,9 @@ color: rgb(255, 255, 255);</string>
     </property>
    </widget>
    <widget class="QPushButton" name="pushButton_11">
+    <property name="styleSheet">
+     <string notr="true">color: rgb(255, 255, 255);</string>
+    </property>
     <property name="text">
      <string>&gt;</string>
     </property>
@@ -181,6 +190,9 @@ color: rgb(255, 255, 255);</string>
     </property>
    </widget>
    <widget class="QPushButton" name="pushButton_12">
+    <property name="styleSheet">
+     <string notr="true">color: rgb(255, 255, 255);</string>
+    </property>
     <property name="text">
      <string>&lt;</string>
     </property>
@@ -189,6 +201,9 @@ color: rgb(255, 255, 255);</string>
     </property>
    </widget>
    <widget class="QPushButton" name="pushButton_10">
+    <property name="styleSheet">
+     <string notr="true">color: rgb(255, 255, 255);</string>
+    </property>
     <property name="text">
      <string>&gt;</string>
     </property>
