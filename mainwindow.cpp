@@ -67,12 +67,14 @@ void MainWindow::SetShadow(QLabel *label)
 
 void MainWindow::UpdateTime()
 {
-    //    qDebug() << "YEAH";
-
     QDateTime time = QDateTime::currentDateTime();
     ui->timeLabel->setText(time.toString("hh:mm"));
-
     ui->dateLabel->setText(time.toString("dddd d. MMMM"));
+
+    if(currentLight != TargetBrightness())
+    {
+        lightButtonTimer->start(1000);
+    }
 }
 
 void MainWindow::GetWeather()
@@ -89,15 +91,13 @@ void MainWindow::GetWeather()
     connect(manager, SIGNAL(finished(QNetworkReply*)), this, SLOT(ReadWeather(QNetworkReply*)));
 
     manager->get(request);
-
 }
 
 void MainWindow::ReadWeather(QNetworkReply* reply)
 {
     if(reply->error())
     {
-        qDebug() << "ERROR!";
-        qDebug() << reply->errorString();
+        qDebug() << "Failed to get weather: " << reply->errorString();
         return;
     }
 
@@ -105,8 +105,7 @@ void MainWindow::ReadWeather(QNetworkReply* reply)
     QJsonDocument json = QJsonDocument::fromJson(reply->readAll(),&jsonError);
 
     if (jsonError.error != QJsonParseError::NoError){
-        qDebug() << "ERROR!!!";
-        qDebug() << jsonError.errorString();
+        qDebug() << "Failed to parse json: " << jsonError.errorString();
     }
 
     QJsonObject root_object = json.object();
@@ -117,9 +116,8 @@ void MainWindow::ReadWeather(QNetworkReply* reply)
     ui->weatherLabel->setText(temp + "°");
 
     QJsonObject weather = root_object["weather"].toArray().at(0).toObject();
-    //    qDebug() << "Weather: " << " " << weather["icon"];
     QString icon = weather["icon"].toString();
-    qDebug() << "Weather: " << " " << icon;
+    qDebug() << "Weather icon: " << " " << icon;
 
     ui->weatherIcon->setPixmap(":/weather/weatherIcons/" + icon + ".png");
 
@@ -134,18 +132,12 @@ void MainWindow::ReadWeather(QNetworkReply* reply)
     int sunSetTime = sys["sunset"].toInt();
     qDebug() << "SunSet: " << " " << sunSetTime;
 */
-
-    if(currentLight != TargetBrightness())
-    {
-        lightButtonTimer->start(1000);
-    }
 }
 
 int MainWindow::TargetBrightness()
 {
     QDateTime time = QDateTime::currentDateTime();
     return time.isDaylightTime() ? 100 : 0;
-
 }
 
 void MainWindow::PressLightButton()
