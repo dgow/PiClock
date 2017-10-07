@@ -26,6 +26,8 @@ MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
+    currentLight = 80;
+
     ui->setupUi(this);
     ui->centralWidget->setStyleSheet("background-image: url(:/images/kurt_face.jpg);");
  //ui->centralWidget->setStyleSheet("background-color: #000000");
@@ -139,14 +141,14 @@ void MainWindow::ReadWeather(QNetworkReply* reply)
 
     if(time.isDaylightTime())
     {
-        if(currentLight != 100)
+        if(currentLight != 0)
         {
                lightButtonTimer->start(1000);
         }
     }
     else
     {
-        if(currentLight != 0)
+        if(currentLight != 100)
         {
                lightButtonTimer->start(1000);
         }
@@ -169,14 +171,14 @@ void MainWindow::PressLightButton()
     QDateTime time = QDateTime::currentDateTime();
     if(time.isDaylightTime())
     {
-        if(currentLight == 100)
+        if(currentLight == 0)
         {
                lightButtonTimer->stop();
         }
     }
     else
     {
-        if(currentLight == 0)
+        if(currentLight == 100)
         {
                lightButtonTimer->stop();
         }

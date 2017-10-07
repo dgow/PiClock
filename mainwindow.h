@@ -27,7 +27,7 @@ public slots:
 
 private:
 
-    int currentLight = 80;
+    int currentLight;
     QTimer *lightButtonTimer;
 
     Ui::MainWindow *ui;
