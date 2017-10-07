@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <QNetworkAccessManager>
 #include <QLabel>
+#include <QTimer>
 
 namespace Ui {
 class MainWindow;
@@ -22,8 +23,13 @@ public slots:
     void UpdateTime();
     void GetWeather();
     void ReadWeather(QNetworkReply* reply);
+    void PressLightButton();
 
 private:
+
+    int currentLight = 80;
+    QTimer *lightButtonTimer;
+
     Ui::MainWindow *ui;
     QNetworkAccessManager *manager;
 
@@ -32,7 +38,6 @@ private:
 
     void mousePressEvent (QMouseEvent *event);
 
-    void PressLightButton();
 };
 
 #endif // MAINWINDOW_H

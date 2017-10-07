@@ -49,6 +49,9 @@ MainWindow::MainWindow(QWidget *parent) :
 
     UpdateTime();
     GetWeather();
+
+    lightButtonTimer = new QTimer(this);
+    connect(lightButtonTimer, SIGNAL(timeout()), this, SLOT(PressLightButton()));
 }
 
 void MainWindow::SetShadow(QLabel *label)
@@ -135,14 +138,20 @@ void MainWindow::ReadWeather(QNetworkReply* reply)
     QDateTime time = QDateTime::currentDateTime();
     qDebug() << time.isDaylightTime();
 
-    int light = 50;
+
     if(time.isDaylightTime())
     {
-
+        if(currentLight != 100)
+        {
+               lightButtonTimer->start(1000);
+        }
     }
     else
     {
-
+        if(currentLight != 0)
+        {
+               lightButtonTimer->start(1000);
+        }
     }
 }
 
@@ -152,6 +161,28 @@ void MainWindow::PressLightButton()
     QStringList args;
     args << "prev";
     process->start("/home/pi/Desktop/pressBrightness.sh", args);
+
+    currentLight+= 10;
+    if(currentLight > 100)
+    {
+        currentLight = 0;
+    }
+
+    if(time.isDaylightTime())
+    {
+        if(currentLight == 100)
+        {
+               lightButtonTimer->stop();
+        }
+    }
+    else
+    {
+        if(currentLight == 0)
+        {
+               lightButtonTimer->stop();
+        }
+    }
+
 }
 
 //void MainWindow::mousePressEvent(QMouseEvent *ev)
