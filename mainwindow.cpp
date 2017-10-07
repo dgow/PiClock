@@ -188,12 +188,10 @@ void MainWindow::PressLightButton()
 //void MainWindow::mousePressEvent(QMouseEvent *ev)
 void MainWindow::mousePressEvent(QMouseEvent *event)
 {
-    if(event->y() > 100)
+    if(event->y() < 100)
     {
-        if(event->x() < 240)
+        if(event->x() > 240)
         {
-            //amixer sset 'Speaker' 5%+
-
             QProcess *process = new QProcess(this);
             QStringList args;
             args << "sset" << "'Speaker'" << "5%+";
@@ -205,7 +203,7 @@ void MainWindow::mousePressEvent(QMouseEvent *event)
             process->start("amixer", args);
         }
     }
-    else if(event->y() > 200)
+    else if(event->y() < 200)
     {
         if(event->x() < 240)
         {
