@@ -205,6 +205,13 @@ void MainWindow::mousePressEvent(QMouseEvent *event)
     }
     else if(event->y() < 240)
     {
+        QProcess *process = new QProcess(this);
+        QStringList args;
+        args << "toggle";
+        process->start("mpc", args);
+    }
+    else
+    {
         if(event->x() < 240)
         {
             QProcess *process = new QProcess(this);
@@ -217,13 +224,6 @@ void MainWindow::mousePressEvent(QMouseEvent *event)
             args << "next";
             process->start("mpc", args);
         }
-    }
-    else
-    {
-        QProcess *process = new QProcess(this);
-        QStringList args;
-        args << "toggle";
-        process->start("mpc", args);
     }
 
     qDebug() << "YEAH " << event->x();
