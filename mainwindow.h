@@ -31,6 +31,8 @@ private:
 
 
     void mousePressEvent (QMouseEvent *event);
+
+    void PressLightButton();
 };
 
 #endif // MAINWINDOW_H

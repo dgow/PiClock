@@ -68,6 +68,8 @@ void MainWindow::UpdateTime()
     ui->timeLabel->setText(time.toString("hh:mm"));
 
     ui->dateLabel->setText(time.toString("dddd d. MMMM"));
+
+    PressLightButton();
 }
 
 void MainWindow::GetWeather()
@@ -117,6 +119,39 @@ void MainWindow::ReadWeather(QNetworkReply* reply)
     qDebug() << "Weather: " << " " << icon;
 
     ui->weatherIcon->setPixmap(":/weather/weatherIcons/" + icon + ".png");
+
+    /*
+    //sun rise
+    QJsonObject sys = root_object["sys"].toObject();
+    QString sunRise = sys["sunrise"].toString();
+    int sunRiseTime = sys["sunrise"].toInt();
+    qDebug() << "SunRise: " << " " << sunRiseTime;
+
+    QString sunSet = sys["sunset"].toString();
+    int sunSetTime = sys["sunset"].toInt();
+    qDebug() << "SunSet: " << " " << sunSetTime;
+*/
+
+    QDateTime time = QDateTime::currentDateTime();
+    qDebug() << time.isDaylightTime();
+
+    int light = 50;
+    if(time.isDaylightTime())
+    {
+
+    }
+    else
+    {
+
+    }
+}
+
+void MainWindow::PressLightButton()
+{
+    QProcess *process = new QProcess(this);
+    QStringList args;
+    args << "prev";
+    process->start("/home/pi/Desktop/pressBrightness.sh", args);
 }
 
 //void MainWindow::mousePressEvent(QMouseEvent *ev)
