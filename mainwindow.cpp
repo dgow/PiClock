@@ -188,7 +188,7 @@ void MainWindow::PressLightButton()
 //void MainWindow::mousePressEvent(QMouseEvent *ev)
 void MainWindow::mousePressEvent(QMouseEvent *event)
 {
-    if(event->y() < 100)
+    if(event->y() < 150)
     {
         if(event->x() > 240)
         {
@@ -203,7 +203,7 @@ void MainWindow::mousePressEvent(QMouseEvent *event)
             process->start("amixer", args);
         }
     }
-    else if(event->y() < 200)
+    else if(event->y() < 240)
     {
         if(event->x() < 240)
         {
