@@ -127,10 +127,13 @@ void MainWindow::ReadWeather(QNetworkReply* reply)
     sunSet = jsonSys["sunset"].toInt();
 
     QDateTime time = QDateTime::currentDateTime();
-    int64_t currentTime = time.currentMSecsSinceEpoch();
+    int64_t currentTime = time.currentMSecsSinceEpoch() / 1000;
     qDebug() << "RISE:    " << sunRise;
     qDebug() << "SET:     " << sunSet;
-    qDebug() << "CURRENT: " << currentTime << "TAG? " << (currentTime/1000 > sunRise);
+
+    bool day = (currentTime > sunRise) && (currentTime < sunSet); //Day
+
+    qDebug() << "CURRENT: " << currentTime << "DAY? " << day;
 
     if(currentLight != TargetBrightness())
     {
@@ -203,7 +206,7 @@ void MainWindow::mousePressEvent(QMouseEvent *event)
 int MainWindow::TargetBrightness()
 {
     QDateTime time = QDateTime::currentDateTime();
-    int64_t currentTime = time.currentMSecsSinceEpoch() % 1000;
+    int64_t currentTime = time.currentMSecsSinceEpoch() / 1000;
 
     int target = 0; //night
     if((currentTime > sunRise) && (currentTime < sunSet)) //Day
