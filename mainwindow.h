@@ -35,6 +35,9 @@ private:
     int currentLight;
     QTimer *lightButtonTimer;
 
+    int sunRise;
+    int sunSet;
+
     Ui::MainWindow *ui;
     QNetworkAccessManager *manager;
 

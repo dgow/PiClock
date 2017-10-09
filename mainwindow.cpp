@@ -26,6 +26,7 @@ MainWindow::MainWindow(QWidget *parent) :
     qDebug() << "Constructor Main";
 
     currentLight = 80;
+    sunRise = -1;
 
     ui->setupUi(this);
     ui->centralWidget->setStyleSheet("background-image: url(:/images/kurt_face.jpg);");
@@ -78,11 +79,6 @@ void MainWindow::UpdateTime()
     QDateTime time = QDateTime::currentDateTime();
     ui->timeLabel->setText(time.toString("hh:mm"));
     ui->dateLabel->setText(time.toString("dddd d. MMMM"));
-
-    if(currentLight != TargetBrightness())
-    {
-        lightButtonTimer->start(1000);
-    }
 }
 
 void MainWindow::GetWeather()
@@ -123,6 +119,23 @@ void MainWindow::ReadWeather(QNetworkReply* reply)
     qDebug() << "Weather icon: " << " " << icon;
 
     ui->weatherIcon->setPixmap(":/weather/weatherIcons/" + icon + ".png");
+
+    QJsonObject jsonSys = root_object["sys"].toObject();
+    QJsonObject jsonSunRise = jsonSys["sunrise"].toObject();
+
+    sunRise = jsonSys["sunrise"].toInt();
+    sunSet = jsonSys["sunset"].toInt();
+
+    QDateTime time = QDateTime::currentDateTime();
+    int64_t currentTime = time.currentMSecsSinceEpoch();
+    qDebug() << "RISE:    " << sunRise;
+    qDebug() << "SET:     " << sunSet;
+    qDebug() << "CURRENT: " << currentTime << "TAG? " << (currentTime/1000 > sunRise);
+
+    if(currentLight != TargetBrightness())
+    {
+        lightButtonTimer->start(1000);
+    }
 }
 
 void MainWindow::PressLightButton()
@@ -190,7 +203,14 @@ void MainWindow::mousePressEvent(QMouseEvent *event)
 int MainWindow::TargetBrightness()
 {
     QDateTime time = QDateTime::currentDateTime();
-    return time.isDaylightTime() ? 100 : 0;
+    int64_t currentTime = time.currentMSecsSinceEpoch() / 1000;
+
+    int target = 0; //night
+    if((currentTime > sunRise) && (currentTime < sunSet)) //Day
+    {
+        target = 100;
+    }
+    return target;
 }
 
 MainWindow::~MainWindow()
