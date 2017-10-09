@@ -208,7 +208,7 @@ int MainWindow::TargetBrightness()
     QDateTime time = QDateTime::currentDateTime();
     int64_t currentTime = time.currentMSecsSinceEpoch() / 1000;
 
-    int target = 30; //night
+    int target = 0; //night
     if((currentTime > sunRise) && (currentTime < sunSet)) //Day
     {
         target = 100;
