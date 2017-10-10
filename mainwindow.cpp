@@ -27,6 +27,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     currentLight = 80;
     sunRise = -1;
+    lastMinute = -1;
 
     ui->setupUi(this);
     ui->centralWidget->setStyleSheet("background-image: url(:/images/kurt_face.jpg);");
@@ -83,13 +84,23 @@ void MainWindow::UpdateTime()
     int hour = time.toString("h").toInt();
     int minute = time.toString("m").toInt();
 
-    if(hour == ui->arschPage->hour && minute == ui->arschPage->minute)
+    if( hour == ui->arschPage->hour && minute == ui->arschPage->minute)
     {
-        qDebug() << "ARLARM";
-        QProcess *process = new QProcess(this);
-        QStringList args;
-        args << "toggle";
-        process->start("mpc", args);
+        if(minute != lastMinute)
+        {
+            lastMinute = minute;
+            qDebug() << "ARLARM";
+
+            QProcess *process = new QProcess(this);
+            QStringList args;
+            args << "sset" << "'Speaker'" << "50%";
+            process->start("amixer", args);
+
+            QProcess *process = new QProcess(this);
+            QStringList args;
+            args << "play";
+            process->start("mpc", args);
+        }
     }
 }
 

@@ -38,6 +38,8 @@ private:
     int sunRise;
     int sunSet;
 
+    int lastMinute;
+
     Ui::MainWindow *ui;
     QNetworkAccessManager *manager;
 
