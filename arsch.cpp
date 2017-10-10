@@ -54,6 +54,13 @@ void Arsch::UpdateTime()
     ui->timeLabel->setText(QString::number(this->hour) + ":" + QString::number(this->minute));
 }
 
+void Arsch::on_time_changed(int hour, int minute){
+    if(this->hour == hour && this->minute == minute)
+    {
+        qDebug() << "ALARM!!!";
+    }
+}
+
 void Arsch::on_pushButton_clicked()
 {
     QSettings settings("Arsch", "Fotze");

@@ -79,6 +79,18 @@ void MainWindow::UpdateTime()
     QDateTime time = QDateTime::currentDateTime();
     ui->timeLabel->setText(time.toString("hh:mm"));
     ui->dateLabel->setText(time.toString("dddd d. MMMM"));
+
+    int hour = time.toString("h").toInt();
+    int minute = time.toString("m").toInt();
+
+    if(hour == ui->arschPage->hour && minute == ui->arschPage->minute)
+    {
+        qDebug() << "ARLARM";
+        QProcess *process = new QProcess(this);
+        QStringList args;
+        args << "toggle";
+        process->start("mpc", args);
+    }
 }
 
 void MainWindow::GetWeather()

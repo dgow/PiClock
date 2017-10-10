@@ -13,6 +13,10 @@ class Arsch : public QWidget
 
 public:
     explicit Arsch(QWidget *parent = 0);
+
+    int hour;
+    int minute;
+
     ~Arsch();
 
  signals:
@@ -29,13 +33,14 @@ private slots:
 
     void on_minuteUp_clicked();
 
+    void on_time_changed(int , int );
+
 private:
     void UpdateTime();
 
     Ui::Arsch *ui;
 
-    int hour;
-    int minute;
+
 };
 
 #endif // ARSCH_H
