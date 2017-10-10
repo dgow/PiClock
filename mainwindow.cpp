@@ -91,10 +91,10 @@ void MainWindow::UpdateTime()
             lastMinute = minute;
             qDebug() << "ARLARM";
 
-            QProcess *process = new QProcess(this);
-            QStringList args;
-            args << "sset" << "'Speaker'" << "50%";
-            process->start("amixer", args);
+            QProcess *processSpeaker = new QProcess(this);
+            QStringList argsSpeaker;
+            argsSpeaker << "sset" << "'Speaker'" << "50%";
+            processSpeaker->start("amixer", argsSpeaker);
 
             QProcess *process = new QProcess(this);
             QStringList args;
