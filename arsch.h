@@ -2,6 +2,9 @@
 #define ARSCH_H
 
 #include <QWidget>
+#include <QVector>
+#include <QList>
+#include <weekdaybutton.h>
 
 namespace Ui {
 class Arsch;
@@ -17,6 +20,10 @@ public:
     int hour;
     int minute;
 
+    QList<WeekDayButton*> *dayButtons;
+
+    bool isButtonActive(int day);
+
     ~Arsch();
 
  signals:
@@ -26,14 +33,12 @@ private slots:
     void on_pushButton_clicked();
 
     void on_hourDown_clicked();
-
     void on_hourUp_clicked();
 
     void on_minuteDown_clicked();
-
     void on_minuteUp_clicked();
 
-    void on_time_changed(int , int );
+    void on_day_clicked(bool);
 
 private:
     void UpdateTime();

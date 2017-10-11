@@ -4,9 +4,11 @@
 #include <QDebug>
 #include <QSettings>
 #include <QVariant>
+#include <QPushButton>
+#include <QDateTime>
+#include <weekdaybutton.h>
 
-Arsch::Arsch(QWidget *parent) :
-    QWidget(parent),
+Arsch::Arsch(QWidget *parent) : QWidget(parent),
     ui(new Ui::Arsch)
 {   
     QSettings settings("Arsch", "Fotze");
@@ -15,6 +17,8 @@ Arsch::Arsch(QWidget *parent) :
 
     ui->setupUi(this);
     ui->timeLabel->setAttribute(Qt::WA_TranslucentBackground);
+
+    dayButtons = new QList<WeekDayButton*>();
 
     UpdateTime();
 }
@@ -48,16 +52,22 @@ void Arsch::UpdateTime()
         hour = 23;
     }
 
-
-
-
     ui->timeLabel->setText(QString::number(this->hour) + ":" + QString::number(this->minute));
-}
 
-void Arsch::on_time_changed(int hour, int minute){
-    if(this->hour == hour && this->minute == minute)
+    dayButtons->append(ui->mo_button);
+    dayButtons->append(ui->di_button);
+    dayButtons->append(ui->mi_button);
+    dayButtons->append(ui->do_button);
+    dayButtons->append(ui->fr_button);
+    dayButtons->append(ui->sa_button);
+    dayButtons->append(ui->so_button);
+
+    for( int i = 1; i <= 7; i++ )
     {
-        qDebug() << "ALARM!!!";
+        WeekDayButton *button = dayButtons->at(i-1);
+        button->dayOfTheWeek = i;
+        button->LoadState();
+        connect(button, SIGNAL(toggled(bool)), this, SLOT(on_day_clicked(bool)));
     }
 }
 
@@ -94,4 +104,21 @@ void Arsch::on_minuteUp_clicked()
 {
     this->minute++;
     this->UpdateTime();
+}
+
+void Arsch::on_day_clicked(bool checked)
+{
+    QDateTime time = QDateTime::currentDateTime();
+    QDate date = time.date();
+
+    WeekDayButton *button = (WeekDayButton*)QObject::sender();
+    button->SetActive(checked);
+
+    qDebug() << "BUTTON: " << button->dayOfTheWeek << " " << date.dayOfWeek() << "CHECKED: " << checked;
+}
+
+bool Arsch::isButtonActive(int day)
+{
+    WeekDayButton *button = dayButtons->at(day - 1);
+    return button->active;
 }

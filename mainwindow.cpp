@@ -64,6 +64,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     connect(ui->arschPage, SIGNAL(GoBack()), this, SLOT(GoBack()));
 
+    ui->stackedWidget->setCurrentIndex(0);
 }
 
 void MainWindow::SetShadow(QLabel *label)
@@ -81,10 +82,14 @@ void MainWindow::UpdateTime()
     ui->timeLabel->setText(time.toString("hh:mm"));
     ui->dateLabel->setText(time.toString("dddd d. MMMM"));
 
+
+
     int hour = time.toString("h").toInt();
     int minute = time.toString("m").toInt();
+    QDate date = time.date();
+    int day = date.dayOfWeek();
 
-    if( hour == ui->arschPage->hour && minute == ui->arschPage->minute)
+    if( hour == ui->arschPage->hour && minute == ui->arschPage->minute && ui->arschPage->isButtonActive(day))
     {
         if(minute != lastMinute)
         {
@@ -100,6 +105,8 @@ void MainWindow::UpdateTime()
             QStringList args;
             args << "play";
             process->start("mpc", args);
+
+            ui->stackedWidget->setCurrentIndex(2);
         }
     }
 }
@@ -223,7 +230,7 @@ void MainWindow::mousePressEvent(QMouseEvent *event)
 
     qDebug() << "YEAH " << event->x();
 
-    ui->stackedWidget->setCurrentIndex(1);
+//    ui->stackedWidget->setCurrentIndex(1);
 }
 
 int MainWindow::TargetBrightness()
@@ -250,10 +257,17 @@ void MainWindow::GoBack()
     ui->stackedWidget->setCurrentIndex(0);
 }
 
-/*
-void MainWindow::on_backButton_clicked()
+void MainWindow::on_alarmButton_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(0);
-
+    ui->stackedWidget->setCurrentIndex(1);
 }
-*/
+
+void MainWindow::on_stopAlarmButton_clicked()
+{
+    QProcess *process = new QProcess(this);
+    QStringList args;
+    args << "stop";
+    process->start("mpc", args);
+
+    ui->stackedWidget->setCurrentIndex(0);
+}

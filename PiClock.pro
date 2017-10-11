@@ -27,11 +27,13 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         main.cpp \
         mainwindow.cpp \
-    arsch.cpp
+    arsch.cpp \
+    weekdaybutton.cpp
 
 HEADERS += \
         mainwindow.h \
-    arsch.h
+    arsch.h \
+    weekdaybutton.h
 
 FORMS += \
         mainwindow.ui \

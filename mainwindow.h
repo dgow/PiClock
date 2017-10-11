@@ -28,7 +28,9 @@ public slots:
     void GoBack();
 
 private slots:
+    void on_alarmButton_clicked();
 
+    void on_stopAlarmButton_clicked();
 
 private:
 
@@ -47,7 +49,6 @@ private:
     int TargetBrightness();
 
     void mousePressEvent (QMouseEvent *event);
-
 };
 
 #endif // MAINWINDOW_H

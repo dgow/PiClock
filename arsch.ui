@@ -73,85 +73,105 @@
    <property name="orientation">
     <enum>Qt::Horizontal</enum>
    </property>
-   <widget class="QPushButton" name="pushButton_2">
-    <property name="styleSheet">
-     <string notr="true">background-color: rgb(255, 255, 255);
-color: rgb(255, 255, 255);</string>
+   <property name="opaqueResize">
+    <bool>false</bool>
+   </property>
+   <property name="handleWidth">
+    <number>0</number>
+   </property>
+   <widget class="WeekDayButton" name="mo_button">
+    <property name="toolTip">
+     <string>1</string>
     </property>
     <property name="text">
      <string>MO</string>
     </property>
+    <property name="checkable">
+     <bool>true</bool>
+    </property>
     <property name="flat">
      <bool>false</bool>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_3">
-    <property name="styleSheet">
-     <string notr="true">background-color: rgb(255, 255, 255);
-color: rgb(255, 255, 255);</string>
+   <widget class="WeekDayButton" name="di_button">
+    <property name="toolTip">
+     <string>2</string>
     </property>
     <property name="text">
      <string>DI</string>
     </property>
+    <property name="checkable">
+     <bool>true</bool>
+    </property>
     <property name="flat">
      <bool>false</bool>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_4">
-    <property name="styleSheet">
-     <string notr="true">background-color: rgb(255, 255, 255);
-color: rgb(255, 255, 255);</string>
+   <widget class="WeekDayButton" name="mi_button">
+    <property name="toolTip">
+     <string>3</string>
     </property>
     <property name="text">
      <string>MI</string>
     </property>
+    <property name="checkable">
+     <bool>true</bool>
+    </property>
     <property name="flat">
      <bool>false</bool>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_5">
-    <property name="styleSheet">
-     <string notr="true">background-color: rgb(255, 255, 255);
-color: rgb(255, 255, 255);</string>
+   <widget class="WeekDayButton" name="do_button">
+    <property name="toolTip">
+     <string>4</string>
     </property>
     <property name="text">
      <string>DO</string>
     </property>
+    <property name="checkable">
+     <bool>true</bool>
+    </property>
     <property name="flat">
      <bool>false</bool>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_6">
-    <property name="styleSheet">
-     <string notr="true">background-color: rgb(255, 255, 255);
-color: rgb(255, 255, 255);</string>
+   <widget class="WeekDayButton" name="fr_button">
+    <property name="toolTip">
+     <string>5</string>
     </property>
     <property name="text">
      <string>FR</string>
     </property>
+    <property name="checkable">
+     <bool>true</bool>
+    </property>
     <property name="flat">
      <bool>false</bool>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_7">
-    <property name="styleSheet">
-     <string notr="true">background-color: rgb(255, 255, 255);
-color: rgb(255, 255, 255);</string>
+   <widget class="WeekDayButton" name="sa_button">
+    <property name="toolTip">
+     <string>6</string>
     </property>
     <property name="text">
      <string>SA</string>
     </property>
+    <property name="checkable">
+     <bool>true</bool>
+    </property>
     <property name="flat">
      <bool>false</bool>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_8">
-    <property name="styleSheet">
-     <string notr="true">background-color: rgb(255, 255, 255);
-color: rgb(255, 255, 255);</string>
+   <widget class="WeekDayButton" name="so_button">
+    <property name="toolTip">
+     <string>7</string>
     </property>
     <property name="text">
      <string>SO</string>
+    </property>
+    <property name="checkable">
+     <bool>true</bool>
     </property>
     <property name="flat">
      <bool>false</bool>
@@ -216,6 +236,13 @@ color: rgb(255, 255, 255);</string>
    </widget>
   </widget>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>WeekDayButton</class>
+   <extends>QPushButton</extends>
+   <header>weekdaybutton.h</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>
