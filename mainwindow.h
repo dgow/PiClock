@@ -32,6 +32,10 @@ private slots:
 
     void on_stopAlarmButton_clicked();
 
+    void on_closeButton_clicked();
+
+    void on_soundButton_clicked();
+
 private:
 
     int currentLight;

@@ -28,16 +28,19 @@ SOURCES += \
         main.cpp \
         mainwindow.cpp \
     arsch.cpp \
-    weekdaybutton.cpp
+    weekdaybutton.cpp \
+    musicplayer.cpp
 
 HEADERS += \
         mainwindow.h \
     arsch.h \
-    weekdaybutton.h
+    weekdaybutton.h \
+    musicplayer.h
 
 FORMS += \
         mainwindow.ui \
-    arsch.ui
+    arsch.ui \
+    musicplayer.ui
 
 RESOURCES += \
     resourses.qrc
