@@ -38,9 +38,9 @@
   <widget class="QLabel" name="timeLabel">
    <property name="geometry">
     <rect>
-     <x>40</x>
+     <x>0</x>
      <y>10</y>
-     <width>391</width>
+     <width>481</width>
      <height>101</height>
     </rect>
    </property>
