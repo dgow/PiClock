@@ -7,6 +7,8 @@
 #include <QPushButton>
 #include <QDateTime>
 #include <weekdaybutton.h>
+#include <QTime>
+#include <QTimer>
 
 Arsch::Arsch(QWidget *parent) : QWidget(parent),
     ui(new Ui::Arsch)
@@ -21,11 +23,31 @@ Arsch::Arsch(QWidget *parent) : QWidget(parent),
     dayButtons = new QList<WeekDayButton*>();
 
     UpdateTime();
+
+    QTimer *blickTimer = new QTimer(this);
+    blickTimer->setInterval(1000);
+    connect(blickTimer, SIGNAL(timeout()), this, SLOT(Blink()));
+    blickTimer->start();
 }
 
 Arsch::~Arsch()
 {
     delete ui;
+}
+
+void Arsch::Blink()
+{
+    QDateTime time = QDateTime::currentDateTime();
+    QTime qTime = time.time();
+
+    QString timeString = QString::number(this->hour).rightJustified(2,'0') + ":" + QString::number(this->minute).rightJustified(2,'0');
+
+    if( qTime.second() % 2 == 0 )
+    {
+        timeString = "> " + timeString + " <";
+    }
+
+    ui->timeLabel->setText(timeString);
 }
 
 void Arsch::UpdateTime()
@@ -52,7 +74,7 @@ void Arsch::UpdateTime()
         hour = 23;
     }
 
-    ui->timeLabel->setText(QString::number(this->hour) + ":" + QString::number(this->minute));
+    ui->timeLabel->setText(QString::number(this->hour).rightJustified(2,'0') + ":" + QString::number(this->minute).rightJustified(2,'0'));
 
     dayButtons->append(ui->mo_button);
     dayButtons->append(ui->di_button);

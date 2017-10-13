@@ -40,6 +40,7 @@ private slots:
 
     void on_day_clicked(bool);
 
+    void Blink();
 private:
     void UpdateTime();
 

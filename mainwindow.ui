@@ -176,7 +176,23 @@
          </layout>
         </item>
         <item>
-         <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="5,1">
+         <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="1,10,1">
+          <item>
+           <widget class="QPushButton" name="soundButton">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>60</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">color: rgb(255, 255, 255);</string>
+            </property>
+            <property name="text">
+             <string>Music</string>
+            </property>
+           </widget>
+          </item>
           <item>
            <widget class="QLabel" name="dateLabel">
             <property name="palette">
@@ -218,7 +234,7 @@
             </property>
             <property name="font">
              <font>
-              <pointsize>25</pointsize>
+              <pointsize>22</pointsize>
              </font>
             </property>
             <property name="text">

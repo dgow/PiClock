@@ -241,7 +241,7 @@ int MainWindow::TargetBrightness()
     int target = 0; //night
     if((currentTime > sunRise) && (currentTime < sunSet)) //Day
     {
-        target = 100;
+        target = 50;
     }
     return target;
 }
