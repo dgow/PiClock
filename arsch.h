@@ -20,6 +20,9 @@ public:
     int hour;
     int minute;
 
+    int hourStep;
+    int minuteStep;
+
     QList<WeekDayButton*> *dayButtons;
 
     bool isButtonActive(int day);

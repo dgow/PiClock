@@ -13,6 +13,8 @@
 Arsch::Arsch(QWidget *parent) : QWidget(parent),
     ui(new Ui::Arsch)
 {   
+    minuteStep = 5;
+
     QSettings settings("Arsch", "Fotze");
     hour = settings.value("hour").toInt();
     minute = settings.value("minute").toInt();
@@ -118,13 +120,13 @@ void Arsch::on_hourUp_clicked()
 
 void Arsch::on_minuteDown_clicked()
 {
-    this->minute--;
+    this->minute -= this->minuteStep;
     this->UpdateTime();
 }
 
 void Arsch::on_minuteUp_clicked()
 {
-    this->minute++;
+    this->minute += this->minuteStep;
     this->UpdateTime();
 }
 
