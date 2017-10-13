@@ -54,7 +54,7 @@ void Arsch::Blink()
 
 void Arsch::UpdateTime()
 {
-    if(minute > 59)
+    if(minute > (60 - minuteStep))
     {
         minute = 0;
         hour++;
@@ -62,7 +62,7 @@ void Arsch::UpdateTime()
 
     if(minute < 0 )
     {
-        minute = 59;
+        minute = (60 - minuteStep);
         hour--;
     }
 
