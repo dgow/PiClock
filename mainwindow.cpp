@@ -63,6 +63,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
 
     connect(ui->arschPage, SIGNAL(GoBack()), this, SLOT(GoBack()));
+    connect(ui->musicPlayer, SIGNAL(GoBack()), this, SLOT(GoBack()));
 
     ui->stackedWidget->setCurrentIndex(0);
 }

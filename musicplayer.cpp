@@ -1,14 +1,50 @@
 #include "musicplayer.h"
 #include "ui_musicplayer.h"
 
+#include <QDebug>
+#include <QProcess>
+
 MusicPlayer::MusicPlayer(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::MusicPlayer)
 {
     ui->setupUi(this);
+
+    qDebug() << "MusicPlayer";
+
 }
 
 MusicPlayer::~MusicPlayer()
 {
     delete ui;
+}
+
+void MusicPlayer::on_okButton_clicked()
+{
+    emit this->GoBack();
+}
+
+void MusicPlayer::on_chillOutButton_clicked()
+{
+    QProcess *process = new QProcess(this);
+    QStringList args;
+    args << "clear";
+    process->start("mpc", args);
+
+    args.clear();
+    args << "load" << "ChillOut++";
+    process->start("mpc", args);
+}
+
+void MusicPlayer::on_HDMButton_clicked()
+{
+    QProcess *process = new QProcess(this);
+    QStringList args;
+    args << "clear";
+    process->start("mpc", args);
+
+    args.clear();
+    args << "load" << "HDM";
+    process->start("mpc", args);
+
 }

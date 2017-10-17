@@ -12,8 +12,6 @@ WeekDayButton::WeekDayButton(QWidget *parent) : QPushButton(parent)
     this->setStyleSheet("WeekDayButton:checked { background-color: green; color: rgb(0, 255, 0); }"
                         "WeekDayButton{background-color: white; color: rgb(255, 255, 255);}"
                         );
-
-    qDebug() << "weekdaybutton is alive";
 }
 
 void WeekDayButton::LoadState()
@@ -28,16 +26,9 @@ void WeekDayButton::LoadState()
 
 void WeekDayButton::SetActive(bool active)
 {
-
-    qDebug() << "aaaa";
-
-
     this->active = active;
 
     QSettings settings("Joe", "PiClock");
     QString st = QString ("activeDay%1").arg(this->dayOfTheWeek);
     settings.setValue(st, this->active);
-
-
-    settings.setValue("a", 0);
 }
