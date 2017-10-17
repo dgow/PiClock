@@ -31,9 +31,10 @@ void MusicPlayer::on_chillOutButton_clicked()
     args << "clear";
     process->start("mpc", args);
 
+    QProcess *processLoad = new QProcess(this);
     args.clear();
     args << "load" << "ChillOut++";
-    process->start("mpc", args);
+    processLoad->start("mpc", args);
 }
 
 void MusicPlayer::on_HDMButton_clicked()
@@ -43,8 +44,8 @@ void MusicPlayer::on_HDMButton_clicked()
     args << "clear";
     process->start("mpc", args);
 
+    QProcess *processLoad = new QProcess(this);
     args.clear();
     args << "load" << "HDM";
-    process->start("mpc", args);
-
+    processLoad->start("mpc", args);
 }
