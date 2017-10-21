@@ -94,7 +94,7 @@
           <property name="font">
            <font>
             <family>DejaVu Sans Mono for Powerline</family>
-            <pointsize>115</pointsize>
+            <pointsize>110</pointsize>
             <italic>true</italic>
             <strikeout>false</strikeout>
            </font>
