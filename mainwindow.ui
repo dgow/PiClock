@@ -235,7 +235,7 @@
             <property name="font">
              <font>
               <family>Helvetica</family>
-              <pointsize>22</pointsize>
+              <pointsize>18</pointsize>
              </font>
             </property>
             <property name="text">
