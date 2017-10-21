@@ -59,6 +59,22 @@
     </widget>
    </item>
    <item>
+    <widget class="QPushButton" name="lightButton">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: rgb(255, 255, 255);</string>
+     </property>
+     <property name="text">
+      <string>Light</string>
+     </property>
+    </widget>
+   </item>
+   <item>
     <widget class="QPushButton" name="okButton">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">

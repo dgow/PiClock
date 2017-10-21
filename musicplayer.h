@@ -29,6 +29,8 @@ private slots:
 
    void on_HDMButton_clicked();
 
+   void on_lightButton_clicked();
+
 private:
     Ui::MusicPlayer *ui;
 };
