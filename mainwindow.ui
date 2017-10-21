@@ -93,7 +93,7 @@
           </property>
           <property name="font">
            <font>
-            <family>Chalkboard</family>
+            <family>Helvetica</family>
             <pointsize>115</pointsize>
             <strikeout>false</strikeout>
            </font>
@@ -234,6 +234,7 @@
             </property>
             <property name="font">
              <font>
+              <family>Helvetica</family>
               <pointsize>22</pointsize>
              </font>
             </property>
