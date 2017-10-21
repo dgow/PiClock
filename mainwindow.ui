@@ -93,8 +93,9 @@
           </property>
           <property name="font">
            <font>
-            <family>Helvetica</family>
+            <family>DejaVu Sans Mono for Powerline</family>
             <pointsize>115</pointsize>
+            <italic>true</italic>
             <strikeout>false</strikeout>
            </font>
           </property>
