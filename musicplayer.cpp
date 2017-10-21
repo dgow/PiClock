@@ -49,3 +49,9 @@ void MusicPlayer::on_HDMButton_clicked()
     args << "load" << "HDM";
     processLoad->start("mpc", args);
 }
+
+void MusicPlayer::on_lightButton_clicked()
+{
+    QProcess *process = new QProcess(this);
+    process->start("/home/pi/Desktop/pressBrightness.sh");
+}
