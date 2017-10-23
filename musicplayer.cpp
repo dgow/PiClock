@@ -15,11 +15,14 @@ MusicPlayer::MusicPlayer(QWidget *parent) :
     qDebug() << "MusicPlayer";
 
     wiringPiSetup();
-    pinMode (24, INPUT) ;
+    pinMode (24, INPUT) ; //knopf
+    pinMode (23, INPUT) ; //links/rechts
+    pinMode (22, INPUT) ; //links/rechts
     pinMode (25, OUTPUT) ;
 
     for (;;)
     {
+        /*
       digitalWrite (25, HIGH) ;	// On
       delay (500) ;		// mS
       digitalWrite (25, LOW) ;	// Off
@@ -27,6 +30,10 @@ MusicPlayer::MusicPlayer(QWidget *parent) :
 
       int button = digitalRead(24);
       qDebug() << "Button " << button;
+      */
+
+        int button = digitalRead(23);
+        qDebug() << "Button " << button;
     }
 }
 
