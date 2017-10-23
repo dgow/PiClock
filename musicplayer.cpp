@@ -4,6 +4,8 @@
 #include <QDebug>
 #include <QProcess>
 
+#include <WiringPi/wiringPi/wiringPi.h>
+
 MusicPlayer::MusicPlayer(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::MusicPlayer)
@@ -12,6 +14,16 @@ MusicPlayer::MusicPlayer(QWidget *parent) :
 
     qDebug() << "MusicPlayer";
 
+    wiringPiSetup();
+    pinMode (LED, OUTPUT) ;
+
+    for (;;)
+    {
+      digitalWrite (25, HIGH) ;	// On
+      delay (500) ;		// mS
+      digitalWrite (25, LOW) ;	// Off
+      delay (500) ;
+    }
 }
 
 MusicPlayer::~MusicPlayer()

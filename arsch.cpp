@@ -10,8 +10,6 @@
 #include <QTime>
 #include <QTimer>
 
-#include <wiringPi.h>
-
 Arsch::Arsch(QWidget *parent) : QWidget(parent),
     ui(new Ui::Arsch)
 {   
