@@ -33,7 +33,18 @@ MusicPlayer::MusicPlayer(QWidget *parent) :
       */
 
         int button = digitalRead(23);
-        qDebug() << "Button " << button;
+        if( button == 0)
+        {
+            qDebug() << "= " << button;
+        }
+
+        int button2 = digitalRead(23);
+        if( button2 == 0)
+        {
+            qDebug() << "/ " << button2;
+        }
+
+        delay (100) ;
     }
 }
 
