@@ -44,7 +44,7 @@ MusicPlayer::MusicPlayer(QWidget *parent) :
             qDebug() << "/ " << button2;
         }
 
-        delay (100) ;
+        //delay (10) ;
     }
 }
 
