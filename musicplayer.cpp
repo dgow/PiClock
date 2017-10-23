@@ -15,7 +15,7 @@ MusicPlayer::MusicPlayer(QWidget *parent) :
     qDebug() << "MusicPlayer";
 
     wiringPiSetup();
-    pinMode (LED, OUTPUT) ;
+    pinMode (25, OUTPUT) ;
 
     for (;;)
     {
