@@ -14,9 +14,9 @@ VolumeKnobThread::VolumeKnobThread()
 
     knobState = KnobInit;
 
-    int pinA = 1;
-    int pinB = 1;
-    int pinC = 1;
+    pinA = 1;
+    pinB = 1;
+    pinC = 1;
 }
 
 void VolumeKnobThread::run()
