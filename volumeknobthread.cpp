@@ -88,7 +88,7 @@ void VolumeKnobThread::run()
             if(pinA == 0 && pinB == 1)
             {
                 qDebug() << "Louder!!!";
-                this->SwitchState(KnobLZero);
+                this->SwitchState(KnobInit);
             }
         }
 
@@ -97,7 +97,7 @@ void VolumeKnobThread::run()
             if(pinA == 1 && pinB == 0)
             {
                 qDebug() << "Leiser!!!";
-                this->SwitchState(KnobLZero);
+                this->SwitchState(KnobInit);
             }
         }
 
