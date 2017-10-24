@@ -63,20 +63,20 @@ MusicPlayer::MusicPlayer(QWidget *parent) :
 
 void MusicPlayer::VolumeUp()
 {
-    qDebug() << "vol up";
+    qDebug() << "vol +";
     QProcess *process = new QProcess(this);
     QStringList args;
-    args << "sset" << "'Speaker'" << "2%+";
+    args << "sset" << "'Speaker'" << "1%+";
     process->start("amixer", args);
 
 }
 
 void MusicPlayer::VolumeDown()
 {
-    qDebug() << "vol down";
+    qDebug() << "vol -";
     QProcess *process = new QProcess(this);
     QStringList args;
-    args << "sset" << "'Speaker'" << "2%-";
+    args << "sset" << "'Speaker'" << "1%-";
     process->start("amixer", args);
 
 }
