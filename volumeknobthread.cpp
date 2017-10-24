@@ -97,7 +97,7 @@ void VolumeKnobThread::run()
         {
             if( pinAchanged )
             {
-                this->SwitchState(KnobLZero);
+                this->SwitchState(KnobRZero);
             }
             break;
         }
