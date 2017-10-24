@@ -71,12 +71,13 @@ void VolumeKnobThread::run()
             break;
         }
 
-        return;
+
 
 
         pinA = newPinA;
         pinB = newPinB;
         pinC = newPinC;
+
 
         switch (knobState) {
         case KnobInit:
