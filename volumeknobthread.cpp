@@ -68,7 +68,7 @@ void VolumeKnobThread::run()
             {
                 if( newPinA == 0 && newPinB == 1 )
                 {
-                    this->SwitchState(KnobRight);
+                    this->SwitchState(KnobLeft);
                     break;
                 }
             }
