@@ -84,6 +84,10 @@ void MusicPlayer::VolumeDown()
 void MusicPlayer::Mute()
 {
     qDebug() << "mute toggle";
+    QProcess *process = new QProcess(this);
+    QStringList args;
+    args << "toggle";
+    process->start("mpc", args);
 }
 
 MusicPlayer::~MusicPlayer()

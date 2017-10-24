@@ -40,17 +40,6 @@ void VolumeKnobThread::run()
         newPinB = digitalRead(22);
         newPinC = digitalRead(24);
 #endif
-        /*
-        if(newPinA != pinA)
-        {
-            qDebug() << "A: " << newPinA;
-        }
-
-        if(newPinB != pinB)
-        {
-            qDebug() << "B: " << newPinB;
-        }
-*/
 
         if(newPinC != pinC)
         {
