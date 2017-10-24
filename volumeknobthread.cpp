@@ -43,13 +43,15 @@ void VolumeKnobThread::run()
 
         bool pinCchanged = newPinC != pinC;
 
-        if(pinCchanged == 1)
+        if(newPinC == 1)
         {
-            if(this->switchOn == true)
+            //if(this->switchOn == true)
             {
                 emit pressed();
                 qDebug() << "C: " << newPinC;
                 this->switchOn = newPinC;
+
+                 QThread::sleep(0.5);
             }
         }
 
