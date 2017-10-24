@@ -43,7 +43,7 @@ void VolumeKnobThread::run()
 
         bool pinCchanged = newPinC != pinC;
 
-        if(pinCchanged)
+        if(pinCchanged == 1)
         {
             if(this->switchOn == true)
             {
