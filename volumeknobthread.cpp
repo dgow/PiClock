@@ -59,25 +59,25 @@ void VolumeKnobThread::run()
         switch (knobState) {
         case KnobInit:
         {
-            if(newPinA == 0)
+            if( (newPinA == 0) && (newPinB == 1) )
             {
                 this->SwitchState(KnobRight);
             }
-            if(newPinB == 0)
+            if( (newPinA == 1) && (newPinB == 0) )
             {
                 this->SwitchState(KnobLeft);
             }
         }
         case KnobRight:
         {
-            if(pinA == 0 && pinB == 0)
+            if(newPinA == 0 && newPinB == 0)
             {
                 this->SwitchState(KnobRZero);
             }
         }
         case KnobLeft:
         {
-            if(pinA == 0 && pinB == 0)
+            if(newPinA == 0 && newPinB == 0)
             {
                 this->SwitchState(KnobLZero);
             }
@@ -85,7 +85,7 @@ void VolumeKnobThread::run()
 
         case KnobRZero:
         {
-            if(pinA == 0 && pinB == 1)
+            if(newPinA == 0 && newPinB == 1)
             {
                 qDebug() << "Louder!!!";
                 this->SwitchState(KnobInit);
@@ -94,7 +94,7 @@ void VolumeKnobThread::run()
 
         case KnobLZero:
         {
-            if(pinA == 1 && pinB == 0)
+            if(newPinA == 1 && newPinB == 0)
             {
                 qDebug() << "Leiser!!!";
                 this->SwitchState(KnobInit);
