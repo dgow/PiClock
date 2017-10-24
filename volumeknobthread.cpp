@@ -38,6 +38,7 @@ void VolumeKnobThread::run()
         newPinA = digitalRead(23);
         newPinB = digitalRead(22);
 #endif
+        /*
         if(newPinA != pinA)
         {
             qDebug() << "A: " << newPinA;
@@ -52,6 +53,7 @@ void VolumeKnobThread::run()
         {
             qDebug() << "C: " << newPinC;
         }
+        */
 
 
         switch (knobState) {
