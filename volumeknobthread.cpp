@@ -94,7 +94,7 @@ void VolumeKnobThread::run()
             {
                 qDebug() << "Louder!!!";
                 this->SwitchState(KnobInit);
-                QThread::sleep(0.5);
+                QThread::sleep(1);
             }
             break;
         }
@@ -105,7 +105,7 @@ void VolumeKnobThread::run()
             {
                 qDebug() << "Leiser!!!";
                 this->SwitchState(KnobInit);
-                QThread::sleep(0.5);
+                QThread::sleep(1);
 
             }
             break;
