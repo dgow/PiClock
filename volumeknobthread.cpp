@@ -25,7 +25,7 @@ void VolumeKnobThread::run()
 
     while(true)
     {
-        unsigned long step = (unsigned long)0.05;
+        unsigned long step = (unsigned long)0.5;
         QThread::sleep(step);
 
 
