@@ -122,9 +122,14 @@ void VolumeKnobThread::run()
 
 void VolumeKnobThread::SwitchState(KnobState state)
 {
-    knobState = state;
 
-    qDebug() << "STATE SWITCH: " << state;
+
+    if(knobState != state)
+    {
+        qDebug() << "STATE SWITCH: " << state;
+    }
+
+    knobState = state;
 }
 
 /*
