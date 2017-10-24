@@ -18,6 +18,8 @@ public:
 signals:
    void GoBack();
 
+
+
 //public slots:
 //    void Close();
 
@@ -30,6 +32,10 @@ private slots:
    void on_HDMButton_clicked();
 
    void on_lightButton_clicked();
+
+   void VolumeUP();
+   void VolumeDown();
+   void Mute();
 
 private:
     Ui::MusicPlayer *ui;

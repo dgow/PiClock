@@ -8,6 +8,8 @@ enum KnobState { KnobInit, KnobRight, KnobLeft, KnobRZero, KnobLZero };
 
 class VolumeKnobThread : public QThread
 {
+
+    Q_OBJECT
 public:
     VolumeKnobThread();
 
@@ -26,6 +28,12 @@ private:
     int pinC;
 
     void SwitchState(KnobState state);
+
+signals:
+    void up();
+    void down();
+    void pressed();
+
 };
 
 #endif // VOLUMEKNOBTHREAD_H

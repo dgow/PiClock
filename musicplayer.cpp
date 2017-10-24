@@ -55,6 +55,25 @@ MusicPlayer::MusicPlayer(QWidget *parent) :
 
         //delay (10) ;
     //}
+
+    connect(volThread, SIGNAL(up()), this, SLOT(VolumeUp()));
+    connect(volThread, SIGNAL(down()), this, SLOT(VolumeDown()));
+    connect(volThread, SIGNAL(pressed()), this, SLOT(Mute()));
+}
+
+void MusicPlayer::VolumeUP()
+{
+    qDebug() << "vol up";
+}
+
+void MusicPlayer::VolumeDown()
+{
+    qDebug() << "vol down";
+}
+
+void MusicPlayer::Mute()
+{
+    qDebug() << "mute toggle";
 }
 
 MusicPlayer::~MusicPlayer()

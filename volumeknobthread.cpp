@@ -50,12 +50,14 @@ void VolumeKnobThread::run()
         {
             qDebug() << "B: " << newPinB;
         }
+*/
 
         if(newPinC != pinC)
         {
+            emit pressed();
             qDebug() << "C: " << newPinC;
         }
-        */
+
 
 
         switch (knobState) {
@@ -93,7 +95,10 @@ void VolumeKnobThread::run()
         {
             if(newPinA == 1 && newPinB == 0)
             {
-                qDebug() << "+++++++++";
+                //qDebug() << "+++++++++";
+
+                emit up();
+
                 this->SwitchState(KnobInit);
             }
             break;
@@ -103,7 +108,10 @@ void VolumeKnobThread::run()
         {
             if(newPinA == 0 && newPinB == 1)
             {
-                qDebug() << "-------";
+                //qDebug() << "-------";
+
+                emit down();
+
                 this->SwitchState(KnobInit);
             }
             break;
