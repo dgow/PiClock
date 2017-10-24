@@ -12,7 +12,7 @@ VolumeKnobThread::VolumeKnobThread()
     pinMode (25, OUTPUT) ;
 #endif
 
-    knobState = KnobInit;
+    this->SwitchState(KnobInit);
 
     pinA = 1;
     pinB = 1;
