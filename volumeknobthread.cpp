@@ -95,6 +95,9 @@ void VolumeKnobThread::run()
         default:
             break;
         }
+
+
+        knobState = KnobInit;
     }
 }
 /*
