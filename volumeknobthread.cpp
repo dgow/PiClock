@@ -25,7 +25,7 @@ void VolumeKnobThread::run()
 
     while(true)
     {
-        unsigned long step = (unsigned long)0.1;
+        unsigned long step = (unsigned long)0.2;
         QThread::sleep(step);
 
         //qDebug() << "STATE: " << knobState;
@@ -142,26 +142,3 @@ void VolumeKnobThread::SwitchState(KnobState state)
 
     knobState = state;
 }
-
-/*
-KnobState VolumeKnobThread::InitState()
-{
-    KnobState state
-    return pinA == 1 && pinB == 1;
-}
-
-bool VolumeKnobThread::RightState()
-{
-    return pinA == 1 && pinB == 0;
-}
-
-bool VolumeKnobThread::LeftState()
-{
-    return pinA == 0 && pinB == 1;
-}
-
-bool VolumeKnobThread::ZeroState()
-{
-    return pinA == 0 && pinB == 0;
-}
-*/

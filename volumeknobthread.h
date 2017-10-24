@@ -18,11 +18,6 @@ private:
 
     KnobState knobState;
 
-    /*bool InitState();
-    bool RightState();
-    bool LeftState();
-    bool ZeroState();
-*/
     int pinA;
     int pinB;
     int pinC;
