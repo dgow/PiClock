@@ -36,9 +36,9 @@ void VolumeKnobThread::run()
         int newPinC = 1;
 
 #ifndef Q_OS_MACOS
-        newPinC = digitalRead(24);
         newPinA = digitalRead(23);
         newPinB = digitalRead(22);
+        newPinC = digitalRead(24);
 #endif
         /*
         if(newPinA != pinA)
@@ -69,6 +69,7 @@ void VolumeKnobThread::run()
             {
                 this->SwitchState(KnobLeft);
             }
+            break;
         }
         case KnobRight:
         {
@@ -76,6 +77,7 @@ void VolumeKnobThread::run()
             {
                 this->SwitchState(KnobRZero);
             }
+            break;
         }
         case KnobLeft:
         {
@@ -83,6 +85,7 @@ void VolumeKnobThread::run()
             {
                 this->SwitchState(KnobLZero);
             }
+            break;
         }
 
         case KnobRZero:
@@ -92,6 +95,7 @@ void VolumeKnobThread::run()
                 qDebug() << "Louder!!!";
                 this->SwitchState(KnobInit);
             }
+            break;
         }
 
         case KnobLZero:
@@ -101,6 +105,7 @@ void VolumeKnobThread::run()
                 qDebug() << "Leiser!!!";
                 this->SwitchState(KnobInit);
             }
+            break;
         }
 
 
