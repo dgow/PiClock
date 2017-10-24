@@ -45,8 +45,12 @@ void VolumeKnobThread::run()
 
         if(pinCchanged)
         {
-            emit pressed();
-            qDebug() << "C: " << newPinC;
+            if(this->switchOn == 1)
+            {
+                emit pressed();
+                qDebug() << "C: " << newPinC;
+                this->switchOn = newPinC;
+            }
         }
 
         bool pinAchanged = newPinA != pinA;
