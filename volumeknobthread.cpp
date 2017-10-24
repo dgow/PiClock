@@ -57,66 +57,67 @@ void VolumeKnobThread::run()
         switch (knobState) {
         case KnobInit:
         {
-            if(pinA != newPinA)
+            if(newPinA == 0)
             {
-                knobState = KnobRight;
+                this->SwitchState(KnobRight);
             }
-            if(pinB != newPinB)
+            if(newPinB == 0)
             {
-                knobState = KnobLeft;
+                this->SwitchState(KnobLeft);
             }
         }
         case KnobRight:
         {
-            if(pinA == 0 && pinB == 1)
+            if(pinA == 0 && pinB == 0)
             {
-                knobState = KnobInit;
-                qDebug() << "Louder!!!";
+                this->SwitchState(KnobRZero);
             }
         }
         case KnobLeft:
         {
-            if(pinA == 1 && pinB == 0)
+            if(pinA == 0 && pinB == 0)
             {
-                knobState = KnobInit;
-                qDebug() << "Leiser ///";
+                this->SwitchState(KnobLZero);
             }
         }
+
+        case KnobRZero:
+        {
+            if(pinA == 0 && pinB == 1)
+            {
+                qDebug() << "Louder!!!";
+                this->SwitchState(KnobLZero);
+            }
+        }
+
+        case KnobLZero:
+        {
+            if(pinA == 1 && pinB == 0)
+            {
+                qDebug() << "Leiser!!!";
+                this->SwitchState(KnobLZero);
+            }
+        }
+
 
 
         default:
             break;
         }
-
-
-
 
         pinA = newPinA;
         pinB = newPinB;
         pinC = newPinC;
-
-
-        switch (knobState) {
-        case KnobInit:
-            qDebug() << "Init";
-            break;
-        case KnobRight:
-            qDebug() << "Right";
-            break;
-        case KnobLeft:
-            qDebug() << "Left";
-            break;
-        case KnobZero:
-            qDebug() << "Zero";
-            break;
-        default:
-            break;
-        }
-
-
-        //knobState = KnobInit;
     }
 }
+
+void VolumeKnobThread::SwitchState(KnobState state)
+{
+    knobState = state;
+
+    qDebug() << "STATE SWITCH: " << state;
+}
+
 /*
 KnobState VolumeKnobThread::InitState()
 {

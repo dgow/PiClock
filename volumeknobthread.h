@@ -4,7 +4,7 @@
 #include <QObject>
 #include <QThread>
 
-enum KnobState { KnobInit, KnobRight, KnobLeft, KnobZero };
+enum KnobState { KnobInit, KnobRight, KnobLeft, KnobRZero, KnobLZero };
 
 class VolumeKnobThread : public QThread
 {
@@ -24,6 +24,8 @@ private:
     int pinA;
     int pinB;
     int pinC;
+
+    void SwitchState(KnobState state);
 };
 
 #endif // VOLUMEKNOBTHREAD_H
