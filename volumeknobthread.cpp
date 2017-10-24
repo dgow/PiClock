@@ -91,9 +91,13 @@ void VolumeKnobThread::run()
             break;
         }
 
+
+
+
+
         case KnobRZero:
         {
-            if(newPinA == 1 && newPinB == 0)
+            if( newPinB == 0 && pinB != 0 )
             {
                 //qDebug() << "+++++++++";
 
@@ -106,7 +110,7 @@ void VolumeKnobThread::run()
 
         case KnobLZero:
         {
-            if(newPinA == 0 && newPinB == 1)
+            if( newPinA == 0 && pinA != 0 )
             {
                 //qDebug() << "-------";
 
