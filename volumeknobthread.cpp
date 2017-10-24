@@ -11,6 +11,8 @@ VolumeKnobThread::VolumeKnobThread()
     pinMode (22, INPUT) ; //links/rechts
     pinMode (25, OUTPUT) ;
 #endif
+
+    knobState = KnobState::KnobInit;
 }
 
 void VolumeKnobThread::run()
@@ -47,8 +49,66 @@ void VolumeKnobThread::run()
             qDebug() << "C: " << newPinC;
         }
 
+
+        switch (knobState) {
+        case KnobInit:
+        {
+            if(pinA != newPinA)
+            {
+                knobState = KnobRight;
+            }
+            if(pinB != newPinB)
+            {
+                knobState = KnobLeft;
+            }
+        }
+            break;
+        default:
+            break;
+        }
+
+
         pinA = newPinA;
         pinB = newPinB;
         pinC = newPinC;
+
+        switch (knobState) {
+        case KnobInit:
+            qDebug() << "Init";
+            break;
+        case KnobRight:
+            qDebug() << "Right";
+            break;
+        case KnobLeft:
+            qDebug() << "Left";
+            break;
+        case KnobZero:
+            qDebug() << "Zero";
+            break;
+        default:
+            break;
+        }
     }
 }
+/*
+KnobState VolumeKnobThread::InitState()
+{
+    KnobState state
+    return pinA == 1 && pinB == 1;
+}
+
+bool VolumeKnobThread::RightState()
+{
+    return pinA == 1 && pinB == 0;
+}
+
+bool VolumeKnobThread::LeftState()
+{
+    return pinA == 0 && pinB == 1;
+}
+
+bool VolumeKnobThread::ZeroState()
+{
+    return pinA == 0 && pinB == 0;
+}
+*/
