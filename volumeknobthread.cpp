@@ -15,11 +15,13 @@ VolumeKnobThread::VolumeKnobThread()
 
 void VolumeKnobThread::run()
 {
+    qDebug() << "hello from worker thread " << thread()->currentThreadId();
+
     while(true)
     {
         unsigned long step = (unsigned long)0.1;
         QThread::sleep(step);
-        qDebug() << "hello from worker thread " << thread()->currentThreadId();
+
 
         int newPinA = -1;
         int newPinB = -1;
