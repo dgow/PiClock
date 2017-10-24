@@ -74,7 +74,14 @@ void VolumeKnobThread::run()
                 qDebug() << "Louder!!!";
             }
         }
-
+        case KnobLeft:
+        {
+            if(pinA == 1 && pinB == 0)
+            {
+                knobState = KnobInit;
+                qDebug() << "Leiser ///";
+            }
+        }
 
 
         default:
