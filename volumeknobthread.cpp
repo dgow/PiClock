@@ -108,7 +108,7 @@ void VolumeKnobThread::run()
         {
             if( pinAchanged )
             {
-                emit down();
+                emit up();
                 this->SwitchState(KnobInit);
             }
             break;
@@ -118,7 +118,7 @@ void VolumeKnobThread::run()
         {
             if( pinBchanged )
             {
-                emit up();
+                emit down();
                 this->SwitchState(KnobInit);
             }
             break;
@@ -140,7 +140,7 @@ void VolumeKnobThread::SwitchState(KnobState state)
 
     if(knobState != state)
     {
-        qDebug() << "STATE SWITCH: " << state;
+       // qDebug() << "STATE SWITCH: " << state;
     }
 
     knobState = state;
