@@ -61,7 +61,7 @@ MusicPlayer::MusicPlayer(QWidget *parent) :
     connect(volThread, SIGNAL(pressed()), this, SLOT(Mute()));
 }
 
-void MusicPlayer::VolumeUP()
+void MusicPlayer::VolumeUp()
 {
     qDebug() << "vol up";
 }

@@ -33,7 +33,7 @@ private slots:
 
    void on_lightButton_clicked();
 
-   void VolumeUP();
+   void VolumeUp();
    void VolumeDown();
    void Mute();
 
