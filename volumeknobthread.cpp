@@ -28,6 +28,8 @@ void VolumeKnobThread::run()
         unsigned long step = (unsigned long)1;
         QThread::sleep(step);
 
+        qDebug() << "STATE: " << state;
+
 
         int newPinA = 1;
         int newPinB = 1;
