@@ -25,9 +25,9 @@ void VolumeKnobThread::run()
         QThread::sleep(step);
 
 
-        int newPinA = -1;
-        int newPinB = -1;
-        int newPinC = -1;
+        int newPinA = 1;
+        int newPinB = 1;
+        int newPinC = 1;
 
 #ifndef Q_OS_MACOS
         newPinC = digitalRead(24);
