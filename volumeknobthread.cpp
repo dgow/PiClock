@@ -66,7 +66,17 @@ void VolumeKnobThread::run()
                 knobState = KnobLeft;
             }
         }
-            break;
+        case KnobRight:
+        {
+            if(pinA == 0 && pinB == 1)
+            {
+                knobState = KnobInit;
+                qDebug() << "Louder!!!";
+            }
+        }
+
+
+
         default:
             break;
         }
@@ -97,7 +107,7 @@ void VolumeKnobThread::run()
         }
 
 
-        knobState = KnobInit;
+        //knobState = KnobInit;
     }
 }
 /*
