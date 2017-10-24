@@ -19,16 +19,18 @@ void VolumeKnobThread::run()
 
     while(true)
     {
-        unsigned long step = (unsigned long)0.1;
+        unsigned long step = (unsigned long)0.05;
         QThread::sleep(step);
 
 
         int newPinA = -1;
         int newPinB = -1;
+        int newPinC = -1;
 
 #ifndef Q_OS_MACOS
+        newPinC = digitalRead(24);
         newPinA = digitalRead(23);
-        newPinB = digitalRead(24);
+        newPinB = digitalRead(22);
 #endif
         if(newPinA != pinA)
         {
@@ -38,6 +40,11 @@ void VolumeKnobThread::run()
         if(newPinB != pinB)
         {
             qDebug() << "B: " << newPinB;
+        }
+
+        if(newPinC != pinC)
+        {
+            qDebug() << "C: " << newPinC;
         }
 
         pinA = newPinA;

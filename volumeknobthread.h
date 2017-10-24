@@ -14,6 +14,7 @@ private:
 
     int pinA;
     int pinB;
+    int pinC;
 };
 
 #endif // VOLUMEKNOBTHREAD_H
