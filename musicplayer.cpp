@@ -5,6 +5,7 @@
 #include <QProcess>
 
 #include <WiringPi/wiringPi/wiringPi.h>
+#include <volumeknobthread.h>
 
 MusicPlayer::MusicPlayer(QWidget *parent) :
     QWidget(parent),
@@ -14,14 +15,20 @@ MusicPlayer::MusicPlayer(QWidget *parent) :
 
     qDebug() << "MusicPlayer";
 
+#ifndef Q_OS_MACOS
     wiringPiSetup();
     pinMode (24, INPUT) ; //knopf
     pinMode (23, INPUT) ; //links/rechts
     pinMode (22, INPUT) ; //links/rechts
     pinMode (25, OUTPUT) ;
+#endif
 
-    for (;;)
-    {
+    VolumeKnobThread *volThread = new VolumeKnobThread();
+    volThread->start();
+
+
+   // for (;;)
+   // {
         /*
       digitalWrite (25, HIGH) ;	// On
       delay (500) ;		// mS
@@ -32,6 +39,7 @@ MusicPlayer::MusicPlayer(QWidget *parent) :
       qDebug() << "Button " << button;
       */
 
+        /*
         int button = digitalRead(23);
         if( button == 0)
         {
@@ -43,9 +51,10 @@ MusicPlayer::MusicPlayer(QWidget *parent) :
         {
             qDebug() << "/ " << button2;
         }
+        */
 
         //delay (10) ;
-    }
+    //}
 }
 
 MusicPlayer::~MusicPlayer()

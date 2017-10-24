@@ -29,13 +29,15 @@ SOURCES += \
         mainwindow.cpp \
     arsch.cpp \
     weekdaybutton.cpp \
-    musicplayer.cpp
+    musicplayer.cpp \
+    volumeknobthread.cpp
 
 HEADERS += \
         mainwindow.h \
     arsch.h \
     weekdaybutton.h \
-    musicplayer.h
+    musicplayer.h \
+    volumeknobthread.h
 
 FORMS += \
         mainwindow.ui \

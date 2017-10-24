@@ -18,6 +18,8 @@
 #include <QProcess>
 #include <QGraphicsDropShadowEffect>
 
+
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
