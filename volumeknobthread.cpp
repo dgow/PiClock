@@ -90,7 +90,7 @@ void VolumeKnobThread::run()
 
         case KnobRZero:
         {
-            if(newPinA == 0 && newPinB == 1)
+            if(newPinA == 1 && newPinB == 0)
             {
                 qDebug() << "Louder!!!";
                 this->SwitchState(KnobInit);
@@ -100,7 +100,7 @@ void VolumeKnobThread::run()
 
         case KnobLZero:
         {
-            if(newPinA == 1 && newPinB == 0)
+            if(newPinA == 0 && newPinB == 1)
             {
                 qDebug() << "Leiser!!!";
                 this->SwitchState(KnobInit);
