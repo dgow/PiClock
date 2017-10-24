@@ -58,33 +58,44 @@ void VolumeKnobThread::run()
             qDebug() << "C: " << newPinC;
         }
 
-
+        bool pinAchanged = newPinA != pinA;
+        bool pinBchanged = newPinB != pinB;
 
         switch (knobState) {
         case KnobInit:
         {
-            if( newPinA == 0 && pinA != 0 )
+            if( pinAchanged )
             {
-                this->SwitchState(KnobRight);
+                if( newPinA == 0 && newPinB == 1 )
+                {
+                    this->SwitchState(KnobRight);
+                    break;
+                }
             }
 
-            if( newPinB == 0 && pinB != 0 )
+            if( pinBchanged )
             {
-                this->SwitchState(KnobLeft);
+                if( newPinB == 0 && newPinA == 1 )
+                {
+                    this->SwitchState(KnobRight);
+                    break;
+                }
             }
             break;
         }
-        case KnobRight:
-        {
-            if( newPinB == 0 && pinB != 0 )
-            {
-                this->SwitchState(KnobRZero);
-            }
-            break;
-        }
+
         case KnobLeft:
         {
-            if( newPinA == 0 && pinA != 0 )
+            if( pinBchanged )
+            {
+                this->SwitchState(KnobLZero);
+            }
+            break;
+        }
+
+        case KnobRight:
+        {
+            if( pinAchanged )
             {
                 this->SwitchState(KnobLZero);
             }
@@ -93,35 +104,25 @@ void VolumeKnobThread::run()
 
 
 
-
+        case KnobLZero:
+        {
+            if( pinAchanged )
+            {
+                emit down();
+                this->SwitchState(KnobInit);
+            }
+            break;
+        }
 
         case KnobRZero:
         {
-            if( newPinB == 0 && pinB != 0 )
+            if( pinBchanged )
             {
-                //qDebug() << "+++++++++";
-
                 emit up();
-
                 this->SwitchState(KnobInit);
             }
             break;
         }
-
-        case KnobLZero:
-        {
-            if( newPinA == 0 && pinA != 0 )
-            {
-                //qDebug() << "-------";
-
-                emit down();
-
-                this->SwitchState(KnobInit);
-            }
-            break;
-        }
-
-
 
         default:
             break;
