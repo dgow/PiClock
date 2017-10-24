@@ -71,6 +71,8 @@ void VolumeKnobThread::run()
             break;
         }
 
+        return;
+
 
         pinA = newPinA;
         pinB = newPinB;
