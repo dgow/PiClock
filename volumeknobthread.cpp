@@ -25,7 +25,7 @@ void VolumeKnobThread::run()
 
     while(true)
     {
-        unsigned long step = (unsigned long)0.05;
+        unsigned long step = (unsigned long)0.1;
         QThread::sleep(step);
 
         //qDebug() << "STATE: " << knobState;
@@ -94,6 +94,7 @@ void VolumeKnobThread::run()
             {
                 qDebug() << "Louder!!!";
                 this->SwitchState(KnobInit);
+                QThread::sleep(0.5);
             }
             break;
         }
@@ -104,6 +105,8 @@ void VolumeKnobThread::run()
             {
                 qDebug() << "Leiser!!!";
                 this->SwitchState(KnobInit);
+                QThread::sleep(0.5);
+
             }
             break;
         }
