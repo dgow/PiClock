@@ -64,11 +64,21 @@ MusicPlayer::MusicPlayer(QWidget *parent) :
 void MusicPlayer::VolumeUp()
 {
     qDebug() << "vol up";
+    QProcess *process = new QProcess(this);
+    QStringList args;
+    args << "sset" << "'Speaker'" << "2%+";
+    process->start("amixer", args);
+
 }
 
 void MusicPlayer::VolumeDown()
 {
     qDebug() << "vol down";
+    QProcess *process = new QProcess(this);
+    QStringList args;
+    args << "sset" << "'Speaker'" << "2%-";
+    process->start("amixer", args);
+
 }
 
 void MusicPlayer::Mute()
