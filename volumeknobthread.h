@@ -27,6 +27,8 @@ private:
     int pinB;
     int pinC;
 
+    bool switchOn;
+
     void SwitchState(KnobState state);
 
 signals:
