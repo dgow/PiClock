@@ -28,7 +28,7 @@ void VolumeKnobThread::run()
         unsigned long step = (unsigned long)0.1;
         QThread::sleep(step);
 
-        qDebug() << "STATE: " << knobState;
+        //qDebug() << "STATE: " << knobState;
 
 
         int newPinA = 1;
