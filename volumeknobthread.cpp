@@ -41,7 +41,7 @@ void VolumeKnobThread::run()
         newPinC = digitalRead(24);
 #endif
 
-        if(newPinC == 1)
+        if(newPinC == 0)
         {
             emit pressed();
             qDebug() << "C: " << newPinC;
