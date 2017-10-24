@@ -93,7 +93,7 @@ void VolumeKnobThread::run()
         {
             if(newPinA == 1 && newPinB == 0)
             {
-                qDebug() << "Louder!!!";
+                qDebug() << "+++++++++";
                 this->SwitchState(KnobInit);
             }
             break;
@@ -103,7 +103,7 @@ void VolumeKnobThread::run()
         {
             if(newPinA == 0 && newPinB == 1)
             {
-                qDebug() << "Leiser!!!";
+                qDebug() << "-------";
                 this->SwitchState(KnobInit);
             }
             break;
