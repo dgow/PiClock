@@ -76,7 +76,7 @@ void VolumeKnobThread::run()
         }
         case KnobRight:
         {
-            if(newPinA == 0 && newPinB == 0)
+            if( newPinB == 0 && pinB != 0 )
             {
                 this->SwitchState(KnobRZero);
             }
@@ -84,7 +84,7 @@ void VolumeKnobThread::run()
         }
         case KnobLeft:
         {
-            if(newPinA == 0 && newPinB == 0)
+            if( newPinA == 0 && pinA != 0 )
             {
                 this->SwitchState(KnobLZero);
             }
