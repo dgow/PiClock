@@ -18,19 +18,10 @@ public:
 signals:
    void GoBack();
 
-
-
-//public slots:
-//    void Close();
-
-
 private slots:
    void on_okButton_clicked();
-
    void on_chillOutButton_clicked();
-
    void on_HDMButton_clicked();
-
    void on_lightButton_clicked();
 
    void VolumeUp();

@@ -28,9 +28,6 @@ void VolumeKnobThread::run()
         unsigned long step = (unsigned long)0.3;
         QThread::sleep(step);
 
-        //qDebug() << "STATE: " << knobState;
-
-
         int newPinA = 1;
         int newPinB = 1;
         int newPinC = 1;
@@ -45,14 +42,9 @@ void VolumeKnobThread::run()
 
         if(newPinC == 1 && pinCchanged)
         {
-            //if(this->switchOn == true)
-            {
-                emit pressed();
-                qDebug() << "C: " << newPinC;
-                this->switchOn = newPinC;
-
-                 QThread::sleep(0.5);
-            }
+            emit pressed();
+            qDebug() << "C: " << newPinC;
+            QThread::sleep((unsigned long)0.5);
         }
 
         bool pinAchanged = newPinA != pinA;
@@ -99,8 +91,6 @@ void VolumeKnobThread::run()
             break;
         }
 
-
-
         case KnobLZero:
         {
             if( pinAchanged )
@@ -133,8 +123,6 @@ void VolumeKnobThread::run()
 
 void VolumeKnobThread::SwitchState(KnobState state)
 {
-
-
     if(knobState != state)
     {
        // qDebug() << "STATE SWITCH: " << state;

@@ -48,8 +48,6 @@ private:
     void UpdateTime();
 
     Ui::Arsch *ui;
-
-
 };
 
 #endif // ARSCH_H

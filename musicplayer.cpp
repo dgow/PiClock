@@ -26,36 +26,6 @@ MusicPlayer::MusicPlayer(QWidget *parent) :
     VolumeKnobThread *volThread = new VolumeKnobThread();
     volThread->start();
 
-
-   // for (;;)
-   // {
-        /*
-      digitalWrite (25, HIGH) ;	// On
-      delay (500) ;		// mS
-      digitalWrite (25, LOW) ;	// Off
-      delay (500) ;
-
-      int button = digitalRead(24);
-      qDebug() << "Button " << button;
-      */
-
-        /*
-        int button = digitalRead(23);
-        if( button == 0)
-        {
-            qDebug() << "= " << button;
-        }
-
-        int button2 = digitalRead(23);
-        if( button2 == 0)
-        {
-            qDebug() << "/ " << button2;
-        }
-        */
-
-        //delay (10) ;
-    //}
-
     connect(volThread, SIGNAL(up()), this, SLOT(VolumeUp()));
     connect(volThread, SIGNAL(down()), this, SLOT(VolumeDown()));
     connect(volThread, SIGNAL(pressed()), this, SLOT(Mute()));
@@ -68,7 +38,7 @@ void MusicPlayer::VolumeUp()
     QStringList args;
     args << "sset" << "'Speaker'" << "1%+";
     process->start("amixer", args);
-
+    process->deleteLater();
 }
 
 void MusicPlayer::VolumeDown()
@@ -78,7 +48,7 @@ void MusicPlayer::VolumeDown()
     QStringList args;
     args << "sset" << "'Speaker'" << "1%-";
     process->start("amixer", args);
-
+    process->deleteLater();
 }
 
 void MusicPlayer::Mute()
@@ -88,6 +58,7 @@ void MusicPlayer::Mute()
     QStringList args;
     args << "toggle";
     process->start("mpc", args);
+    process->deleteLater();
 }
 
 MusicPlayer::~MusicPlayer()

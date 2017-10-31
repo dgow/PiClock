@@ -29,11 +29,8 @@ public slots:
 
 private slots:
     void on_alarmButton_clicked();
-
     void on_stopAlarmButton_clicked();
-
     void on_closeButton_clicked();
-
     void on_soundButton_clicked();
 
 private:
