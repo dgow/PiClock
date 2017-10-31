@@ -121,7 +121,7 @@ void MainWindow::UpdateTime()
     }
 
 
-    ui->songLabel->setText(mp->title);
+    ui->songLabel->setText(mopidyReader->title);
 
     //ui->songLabel->setText("ARSCH");
 
