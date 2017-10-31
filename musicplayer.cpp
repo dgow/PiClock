@@ -13,8 +13,6 @@ MusicPlayer::MusicPlayer(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    qDebug() << "MusicPlayer";
-
 #ifndef Q_OS_MACOS
     wiringPiSetup();
     pinMode (24, INPUT) ; //knopf
@@ -46,11 +44,6 @@ void MusicPlayer::Mute()
     StartProcess("mpc", "toggle");
 }
 
-MusicPlayer::~MusicPlayer()
-{
-    delete ui;
-}
-
 void MusicPlayer::on_okButton_clicked()
 {
     emit this->GoBack();
@@ -80,4 +73,9 @@ void MusicPlayer::StartProcess(QString command, QString argsString)
     QProcess *process = new QProcess(this);
     process->start(command, args);
     connect(process, SIGNAL(finished(int)), process, SLOT(deleteLater()));
+}
+
+MusicPlayer::~MusicPlayer()
+{
+    delete ui;
 }

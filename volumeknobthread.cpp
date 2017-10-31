@@ -6,10 +6,10 @@ VolumeKnobThread::VolumeKnobThread()
 {
 #ifndef Q_OS_MACOS
     wiringPiSetup();
-    pinMode (24, INPUT) ; //knopf
-    pinMode (23, INPUT) ; //links/rechts
-    pinMode (22, INPUT) ; //links/rechts
-    pinMode (25, OUTPUT) ;
+    pinMode (24, INPUT) ; //button
+    pinMode (23, INPUT) ; //left/right
+    pinMode (22, INPUT) ; //left/right
+    pinMode (25, OUTPUT);
 #endif
 
     this->SwitchState(KnobInit);

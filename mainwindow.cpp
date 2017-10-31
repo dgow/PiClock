@@ -101,7 +101,7 @@ void MainWindow::UpdateTime()
 
             QProcess *processSpeaker = new QProcess(this);
             QStringList argsSpeaker;
-            argsSpeaker << "sset" << "'Speaker'" << "50%";
+            argsSpeaker << "sset" << "'Speaker'" << "40%";
             processSpeaker->start("amixer", argsSpeaker);
 
             QProcess *process = new QProcess(this);

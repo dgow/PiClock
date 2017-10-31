@@ -10,6 +10,7 @@ class VolumeKnobThread : public QThread
 {
 
     Q_OBJECT
+
 public:
     VolumeKnobThread();
 
