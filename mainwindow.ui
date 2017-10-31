@@ -86,6 +86,16 @@
          </widget>
         </item>
         <item>
+         <widget class="Line" name="line">
+          <property name="lineWidth">
+           <number>3</number>
+          </property>
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+         </widget>
+        </item>
+        <item>
          <widget class="QLabel" name="timeLabel">
           <property name="palette">
            <palette>
