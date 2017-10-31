@@ -38,7 +38,7 @@ void MusicPlayer::VolumeUp()
     QStringList args;
     args << "sset" << "'Speaker'" << "1%+";
     process->start("amixer", args);
-    process->deleteLater();
+    connect(process, SIGNAL(finished(int)), process, SLOT(deleteLater()));
 }
 
 void MusicPlayer::VolumeDown()
@@ -48,7 +48,7 @@ void MusicPlayer::VolumeDown()
     QStringList args;
     args << "sset" << "'Speaker'" << "1%-";
     process->start("amixer", args);
-    process->deleteLater();
+    connect(process, SIGNAL(finished(int)), process, SLOT(deleteLater()));
 }
 
 void MusicPlayer::Mute()
@@ -58,7 +58,7 @@ void MusicPlayer::Mute()
     QStringList args;
     args << "toggle";
     process->start("mpc", args);
-    process->deleteLater();
+    connect(process, SIGNAL(finished(int)), process, SLOT(deleteLater()));
 }
 
 MusicPlayer::~MusicPlayer()
