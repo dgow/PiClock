@@ -28,7 +28,7 @@ private slots:
    void VolumeDown();
    void Mute();
 
-   void StartProcess(QString command, QStringList args);
+   void StartProcess(QString command, QString argsString);
 
 private:
     Ui::MusicPlayer *ui;
