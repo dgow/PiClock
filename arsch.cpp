@@ -32,11 +32,6 @@ Arsch::Arsch(QWidget *parent) : QWidget(parent),
     blickTimer->start();
 }
 
-Arsch::~Arsch()
-{
-    delete ui;
-}
-
 void Arsch::Blink()
 {
     QDateTime time = QDateTime::currentDateTime();
@@ -108,14 +103,12 @@ void Arsch::on_hourDown_clicked()
 {
     this->hour--;
     this->UpdateTime();
-
 }
 
 void Arsch::on_hourUp_clicked()
 {
     this->hour++;
     this->UpdateTime();
-
 }
 
 void Arsch::on_minuteDown_clicked()
@@ -145,4 +138,10 @@ bool Arsch::isButtonActive(int day)
 {
     WeekDayButton *button = dayButtons->at(day - 1);
     return button->active;
+}
+
+
+Arsch::~Arsch()
+{
+    delete ui;
 }

@@ -2,6 +2,7 @@
 #define MOPIDYREADER_H
 
 #include <QObject>
+#include <QNetworkReply>
 #include <QNetworkAccessManager>
 
 
@@ -19,7 +20,7 @@ public slots:
 
 private:
     QNetworkAccessManager *manager;
-    ReadMopidy(QNetworkReply* reply);
+    void ReadMopidy(QNetworkReply* reply);
 };
 
 #endif // MOPIDYREADER_H
