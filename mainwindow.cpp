@@ -238,11 +238,13 @@ void MainWindow::mousePressEvent(QMouseEvent *event)
             QStringList args;
             args << "prev";
             process->start("mpc", args);
+            mopidyReader->Update();
         } else {
             QProcess *process = new QProcess(this);
             QStringList args;
             args << "next";
             process->start("mpc", args);
+            mopidyReader->Update();
         }
     }
 
