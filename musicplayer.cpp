@@ -32,26 +32,12 @@ MusicPlayer::MusicPlayer(QWidget *parent) :
 }
 
 void MusicPlayer::VolumeUp()
-{
-    qDebug() << "vol +";
-    QProcess *process = new QProcess(this);
-    QStringList args;
-    args << "sset" << "'Speaker'" << "1%+";
-    process->start("amixer", args);
-    connect(process, SIGNAL(finished(int)), process, SLOT(deleteLater()));
+{   
+    StartProcess("amixer", "sset 'Speaker' 1%+");
 }
 
 void MusicPlayer::VolumeDown()
 {
-    /*
-    qDebug() << "vol -";
-    QProcess *process = new QProcess(this);
-    QStringList args;
-    args << "sset" << "'Speaker'" << "1%-";
-    process->start("amixer", args);
-    connect(process, SIGNAL(finished(int)), process, SLOT(deleteLater()));
-    */
-
     StartProcess("amixer", "sset 'Speaker' 1%-");
 }
 
@@ -72,31 +58,14 @@ void MusicPlayer::on_okButton_clicked()
 
 void MusicPlayer::on_chillOutButton_clicked()
 {
-    QProcess *process = new QProcess(this);
-    QStringList args;
-    args << "clear";
-    process->start("mpc", args);
-    connect(process, SIGNAL(finished(int)), process, SLOT(deleteLater()));
-
-
-    QProcess *processLoad = new QProcess(this);
-    args.clear();
-    args << "load" << "ChillOut++";
-    processLoad->start("mpc", args);
-    connect(processLoad, SIGNAL(finished(int)), processLoad, SLOT(deleteLater()));
+    StartProcess("mpc", "clear");
+    StartProcess("mpc", "load ChillOut++");
 }
 
 void MusicPlayer::on_HDMButton_clicked()
-{
-    QProcess *process = new QProcess(this);
-    QStringList args;
-    args << "clear";
-    process->start("mpc", args);
-
-    QProcess *processLoad = new QProcess(this);
-    args.clear();
-    args << "load" << "HDM";
-    processLoad->start("mpc", args);
+{   
+    StartProcess("mpc", "clear");
+    StartProcess("mpc", "load HDM");
 }
 
 void MusicPlayer::on_lightButton_clicked()
@@ -112,5 +81,3 @@ void MusicPlayer::StartProcess(QString command, QString argsString)
     process->start(command, args);
     connect(process, SIGNAL(finished(int)), process, SLOT(deleteLater()));
 }
-
-
