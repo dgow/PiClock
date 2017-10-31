@@ -27,6 +27,8 @@ void MopidyReader::Update()
     QString host = "http://localhost:6680/mopidy/rpc";
     QNetworkRequest request;
     request.setUrl(QUrl(host));
+    //"application/x-www-form-urlencoded";
+
 
     manager->post(request, doc.toJson());
 
@@ -52,4 +54,8 @@ void MopidyReader::ReadMopidy(QNetworkReply* reply)
     }
 
     qDebug() << json.toJson();
+
+    qDebug() << json.object()["result"].toString();
+
+
 }
