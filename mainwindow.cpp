@@ -30,6 +30,9 @@ MainWindow::MainWindow(QWidget *parent) :
 
     qDebug() << "Constructor Main";
 
+    mopidyReader = new MopidyReader(this);
+    mopidyReader->Update();
+
     currentLight = 80;
     sunRise = -1;
     lastMinute = -1;
@@ -73,8 +76,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     ui->stackedWidget->setCurrentIndex(0);
 
-    mopidyReader = new MopidyReader(this);
-    mopidyReader->Update();
+
 }
 
 void MainWindow::SetShadow(QLabel *label)
