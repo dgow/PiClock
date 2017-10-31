@@ -18,7 +18,7 @@ public:
 signals:
    void GoBack();
 
-private slots:
+public slots:
    void on_okButton_clicked();
    void on_chillOutButton_clicked();
    void on_HDMButton_clicked();
