@@ -45,8 +45,6 @@ void MopidyReader::Update()
 
 void MopidyReader::ReadMopidy(QNetworkReply* reply)
 {
-
-
     QJsonParseError jsonError;
     QJsonDocument json = QJsonDocument::fromJson(reply->readAll(),&jsonError);
 
@@ -54,17 +52,12 @@ void MopidyReader::ReadMopidy(QNetworkReply* reply)
         qDebug() << "Failed to parse json: " << jsonError.errorString();
     }
 
-    qDebug() << json.toJson();
-    qDebug() << "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA";
+    //qDebug() << json.toJson();
+    //qDebug() << "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA";
 
-    QString title = json.object()["result"].toObject()["name"].toString();
-
-
-
+    title = json.object()["result"].toObject()["name"].toString();
     qDebug() << title;
 
-
-    QString artist = json.object()["result"].toObject()["artists"].toArray()[0].toObject()["name"].toString();
-
+    artist = json.object()["result"].toObject()["artists"].toArray()[0].toObject()["name"].toString();
     qDebug() << artist;
 }

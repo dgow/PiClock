@@ -14,6 +14,9 @@ public:
 
     void Update();
 
+    QString title;
+    QString artist;
+
 signals:
 
 public slots:
