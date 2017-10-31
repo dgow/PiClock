@@ -53,7 +53,7 @@
       <widget class="QWidget" name="clock">
        <layout class="QVBoxLayout" name="verticalLayout">
         <item>
-         <widget class="QLabel" name="arschGesicht">
+         <widget class="QLabel" name="songLabel">
           <property name="font">
            <font>
             <pointsize>10</pointsize>
@@ -192,13 +192,6 @@
            </widget>
           </item>
          </layout>
-        </item>
-        <item>
-         <widget class="QLabel" name="fotze">
-          <property name="text">
-           <string>TextLabel</string>
-          </property>
-         </widget>
         </item>
         <item>
          <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="1,10,1">
