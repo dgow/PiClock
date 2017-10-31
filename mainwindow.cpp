@@ -120,9 +120,9 @@ void MainWindow::UpdateTime()
 
     MopidyReader *mp = new MopidyReader(this);
     mp->Update();
-    //ui->songLabel->setText(mp->title);
+    ui->songLabel->setText(mp->title);
 
-    ui->songLabel1->setText("ARSCH");
+    //ui->songLabel->setText("ARSCH");
 
 }
 
