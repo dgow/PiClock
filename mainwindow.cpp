@@ -45,6 +45,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->dateLabel->setAttribute(Qt::WA_TranslucentBackground);
     ui->weatherIcon->setAttribute(Qt::WA_TranslucentBackground);
     ui->songLabel->setAttribute(Qt::WA_TranslucentBackground);
+    ui->line->setAttribute(Qt::WA_TranslucentBackground);
 
 
 
