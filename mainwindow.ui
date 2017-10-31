@@ -53,7 +53,7 @@
       <widget class="QWidget" name="clock">
        <layout class="QVBoxLayout" name="verticalLayout">
         <property name="spacing">
-         <number>5</number>
+         <number>0</number>
         </property>
         <property name="leftMargin">
          <number>5</number>
@@ -65,7 +65,7 @@
          <number>5</number>
         </property>
         <property name="bottomMargin">
-         <number>5</number>
+         <number>0</number>
         </property>
         <item>
          <widget class="QLabel" name="songLabel">
