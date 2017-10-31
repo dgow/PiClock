@@ -59,6 +59,9 @@
             <pointsize>10</pointsize>
            </font>
           </property>
+          <property name="styleSheet">
+           <string notr="true">color: rgb(255, 255, 255);</string>
+          </property>
           <property name="text">
            <string>TextLabel</string>
           </property>
