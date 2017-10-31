@@ -53,6 +53,8 @@ private:
 
     void mousePressEvent (QMouseEvent *event);
 
+    void UpdateSong();
+
     MopidyReader *mopidyReader;
 };
 

@@ -123,7 +123,11 @@ void MainWindow::UpdateTime()
         }
     }
 
+    UpdateSong();
+}
 
+void MainWindow::UpdateSong()
+{
     QString song = mopidyReader->artist + " - " + mopidyReader->title;
     ui->songLabel->setText(song);
     mopidyReader->Update();
@@ -239,12 +243,14 @@ void MainWindow::mousePressEvent(QMouseEvent *event)
             args << "prev";
             process->start("mpc", args);
             mopidyReader->Update();
+            UpdateSong();
         } else {
             QProcess *process = new QProcess(this);
             QStringList args;
             args << "next";
             process->start("mpc", args);
             mopidyReader->Update();
+            UpdateSong();
         }
     }
 
