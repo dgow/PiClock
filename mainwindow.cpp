@@ -18,7 +18,12 @@
 #include <QProcess>
 #include <QGraphicsDropShadowEffect>
 
+/*
+ * curl -d '{"jsonrpc": "2.0", "id": 1, "method": "core.get_version"}' http://localhost:6680/mopidy/rpc
+ *
+ */
 
+#include "mopidyreader.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -112,6 +117,9 @@ void MainWindow::UpdateTime()
             ui->stackedWidget->setCurrentIndex(2);
         }
     }
+
+    MopidyReader *mp = new MopidyReader(this);
+    mp->Update();
 }
 
 void MainWindow::GetWeather()

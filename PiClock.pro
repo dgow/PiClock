@@ -30,14 +30,16 @@ SOURCES += \
     arsch.cpp \
     weekdaybutton.cpp \
     musicplayer.cpp \
-    volumeknobthread.cpp
+    volumeknobthread.cpp \
+    mopidyreader.cpp
 
 HEADERS += \
         mainwindow.h \
     arsch.h \
     weekdaybutton.h \
     musicplayer.h \
-    volumeknobthread.h
+    volumeknobthread.h \
+    mopidyreader.h
 
 FORMS += \
         mainwindow.ui \
