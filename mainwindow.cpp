@@ -123,10 +123,8 @@ void MainWindow::UpdateTime()
     }
 
 
-    ui->songLabel->setText(mopidyReader->title);
-
-    //ui->songLabel->setText("ARSCH");
-
+    QString song = mopidyReader->artist + mopidyReader->title;
+    ui->songLabel->setText(song);
 }
 
 void MainWindow::GetWeather()
