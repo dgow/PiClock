@@ -120,6 +120,10 @@ void MainWindow::UpdateTime()
 
     MopidyReader *mp = new MopidyReader(this);
     mp->Update();
+
+
+
+
 }
 
 void MainWindow::GetWeather()
