@@ -17,10 +17,11 @@ public:
 signals:
 
 public slots:
+    void ReadMopidy(QNetworkReply* reply);
 
 private:
     QNetworkAccessManager *manager;
-    void ReadMopidy(QNetworkReply* reply);
+
 };
 
 #endif // MOPIDYREADER_H
