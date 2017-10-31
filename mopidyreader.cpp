@@ -2,6 +2,7 @@
 #include <QDebug>
 
 #include <QJsonObject>
+#include <QJsonArray>
 #include <QString>
 #include <QJsonDocument>
 
@@ -63,7 +64,7 @@ void MopidyReader::ReadMopidy(QNetworkReply* reply)
     qDebug() << title;
 
 
-    QString artist = json.object()["result"].toObject()["artists"].toObject()["name"].toString();
+    qDebug() << json.object()["result"].toObject()["artists"].toArray()[0].toObject()["name"].toString();
 
-    qDebug() << artist;
+    //qDebug() << artist;
 }
