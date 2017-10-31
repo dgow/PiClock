@@ -64,7 +64,7 @@ void MopidyReader::ReadMopidy(QNetworkReply* reply)
     qDebug() << title;
 
 
-    qDebug() << json.object()["result"].toObject()["artists"].toArray()[0].toObject()["name"].toString();
+    QString artist = json.object()["result"].toObject()["artists"].toArray()[0].toObject()["name"].toString();
 
-    //qDebug() << artist;
+    qDebug() << artist;
 }
