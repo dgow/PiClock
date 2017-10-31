@@ -9,7 +9,7 @@ class MopidyReader : public QObject
 {
     Q_OBJECT
 public:
-    explicit MopidyReader(QObject *parent = nullptr);
+    explicit MopidyReader(QObject *parent);
 
     void Update();
 
