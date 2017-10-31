@@ -6,6 +6,8 @@
 #include <QLabel>
 #include <QTimer>
 
+#include "mopidyreader.h"
+
 namespace Ui {
 class MainWindow;
 }
@@ -50,6 +52,8 @@ private:
     int TargetBrightness();
 
     void mousePressEvent (QMouseEvent *event);
+
+    MopidyReader *mopidyReader;
 };
 
 #endif // MAINWINDOW_H

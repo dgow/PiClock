@@ -23,8 +23,6 @@
  *
  */
 
-#include "mopidyreader.h"
-
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -74,6 +72,9 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->musicPlayer, SIGNAL(GoBack()), this, SLOT(GoBack()));
 
     ui->stackedWidget->setCurrentIndex(0);
+
+    mopidyReader = new MopidyReader(this);
+    mopidyReader->Update();
 }
 
 void MainWindow::SetShadow(QLabel *label)
@@ -119,8 +120,7 @@ void MainWindow::UpdateTime()
         }
     }
 
-    MopidyReader *mp = new MopidyReader(this);
-    mp->Update();
+
     ui->songLabel->setText(mp->title);
 
     //ui->songLabel->setText("ARSCH");
