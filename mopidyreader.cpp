@@ -9,6 +9,7 @@
 MopidyReader::MopidyReader(QObject *parent) : QObject(parent)
 {
     title = "-";
+    artist = "-";
 
     manager = new QNetworkAccessManager(this);
     connect(manager, SIGNAL(finished(QNetworkReply*)), this, SLOT(ReadMopidy(QNetworkReply*)));
