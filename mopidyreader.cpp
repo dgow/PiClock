@@ -54,7 +54,7 @@ void MopidyReader::ReadMopidy(QNetworkReply* reply)
     }
 
     qDebug() << json.toJson();
-    QDebug() << "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA";
+    qDebug() << "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA";
     qDebug() << json.object()["result"].toObject()["name"];
 
 
