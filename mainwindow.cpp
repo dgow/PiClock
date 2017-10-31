@@ -156,7 +156,7 @@ void MainWindow::ReadWeather(QNetworkReply* reply)
     QJsonObject jsonSys = root_object["sys"].toObject();
     QJsonObject jsonSunRise = jsonSys["sunrise"].toObject();
 
-    sunRise = jsonSys["sunrise"].toInt();
+    sunRise = jsonSys["sunrise"].toInt() + 60 * 60; //give me one more hour :)
     sunSet = jsonSys["sunset"].toInt();
 
     QDateTime time = QDateTime::currentDateTime();
