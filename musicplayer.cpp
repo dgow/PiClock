@@ -43,25 +43,20 @@ void MusicPlayer::VolumeUp()
 
 void MusicPlayer::VolumeDown()
 {
+    /*
     qDebug() << "vol -";
     QProcess *process = new QProcess(this);
     QStringList args;
     args << "sset" << "'Speaker'" << "1%-";
     process->start("amixer", args);
     connect(process, SIGNAL(finished(int)), process, SLOT(deleteLater()));
+    */
+
+    StartProcess("amixer", "sset 'Speaker' 1%-");
 }
 
 void MusicPlayer::Mute()
 {
-    /*
-    qDebug() << "mute toggle";
-    QProcess *process = new QProcess(this);
-    QStringList args;
-    args << "toggle";
-    process->start("mpc", args);
-    connect(process, SIGNAL(finished(int)), process, SLOT(deleteLater()));
-*/
-
     StartProcess("mpc", "toggle");
 }
 
