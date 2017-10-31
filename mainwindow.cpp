@@ -120,7 +120,7 @@ void MainWindow::UpdateTime()
 
     MopidyReader *mp = new MopidyReader(this);
     mp->Update();
-    ui->songLabel->text = mp->title;
+    ui->songLabel->setText(mp->title);
 }
 
 void MainWindow::GetWeather()
