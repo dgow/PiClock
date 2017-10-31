@@ -42,5 +42,14 @@ void MopidyReader::Update()
 
 void MopidyReader::ReadMopidy(QNetworkReply* reply)
 {
-    qDebug() << reply;
+
+
+    QJsonParseError jsonError;
+    QJsonDocument json = QJsonDocument::fromJson(reply->readAll(),&jsonError);
+
+    if (jsonError.error != QJsonParseError::NoError){
+        qDebug() << "Failed to parse json: " << jsonError.errorString();
+    }
+
+    qDebug() << json.toJson();
 }
