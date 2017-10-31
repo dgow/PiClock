@@ -53,12 +53,16 @@ void MusicPlayer::VolumeDown()
 
 void MusicPlayer::Mute()
 {
+    /*
     qDebug() << "mute toggle";
     QProcess *process = new QProcess(this);
     QStringList args;
     args << "toggle";
     process->start("mpc", args);
     connect(process, SIGNAL(finished(int)), process, SLOT(deleteLater()));
+*/
+
+    StartProcess("mpc", "toggle");
 }
 
 MusicPlayer::~MusicPlayer()
@@ -77,11 +81,14 @@ void MusicPlayer::on_chillOutButton_clicked()
     QStringList args;
     args << "clear";
     process->start("mpc", args);
+    connect(process, SIGNAL(finished(int)), process, SLOT(deleteLater()));
+
 
     QProcess *processLoad = new QProcess(this);
     args.clear();
     args << "load" << "ChillOut++";
     processLoad->start("mpc", args);
+    connect(processLoad, SIGNAL(finished(int)), processLoad, SLOT(deleteLater()));
 }
 
 void MusicPlayer::on_HDMButton_clicked()
@@ -102,3 +109,13 @@ void MusicPlayer::on_lightButton_clicked()
     QProcess *process = new QProcess(this);
     process->start("/home/pi/Desktop/pressBrightness.sh");
 }
+
+void MusicPlayer::StartProcess(QString command, QString argsString)
+{
+    QStringList args = argsString.split(' ');
+    QProcess *process = new QProcess(this);
+    process->start(command, args);
+    connect(process, SIGNAL(finished(int)), process, SLOT(deleteLater()));
+}
+
+
