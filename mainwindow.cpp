@@ -295,10 +295,12 @@ void MainWindow::on_stopAlarmButton_clicked()
     ui->stackedWidget->setCurrentIndex(0);
 }
 
+/*
 void MainWindow::on_closeButton_clicked()
 {
     ui->stackedWidget->setCurrentIndex(0);
 }
+*/
 
 void MainWindow::on_soundButton_clicked()
 {
