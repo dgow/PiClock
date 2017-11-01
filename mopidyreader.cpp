@@ -18,10 +18,6 @@ MopidyReader::MopidyReader(QObject *parent) : QObject(parent)
 void MopidyReader::Update()
 {
     QJsonObject json;
-/*    json->insert("jsonrpc", "2.0");
-    json->insert("id", 1);
-    json->insert("method", "core.playback.get_current_track");
-    */
     json["jsonrpc"] = "2.0";
     json["id"] = 1;
     json["method"] = "core.playback.get_current_track";
@@ -31,6 +27,7 @@ void MopidyReader::Update()
     QString host = "http://localhost:6680/mopidy/rpc";
     QNetworkRequest request;
     request.setUrl(QUrl(host));
+    request.setHeader(QNetworkRequest::ContentTypeHeader, "application/x-www-form-urlencoded");
     //"application/x-www-form-urlencoded";
 
 
