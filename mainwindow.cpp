@@ -68,13 +68,10 @@ MainWindow::MainWindow(QWidget *parent) :
     UpdateTime();
     GetWeather();
 
-
     connect(ui->arschPage, SIGNAL(GoBack()), this, SLOT(GoBack()));
     connect(ui->musicPlayer, SIGNAL(GoBack()), this, SLOT(GoBack()));
 
     ui->stackedWidget->setCurrentIndex(0);
-
-
 }
 
 void MainWindow::SetShadow(QLabel *label)
@@ -91,8 +88,6 @@ void MainWindow::UpdateTime()
     QDateTime time = QDateTime::currentDateTime();
     ui->timeLabel->setText(time.toString("hh:mm"));
     ui->dateLabel->setText(time.toString("dddd d. MMMM"));
-
-
 
     int hour = time.toString("h").toInt();
     int minute = time.toString("m").toInt();
@@ -132,8 +127,6 @@ void MainWindow::UpdateSong()
 
 void MainWindow::GetWeather()
 {
-    qDebug() << "download weather";
-
     QString weatherLink = "http://api.openweathermap.org/data/2.5/weather?q=Nuremberg,uk&appid=25879e4404560e805fb4878ea5d57ae2&units=metric&mode=json";
     QUrl url(weatherLink);
     QNetworkRequest request;
@@ -177,12 +170,12 @@ void MainWindow::ReadWeather(QNetworkReply* reply)
 
     QDateTime time = QDateTime::currentDateTime();
     int64_t currentTime = time.currentMSecsSinceEpoch() / 1000;
-    qDebug() << "RISE:    " << sunRise;
-    qDebug() << "SET:     " << sunSet;
+    //qDebug() << "RISE:    " << sunRise;
+    //qDebug() << "SET:     " << sunSet;
 
     bool day = (currentTime > sunRise) && (currentTime < sunSet); //Day
 
-    qDebug() << "CURRENT: " << currentTime << "DAY? " << day;
+    //qDebug() << "CURRENT: " << currentTime << "DAY? " << day;
 
     if(currentLight != TargetBrightness())
     {
@@ -250,10 +243,6 @@ void MainWindow::mousePressEvent(QMouseEvent *event)
             UpdateSong();
         }
     }
-
-    qDebug() << "YEAH " << event->x();
-
-//    ui->stackedWidget->setCurrentIndex(1);
 }
 
 int MainWindow::TargetBrightness()
@@ -276,7 +265,6 @@ MainWindow::~MainWindow()
 
 void MainWindow::GoBack()
 {
-    qDebug() << "YEAH ";
     ui->stackedWidget->setCurrentIndex(0);
 }
 
@@ -294,13 +282,6 @@ void MainWindow::on_stopAlarmButton_clicked()
 
     ui->stackedWidget->setCurrentIndex(0);
 }
-
-/*
-void MainWindow::on_closeButton_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(0);
-}
-*/
 
 void MainWindow::on_soundButton_clicked()
 {

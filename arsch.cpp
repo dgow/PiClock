@@ -86,7 +86,7 @@ void Arsch::UpdateTime()
         WeekDayButton *button = dayButtons->at(i-1);
         button->dayOfTheWeek = i;
         button->LoadState();
-        connect(button, SIGNAL(toggled(bool)), this, SLOT(on_day_clicked(bool)));
+        connect(button, SIGNAL(toggled(bool)), this, SLOT(day_clicked(bool)));
     }
 }
 
@@ -123,7 +123,7 @@ void Arsch::on_minuteUp_clicked()
     this->UpdateTime();
 }
 
-void Arsch::on_day_clicked(bool checked)
+void Arsch::day_clicked(bool checked)
 {
     QDateTime time = QDateTime::currentDateTime();
     QDate date = time.date();

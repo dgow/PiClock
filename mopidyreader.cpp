@@ -28,19 +28,8 @@ void MopidyReader::Update()
     QNetworkRequest request;
     request.setUrl(QUrl(host));
     request.setHeader(QNetworkRequest::ContentTypeHeader, "application/x-www-form-urlencoded");
-    //"application/x-www-form-urlencoded";
-
 
     manager->post(request, doc.toJson());
-
-
-
-    /*QString weatherLink = '{"jsonrpc": "2.0", "id": 1, "method": "core.playback.get_current_track"}';
-    QUrl url(weatherLink);
-    QNetworkRequest request;
-    request.setUrl(url);
-    manager->get(request);
-    */
 }
 
 void MopidyReader::ReadMopidy(QNetworkReply* reply)
@@ -52,8 +41,8 @@ void MopidyReader::ReadMopidy(QNetworkReply* reply)
         qDebug() << "Failed to parse json: " << jsonError.errorString();
     }
 
-    //qDebug() << json.toJson();
-    //qDebug() << "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA";
+    qDebug() << json.toJson();
+    qDebug() << "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA";
 
     title = json.object()["result"].toObject()["name"].toString();
     qDebug() << title;
