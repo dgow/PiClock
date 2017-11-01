@@ -26,7 +26,7 @@ public slots:
     void GetWeather();
     void ReadWeather(QNetworkReply* reply);
     void PressLightButton();
-    void on_closeButton_clicked();
+    //void on_closeButton_clicked();
 
     void GoBack();
 
