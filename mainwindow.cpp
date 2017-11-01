@@ -168,13 +168,12 @@ void MainWindow::ReadWeather(QNetworkReply* reply)
     sunRise = jsonSys["sunrise"].toInt() + 60 * 60; //give me one more hour :)
     sunSet = jsonSys["sunset"].toInt();
 
-    QDateTime time = QDateTime::currentDateTime();
-    int64_t currentTime = time.currentMSecsSinceEpoch() / 1000;
+    //QDateTime time = QDateTime::currentDateTime();
+    //int64_t currentTime = time.currentMSecsSinceEpoch() / 1000;
     //qDebug() << "RISE:    " << sunRise;
     //qDebug() << "SET:     " << sunSet;
 
-    bool day = (currentTime > sunRise) && (currentTime < sunSet); //Day
-
+    //bool day = (currentTime > sunRise) && (currentTime < sunSet); //Day
     //qDebug() << "CURRENT: " << currentTime << "DAY? " << day;
 
     if(currentLight != TargetBrightness())

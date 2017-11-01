@@ -41,7 +41,7 @@ private slots:
     void on_minuteDown_clicked();
     void on_minuteUp_clicked();
 
-    void on_day_clicked(bool);
+    void day_clicked(bool);
 
     void Blink();
 private:
