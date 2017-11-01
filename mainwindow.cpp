@@ -27,9 +27,6 @@ MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
-
-    qDebug() << "Constructor Main";
-
     mopidyReader = new MopidyReader(this);
     mopidyReader->Update();
 

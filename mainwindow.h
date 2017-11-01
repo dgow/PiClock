@@ -26,13 +26,13 @@ public slots:
     void GetWeather();
     void ReadWeather(QNetworkReply* reply);
     void PressLightButton();
+    void on_closeButton_clicked();
 
     void GoBack();
 
 private slots:
     void on_alarmButton_clicked();
     void on_stopAlarmButton_clicked();
-    void on_closeButton_clicked();
     void on_soundButton_clicked();
 
 private:
