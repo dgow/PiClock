@@ -10,7 +10,7 @@ MopidyReader::MopidyReader(QObject *parent) : QObject(parent)
 {
     title = "-";
     artist = "-";
-    state = "-";
+    state = "*";
     length = -1;
 
     titleManager = new QNetworkAccessManager(this);

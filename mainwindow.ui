@@ -53,7 +53,7 @@
       <widget class="QWidget" name="clock">
        <layout class="QVBoxLayout" name="verticalLayout">
         <item>
-         <layout class="QHBoxLayout" name="horizontalLayout_4" stretch="1000,0">
+         <layout class="QHBoxLayout" name="horizontalLayout_4" stretch="10,0">
           <property name="spacing">
            <number>-1</number>
           </property>
@@ -74,12 +74,15 @@
              <set>Qt::AlignCenter</set>
             </property>
             <property name="indent">
-             <number>5</number>
+             <number>-1</number>
             </property>
            </widget>
           </item>
           <item>
            <widget class="QLabel" name="playStateLabel">
+            <property name="styleSheet">
+             <string notr="true">color: rgb(255, 255, 255);</string>
+            </property>
             <property name="text">
              <string>PLAY</string>
             </property>
