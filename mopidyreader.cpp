@@ -24,7 +24,7 @@ void MopidyReader::Update()
 {
     qDebug() << "update song";
     titleManager->post(this->getRequest(), getCurrentTrack() );
-    titleManager->post(this->getRequest(), getState() );
+    stateManager->post(this->getRequest(), getState() );
 }
 
 QByteArray MopidyReader::getCurrentTrack()
