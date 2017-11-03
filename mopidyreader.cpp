@@ -10,6 +10,7 @@ MopidyReader::MopidyReader(QObject *parent) : QObject(parent)
 {
     title = "-";
     artist = "-";
+    state = "-";
     length = -1;
 
     titleManager = new QNetworkAccessManager(this);
@@ -82,7 +83,7 @@ void MopidyReader::ReadMopidyState(QNetworkReply* reply)
         qDebug() << "Failed to parse json: " << jsonError.errorString();
     }
 
-    //qDebug() << json.toJson();
+    qDebug() << json.toJson();
 
     this->state = json.object()["result"].toString();
 }
