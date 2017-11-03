@@ -22,6 +22,7 @@ MopidyReader::MopidyReader(QObject *parent) : QObject(parent)
 
 void MopidyReader::Update()
 {
+    qDebug() << "update song";
     titleManager->post(this->getRequest(), getCurrentTrack() );
     titleManager->post(this->getRequest(), getState() );
 }
