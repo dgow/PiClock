@@ -95,6 +95,6 @@ void MopidyReader::ReadMopidyState(QNetworkReply* reply)
 
     if(this->state == "paused")
     {
-        this->state = "❙❙";
+        this->state = "||";
     }
 }
