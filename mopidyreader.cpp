@@ -87,4 +87,14 @@ void MopidyReader::ReadMopidyState(QNetworkReply* reply)
     qDebug() << json.toJson();
 
     this->state = json.object()["result"].toString();
+
+    if(this->state == "playing")
+    {
+        this->state = "▶";
+    }
+
+    if(this->state == "paused")
+    {
+        this->state = "❚❚";
+    }
 }
