@@ -31,6 +31,7 @@ private:
 
     QNetworkRequest getRequest();
     QByteArray getCurrentTrack();
+    QByteArray getState();
 
 };
 
