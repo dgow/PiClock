@@ -16,14 +16,21 @@ public:
 
     QString title;
     QString artist;
+    QString state;
+    int length;
 
 signals:
 
 public slots:
-    void ReadMopidy(QNetworkReply* reply);
+    void ReadMopidyTitle(QNetworkReply* reply);
+    void ReadMopidyState(QNetworkReply* reply);
 
 private:
-    QNetworkAccessManager *manager;
+    QNetworkAccessManager *titleManager;
+    QNetworkAccessManager *stateManager;
+
+    QNetworkRequest getRequest();
+    QByteArray getCurrentTrack();
 
 };
 

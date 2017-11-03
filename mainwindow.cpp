@@ -120,7 +120,7 @@ void MainWindow::UpdateTime()
 
 void MainWindow::UpdateSong()
 {
-    QString song = mopidyReader->artist + " - " + mopidyReader->title;
+    QString song = mopidyReader->artist + " - " + mopidyReader->title + " " + mopidyReader->state;
     ui->songLabel->setText(song);
     mopidyReader->Update();
 }

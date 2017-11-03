@@ -10,29 +10,54 @@ MopidyReader::MopidyReader(QObject *parent) : QObject(parent)
 {
     title = "-";
     artist = "-";
+    length = -1;
 
-    manager = new QNetworkAccessManager(this);
-    connect(manager, SIGNAL(finished(QNetworkReply*)), this, SLOT(ReadMopidy(QNetworkReply*)));
+    titleManager = new QNetworkAccessManager(this);
+    stateManager = new QNetworkAccessManager(this);
+
+    connect(titleManager, SIGNAL(finished(QNetworkReply*)), this, SLOT(ReadMopidyTitle(QNetworkReply*)));
+    connect(stateManager, SIGNAL(finished(QNetworkReply*)), this, SLOT(ReadMopidyState(QNetworkReply*)));
 }
 
 void MopidyReader::Update()
+{
+    titleManager->post(this->getRequest(), getCurrentTrack() );
+    titleManager->post(this->getRequest(), getState() );
+}
+
+QByteArray MopidyReader::getCurrentTrack()
 {
     QJsonObject json;
     json["jsonrpc"] = "2.0";
     json["id"] = 1;
     json["method"] = "core.playback.get_current_track";
-
     QJsonDocument doc(json);
 
+    return doc.toJson();
+}
+
+QByteArray MopidyReader::getState()
+{
+    QJsonObject json;
+    json["jsonrpc"] = "2.0";
+    json["id"] = 1;
+    json["method"] = "core.playback.get_state";
+    QJsonDocument doc(json);
+
+    return doc.toJson();
+}
+
+QNetworkRequest MopidyReader::getRequest()
+{
     QString host = "http://localhost:6680/mopidy/rpc";
     QNetworkRequest request;
     request.setUrl(QUrl(host));
     request.setHeader(QNetworkRequest::ContentTypeHeader, "application/x-www-form-urlencoded");
 
-    manager->post(request, doc.toJson());
+    return request;
 }
 
-void MopidyReader::ReadMopidy(QNetworkReply* reply)
+void MopidyReader::ReadMopidyTitle(QNetworkReply* reply)
 {
     QJsonParseError jsonError;
     QJsonDocument json = QJsonDocument::fromJson(reply->readAll(),&jsonError);
@@ -41,12 +66,23 @@ void MopidyReader::ReadMopidy(QNetworkReply* reply)
         qDebug() << "Failed to parse json: " << jsonError.errorString();
     }
 
-    qDebug() << json.toJson();
-    qDebug() << "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA";
+    //qDebug() << json.toJson();
 
     title = json.object()["result"].toObject()["name"].toString();
-    qDebug() << title;
-
+    length = json.object()["result"].toObject()["length"].toInt();
     artist = json.object()["result"].toObject()["artists"].toArray()[0].toObject()["name"].toString();
-    qDebug() << artist;
+}
+
+void MopidyReader::ReadMopidyState(QNetworkReply* reply)
+{
+    QJsonParseError jsonError;
+    QJsonDocument json = QJsonDocument::fromJson(reply->readAll(),&jsonError);
+
+    if (jsonError.error != QJsonParseError::NoError){
+        qDebug() << "Failed to parse json: " << jsonError.errorString();
+    }
+
+    //qDebug() << json.toJson();
+
+    this->state = json.object()["result"].toString();
 }
