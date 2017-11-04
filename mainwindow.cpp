@@ -45,7 +45,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->line->setAttribute(Qt::WA_TranslucentBackground);
     ui->playStateLabel->setAttribute(Qt::WA_TranslucentBackground);
 
-    ui->timeLabel->raise();
+    //ui->timeLabel->raise();
 
 
     SetShadow(ui->timeLabel);
@@ -58,8 +58,8 @@ MainWindow::MainWindow(QWidget *parent) :
     timer->start(1000);
 
     QTimer *weatherTimer = new QTimer(this);
-    connect(weatherTimer, SIGNAL(timeout()), this, SLOT(GetWeather()));
-    weatherTimer->start(60000);
+   // connect(weatherTimer, SIGNAL(timeout()), this, SLOT(GetWeather()));
+   // weatherTimer->start(60000);
 
     lightButtonTimer = new QTimer(this);
     connect(lightButtonTimer, SIGNAL(timeout()), this, SLOT(PressLightButton()));
