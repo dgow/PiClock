@@ -14,7 +14,8 @@ MusicPlayer::MusicPlayer(QWidget *parent) :
 
     curentVolume = 1;
 
-    StartProcess("amixer", QString("sset 'Speaker' \%1%").arg(curentVolume));
+    StartProcess("amixer", QString("sset 'Speaker' '1%'"));
+    //StartProcess("amixer", QString("sset 'Speaker' \%1%").arg(curentVolume));
 
 #ifndef Q_OS_MACOS
     wiringPiSetup();
