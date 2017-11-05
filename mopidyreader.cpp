@@ -98,11 +98,13 @@ void MopidyReader::ReadMopidyPosition(QNetworkReply* reply)
         qDebug() << "Failed to parse json: " << jsonError.errorString();
     }
 
-    qDebug() << json.toJson();
+    //qDebug() << json.toJson();
 
     position = json.object()["result"].toInt();
 
     songProgress = (int)((float)this->length / (float)this->position);
+
+    qDebug() << ":::" << songProgress;
 }
 
 void MopidyReader::ReadMopidyState(QNetworkReply* reply)
