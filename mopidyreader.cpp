@@ -102,7 +102,7 @@ void MopidyReader::ReadMopidyPosition(QNetworkReply* reply)
 
     position = json.object()["result"].toInt();
 
-    songProgress = (int)((float)this->length / (float)this->position);
+    songProgress = (float)this->position / (float)this->length;
 
     qDebug() << ":::" << songProgress;
 }
