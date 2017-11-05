@@ -37,6 +37,8 @@ public slots:
 
 private:
     Ui::MusicPlayer *ui;
+
+    int curentVolume;
 };
 
 #endif // MUSICPLAYER_H

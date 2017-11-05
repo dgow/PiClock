@@ -12,6 +12,10 @@ MusicPlayer::MusicPlayer(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    curentVolume = 10;
+
+    StartProcess("amixer", QString("sset 'Speaker' %1%").arg(curentVolume));
+
 #ifndef Q_OS_MACOS
     wiringPiSetup();
     pinMode (24, INPUT) ; //knopf
