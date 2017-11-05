@@ -104,6 +104,9 @@
             <height>5</height>
            </size>
           </property>
+          <property name="styleSheet">
+           <string notr="true">color: rgb(0, 0, 0);</string>
+          </property>
           <property name="value">
            <number>0</number>
           </property>
