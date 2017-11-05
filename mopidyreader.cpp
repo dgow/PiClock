@@ -81,7 +81,7 @@ void MopidyReader::ReadMopidyTitle(QNetworkReply* reply)
         qDebug() << "Failed to parse json: " << jsonError.errorString();
     }
 
-    qDebug() << json.toJson();
+   // qDebug() << json.toJson();
 
     title = json.object()["result"].toObject()["name"].toString();
     length = json.object()["result"].toObject()["length"].toInt();
