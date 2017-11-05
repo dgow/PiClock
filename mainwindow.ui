@@ -99,7 +99,10 @@
         <item>
          <widget class="QProgressBar" name="volumeBar">
           <property name="value">
-           <number>24</number>
+           <number>0</number>
+          </property>
+          <property name="textVisible">
+           <bool>false</bool>
           </property>
          </widget>
         </item>

@@ -46,7 +46,7 @@ void MusicPlayer::VolumeUp()
 void MusicPlayer::VolumeDown()
 {
     StartProcess("amixer", "sset 'Speaker' 1%-");
-    curentVolume += 1;
+    curentVolume -= 1;
 }
 
 void MusicPlayer::Mute()
