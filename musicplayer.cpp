@@ -12,7 +12,7 @@ MusicPlayer::MusicPlayer(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    curentVolume = 50;
+    curentVolume = 30;
 
     //StartProcess("amixer", QString("sset 'Speaker' '1%'"));
     StartProcess("amixer", QString("sset 'Speaker' \%1%").arg(curentVolume));

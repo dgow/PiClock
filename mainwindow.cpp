@@ -76,14 +76,20 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->stackedWidget->setCurrentIndex(0);
 
     ui->musicPlayer->SetupVolumeKnob();
-    connect(ui->musicPlayer->volThread, SIGNAL(up()), this, SLOT(VolumeUp()));
-
-
+    connect(ui->musicPlayer->volThread, SIGNAL(up()),   this, SLOT(VolumeUp()));
+    connect(ui->musicPlayer->volThread, SIGNAL(down()), this, SLOT(VolumeDown()));
 }
 
 void MainWindow::VolumeUp()
 {
-    qDebug() << "VOL UP";
+    //qDebug() << "VOL UP";
+    ui->volumeBar->setValue(ui->musicPlayer->curentVolume);
+}
+
+void MainWindow::VolumeDown()
+{
+    //qDebug() << "VOL UP";
+    ui->volumeBar->setValue(ui->musicPlayer->curentVolume);
 }
 
 void MainWindow::SetShadow(QLabel *label)

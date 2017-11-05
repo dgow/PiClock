@@ -17,6 +17,7 @@ public:
 
     VolumeKnobThread *volThread;
     void SetupVolumeKnob();
+    int curentVolume;
 
     ~MusicPlayer();
 
@@ -38,7 +39,7 @@ public slots:
 private:
     Ui::MusicPlayer *ui;
 
-    int curentVolume;
+
 };
 
 #endif // MUSICPLAYER_H
