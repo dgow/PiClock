@@ -78,17 +78,17 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->musicPlayer->SetupVolumeKnob();
     connect(ui->musicPlayer->volThread, SIGNAL(up()),   this, SLOT(VolumeUp()));
     connect(ui->musicPlayer->volThread, SIGNAL(down()), this, SLOT(VolumeDown()));
+
+    ui->volumeBar->setValue(ui->musicPlayer->curentVolume);
 }
 
 void MainWindow::VolumeUp()
 {
-    //qDebug() << "VOL UP";
     ui->volumeBar->setValue(ui->musicPlayer->curentVolume);
 }
 
 void MainWindow::VolumeDown()
 {
-    //qDebug() << "VOL UP";
     ui->volumeBar->setValue(ui->musicPlayer->curentVolume);
 }
 
