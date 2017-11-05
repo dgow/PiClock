@@ -79,17 +79,17 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->musicPlayer->volThread, SIGNAL(up()),   this, SLOT(VolumeUp()));
     connect(ui->musicPlayer->volThread, SIGNAL(down()), this, SLOT(VolumeDown()));
 
-    ui->volumeBar->setValue(ui->musicPlayer->curentVolume);
+    ui->volumeBar->setValue(mopidyReader->songProgress);
 }
 
 void MainWindow::VolumeUp()
 {
-    ui->volumeBar->setValue(ui->musicPlayer->curentVolume);
+    //ui->volumeBar->setValue(mopidyReader->songProgress);
 }
 
 void MainWindow::VolumeDown()
 {
-    ui->volumeBar->setValue(ui->musicPlayer->curentVolume);
+    //ui->volumeBar->setValue(mopidyReader->songProgress);
 }
 
 void MainWindow::SetShadow(QLabel *label)

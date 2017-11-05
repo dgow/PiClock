@@ -12,6 +12,7 @@ MopidyReader::MopidyReader(QObject *parent) : QObject(parent)
     artist = "-";
     state = "*";
     length = -1;
+    songProgress = 0;
 
     titleManager = new QNetworkAccessManager(this);
     stateManager = new QNetworkAccessManager(this);
@@ -100,6 +101,8 @@ void MopidyReader::ReadMopidyPosition(QNetworkReply* reply)
     qDebug() << json.toJson();
 
     position = json.object()["result"].toInt();
+
+    songProgress = this->length / this->position;
 }
 
 void MopidyReader::ReadMopidyState(QNetworkReply* reply)

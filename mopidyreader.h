@@ -19,6 +19,7 @@ public:
     QString state;
     int length;
     int position;
+    int songProgress;
 
 signals:
 
