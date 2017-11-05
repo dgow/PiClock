@@ -58,8 +58,8 @@ MainWindow::MainWindow(QWidget *parent) :
     timer->start(1000);
 
     QTimer *weatherTimer = new QTimer(this);
-   // connect(weatherTimer, SIGNAL(timeout()), this, SLOT(GetWeather()));
-   // weatherTimer->start(60000);
+    connect(weatherTimer, SIGNAL(timeout()), this, SLOT(GetWeather()));
+    weatherTimer->start(60000);
 
     lightButtonTimer = new QTimer(this);
     connect(lightButtonTimer, SIGNAL(timeout()), this, SLOT(PressLightButton()));
@@ -74,6 +74,16 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->musicPlayer, SIGNAL(GoBack()), this, SLOT(GoBack()));
 
     ui->stackedWidget->setCurrentIndex(0);
+
+    ui->musicPlayer->SetupVolumeKnob();
+    connect(ui->musicPlayer->volThread, SIGNAL(up()), this, SLOT(VolumeUp()));
+
+
+}
+
+void MainWindow::VolumeUp()
+{
+    qDebug() << "VOL UP";
 }
 
 void MainWindow::SetShadow(QLabel *label)

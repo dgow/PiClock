@@ -29,6 +29,8 @@ public slots:
 
     void GoBack();
 
+    void VolumeUp();
+
 private slots:
     void on_alarmButton_clicked();
     void on_stopAlarmButton_clicked();

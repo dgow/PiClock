@@ -2,6 +2,7 @@
 #define MUSICPLAYER_H
 
 #include <QWidget>
+#include <volumeknobthread.h>
 
 namespace Ui {
 class MusicPlayer;
@@ -13,6 +14,10 @@ class MusicPlayer : public QWidget
 
 public:
     explicit MusicPlayer(QWidget *parent = 0);
+
+    VolumeKnobThread *volThread;
+    void SetupVolumeKnob();
+
     ~MusicPlayer();
 
 signals:

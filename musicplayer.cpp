@@ -5,7 +5,6 @@
 #include <QProcess>
 
 #include <WiringPi/wiringPi/wiringPi.h>
-#include <volumeknobthread.h>
 
 MusicPlayer::MusicPlayer(QWidget *parent) :
     QWidget(parent),
@@ -21,7 +20,11 @@ MusicPlayer::MusicPlayer(QWidget *parent) :
     pinMode (25, OUTPUT) ;
 #endif
 
-    VolumeKnobThread *volThread = new VolumeKnobThread();
+}
+
+void MusicPlayer::SetupVolumeKnob()
+{
+    volThread = new VolumeKnobThread();
     volThread->start();
 
     connect(volThread, SIGNAL(up()), this, SLOT(VolumeUp()));
