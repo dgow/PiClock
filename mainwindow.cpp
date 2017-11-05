@@ -142,6 +142,8 @@ void MainWindow::UpdateSong()
     ui->songLabel->setText(song);
     ui->playStateLabel->setText(mopidyReader->state);
     mopidyReader->Update();
+
+    ui->volumeBar->setValue(mopidyReader->songProgress);
 }
 
 void MainWindow::GetWeather()
