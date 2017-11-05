@@ -19,7 +19,7 @@ MopidyReader::MopidyReader(QObject *parent) : QObject(parent)
 
     connect(titleManager, SIGNAL(finished(QNetworkReply*)), this, SLOT(ReadMopidyTitle(QNetworkReply*)));
     connect(stateManager, SIGNAL(finished(QNetworkReply*)), this, SLOT(ReadMopidyState(QNetworkReply*)));
-    connect(stateManager, SIGNAL(finished(QNetworkReply*)), this, SLOT(ReadMopidyPosition(QNetworkReply*)));
+    connect(positionManager, SIGNAL(finished(QNetworkReply*)), this, SLOT(ReadMopidyPosition(QNetworkReply*)));
 }
 
 void MopidyReader::Update()
