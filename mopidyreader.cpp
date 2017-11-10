@@ -25,9 +25,9 @@ MopidyReader::MopidyReader(QObject *parent) : QObject(parent)
 
 void MopidyReader::Update()
 {
-   titleManager->post(this->getRequest(), getCurrentTrack() );
-  //stateManager->post(this->getRequest(), getState() );
-  //  positionManager->post(this->getRequest(), getCurrentPos() );
+    titleManager->post(this->getRequest(), getCurrentTrack() );
+    stateManager->post(this->getRequest(), getState() );
+    positionManager->post(this->getRequest(), getCurrentPos() );
 }
 
 QByteArray MopidyReader::getCurrentTrack()
@@ -88,7 +88,7 @@ void MopidyReader::ReadMopidyTitle(QNetworkReply* reply)
     length = json.object()["result"].toObject()["length"].toInt();
     artist = json.object()["result"].toObject()["artists"].toArray()[0].toObject()["name"].toString();
 
-    delete reply;
+    connect(reply, SIGNAL(finished(int)), process, SLOT(deleteLater()));
 
 
 }
@@ -110,7 +110,7 @@ void MopidyReader::ReadMopidyPosition(QNetworkReply* reply)
 
     //qDebug() << ":::" << songProgress;
 
-    delete reply;
+    connect(reply, SIGNAL(finished(int)), process, SLOT(deleteLater()));
 }
 
 void MopidyReader::ReadMopidyState(QNetworkReply* reply)
@@ -136,5 +136,5 @@ void MopidyReader::ReadMopidyState(QNetworkReply* reply)
         this->state = "||";
     }
 
-    delete reply;
+    connect(reply, SIGNAL(finished(int)), process, SLOT(deleteLater()));
 }
