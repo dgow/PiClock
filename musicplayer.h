@@ -36,6 +36,9 @@ public slots:
 
    void StartProcess(QString command, QString argsString);
 
+private slots:
+   void on_gongButton_clicked();
+
 private:
     Ui::MusicPlayer *ui;
 
