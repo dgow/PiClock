@@ -93,7 +93,7 @@ MusicPlayer::~MusicPlayer()
     delete ui;
 }
 
-void MusicPlayer::on_gongButton_clicked();
+void MusicPlayer::on_gongButton_clicked()
 {
     StartProcess("mpc", "clear");
     StartProcess("mpc", "load Gong");
