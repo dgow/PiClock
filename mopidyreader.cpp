@@ -75,7 +75,7 @@ QNetworkRequest MopidyReader::getRequest()
 
 void MopidyReader::ReadMopidyTitle(QNetworkReply* reply)
 {
-    QJsonParseError jsonError;
+  /*  QJsonParseError jsonError;
     QJsonDocument json = QJsonDocument::fromJson(reply->readAll(),&jsonError);
 
     if (jsonError.error != QJsonParseError::NoError){
@@ -87,12 +87,13 @@ void MopidyReader::ReadMopidyTitle(QNetworkReply* reply)
     title = json.object()["result"].toObject()["name"].toString();
     length = json.object()["result"].toObject()["length"].toInt();
     artist = json.object()["result"].toObject()["artists"].toArray()[0].toObject()["name"].toString();
-
+*/
     reply->deleteLater();
 }
 
 void MopidyReader::ReadMopidyPosition(QNetworkReply* reply)
 {
+    /*
     QJsonParseError jsonError;
     QJsonDocument json = QJsonDocument::fromJson(reply->readAll(),&jsonError);
 
@@ -107,12 +108,13 @@ void MopidyReader::ReadMopidyPosition(QNetworkReply* reply)
     songProgress = ((float)this->position / (float)this->length) * 100;
 
     //qDebug() << ":::" << songProgress;
-
+*/
     reply->deleteLater();
 }
 
 void MopidyReader::ReadMopidyState(QNetworkReply* reply)
 {
+    /*
     QJsonParseError jsonError;
     QJsonDocument json = QJsonDocument::fromJson(reply->readAll(),&jsonError);
 
@@ -133,6 +135,6 @@ void MopidyReader::ReadMopidyState(QNetworkReply* reply)
     {
         this->state = "||";
     }
-
+*/
     reply->deleteLater();
 }
