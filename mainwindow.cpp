@@ -132,7 +132,7 @@ void MainWindow::UpdateTime()
         }
     }
 
-    //UpdateSong();
+    UpdateSong();
 }
 
 void MainWindow::UpdateSong()
