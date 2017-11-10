@@ -108,7 +108,7 @@ void MopidyReader::ReadMopidyPosition(QNetworkReply* reply)
 
     songProgress = ((float)this->position / (float)this->length) * 100;
 
-    //qDebug() << ":::" << songProgress;
+    qDebug() << ":::" << songProgress;
 
     delete reply;
 }
