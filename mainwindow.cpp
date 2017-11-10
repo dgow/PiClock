@@ -55,7 +55,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     QTimer *timer = new QTimer(this);
     connect(timer, SIGNAL(timeout()), this, SLOT(UpdateTime()));
-    timer->start(1000);
+    timer->start(100);
 
     QTimer *weatherTimer = new QTimer(this);
     connect(weatherTimer, SIGNAL(timeout()), this, SLOT(GetWeather()));
@@ -144,6 +144,7 @@ void MainWindow::UpdateSong()
     mopidyReader->Update();
 
     ui->volumeBar->setValue(mopidyReader->songProgress);
+
 }
 
 void MainWindow::GetWeather()
