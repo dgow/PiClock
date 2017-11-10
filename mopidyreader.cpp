@@ -131,7 +131,7 @@ void MopidyReader::ReadMopidyPosition(QNetworkReply* reply)
 
 void MopidyReader::ReadMopidyState(QNetworkReply* reply)
 {
-    /*
+
     QJsonParseError jsonError;
     QJsonDocument json = QJsonDocument::fromJson(reply->readAll(),&jsonError);
 
@@ -152,6 +152,6 @@ void MopidyReader::ReadMopidyState(QNetworkReply* reply)
     {
         this->state = "||";
     }
-*/
+
     reply->deleteLater();
 }
