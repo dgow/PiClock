@@ -201,12 +201,9 @@
          </widget>
         </item>
         <item>
-         <layout class="QHBoxLayout" name="horizontalLayout" stretch="0,0">
+         <layout class="QHBoxLayout" name="horizontalLayout">
           <property name="leftMargin">
-           <number>100</number>
-          </property>
-          <property name="rightMargin">
-           <number>100</number>
+           <number>0</number>
           </property>
           <item>
            <widget class="QLabel" name="weatherLabel">
@@ -256,7 +253,7 @@
              <string>-</string>
             </property>
             <property name="alignment">
-             <set>Qt::AlignCenter</set>
+             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
             </property>
            </widget>
           </item>
@@ -275,7 +272,10 @@
              </size>
             </property>
             <property name="text">
-             <string>TextLabel</string>
+             <string/>
+            </property>
+            <property name="pixmap">
+             <pixmap resource="resourses.qrc">:/weather/weatherIcons/01d.png</pixmap>
             </property>
             <property name="scaledContents">
              <bool>true</bool>
@@ -454,6 +454,8 @@
    <container>1</container>
   </customwidget>
  </customwidgets>
- <resources/>
+ <resources>
+  <include location="resourses.qrc"/>
+ </resources>
  <connections/>
 </ui>
