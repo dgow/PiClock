@@ -52,6 +52,7 @@ MainWindow::MainWindow(QWidget *parent) :
     SetShadow(ui->weatherLabel);
     SetShadow(ui->dateLabel);
     SetShadow(ui->weatherIcon);
+    SetShadow(ui->songLabel);
 
     QTimer *timer = new QTimer(this);
     connect(timer, SIGNAL(timeout()), this, SLOT(UpdateTime()));
