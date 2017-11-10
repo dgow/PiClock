@@ -26,8 +26,8 @@ MopidyReader::MopidyReader(QObject *parent) : QObject(parent)
 void MopidyReader::Update()
 {
     titleManager->post(this->getRequest(), getCurrentTrack() );
-    stateManager->post(this->getRequest(), getState() );
-    positionManager->post(this->getRequest(), getCurrentPos() );
+    //stateManager->post(this->getRequest(), getState() );
+    //positionManager->post(this->getRequest(), getCurrentPos() );
 }
 
 QByteArray MopidyReader::getCurrentTrack()
