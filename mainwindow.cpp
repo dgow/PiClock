@@ -175,13 +175,13 @@ void MainWindow::ReadWeather(QNetworkReply* reply)
     QJsonObject root_object = json.object();
     QJsonObject main = root_object["main"].toObject();
     QString temp = QString::number(qRound( main["temp"].toDouble()));
-    qDebug() << "Temperature: " << " " << temp;
+    //qDebug() << "Temperature: " << " " << temp;
 
     ui->weatherLabel->setText(temp + "°");
 
     QJsonObject weather = root_object["weather"].toArray().at(0).toObject();
     QString icon = weather["icon"].toString();
-    qDebug() << "Weather icon: " << " " << icon;
+    //qDebug() << "Weather icon: " << " " << icon;
 
     ui->weatherIcon->setPixmap(":/weather/weatherIcons/" + icon + ".png");
 
