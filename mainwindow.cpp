@@ -143,7 +143,8 @@ void MainWindow::UpdateSong()
     ui->playStateLabel->setText(mopidyReader->state);
     mopidyReader->Update();
 
-    ui->volumeBar->setValue(mopidyReader->songProgress);
+    //ui->volumeBar->setValue(mopidyReader->songProgress);
+    ui->volumeBar->setValue(50);
 
 }
 
