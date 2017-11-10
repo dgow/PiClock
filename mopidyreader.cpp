@@ -18,16 +18,16 @@ MopidyReader::MopidyReader(QObject *parent) : QObject(parent)
     stateManager = new QNetworkAccessManager(this);
     positionManager = new QNetworkAccessManager(this);
 
-  //  connect(titleManager, SIGNAL(finished(QNetworkReply*)), this, SLOT(ReadMopidyTitle(QNetworkReply*)));
-  //  connect(stateManager, SIGNAL(finished(QNetworkReply*)), this, SLOT(ReadMopidyState(QNetworkReply*)));
-  //  connect(positionManager, SIGNAL(finished(QNetworkReply*)), this, SLOT(ReadMopidyPosition(QNetworkReply*)));
+    connect(titleManager, SIGNAL(finished(QNetworkReply*)), this, SLOT(ReadMopidyTitle(QNetworkReply*)));
+    connect(stateManager, SIGNAL(finished(QNetworkReply*)), this, SLOT(ReadMopidyState(QNetworkReply*)));
+    connect(positionManager, SIGNAL(finished(QNetworkReply*)), this, SLOT(ReadMopidyPosition(QNetworkReply*)));
 }
 
 void MopidyReader::Update()
 {
     titleManager->post(this->getRequest(), getCurrentTrack() );
-    stateManager->post(this->getRequest(), getState() );
-    positionManager->post(this->getRequest(), getCurrentPos() );
+ //   stateManager->post(this->getRequest(), getState() );
+ //   positionManager->post(this->getRequest(), getCurrentPos() );
 }
 
 QByteArray MopidyReader::getCurrentTrack()
@@ -87,6 +87,9 @@ void MopidyReader::ReadMopidyTitle(QNetworkReply* reply)
     title = json.object()["result"].toObject()["name"].toString();
     length = json.object()["result"].toObject()["length"].toInt();
     artist = json.object()["result"].toObject()["artists"].toArray()[0].toObject()["name"].toString();
+
+    delete reply;
+
 }
 
 void MopidyReader::ReadMopidyPosition(QNetworkReply* reply)
