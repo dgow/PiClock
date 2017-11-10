@@ -109,7 +109,7 @@ void MopidyReader::ReadMopidyPosition(QNetworkReply* reply)
 
     //qDebug() << ":::" << songProgress;
 
-    delete reply;
+    //delete reply;
 }
 
 void MopidyReader::ReadMopidyState(QNetworkReply* reply)
