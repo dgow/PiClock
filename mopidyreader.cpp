@@ -93,7 +93,7 @@ void MopidyReader::ReadMopidyTitle(QNetworkReply* reply)
 
 void MopidyReader::ReadMopidyPosition(QNetworkReply* reply)
 {
-    /*
+
     QJsonParseError jsonError;
     QJsonDocument json = QJsonDocument::fromJson(reply->readAll(),&jsonError);
 
@@ -108,7 +108,7 @@ void MopidyReader::ReadMopidyPosition(QNetworkReply* reply)
     songProgress = ((float)this->position / (float)this->length) * 100;
 
     //qDebug() << ":::" << songProgress;
-*/
+
     reply->deleteLater();
 }
 
