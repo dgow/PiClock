@@ -8,6 +8,9 @@
 
 MopidyReader::MopidyReader(QObject *parent) : QObject(parent)
 {
+
+    currentUpdate = 0;
+
     title = "-";
     artist = "-";
     state = "*";
@@ -19,15 +22,28 @@ MopidyReader::MopidyReader(QObject *parent) : QObject(parent)
     positionManager = new QNetworkAccessManager(this);
 
     connect(titleManager, SIGNAL(finished(QNetworkReply*)), this, SLOT(ReadMopidyTitle(QNetworkReply*)));
-    //connect(stateManager, SIGNAL(finished(QNetworkReply*)), this, SLOT(ReadMopidyState(QNetworkReply*)));
+    connect(stateManager, SIGNAL(finished(QNetworkReply*)), this, SLOT(ReadMopidyState(QNetworkReply*)));
     connect(positionManager, SIGNAL(finished(QNetworkReply*)), this, SLOT(ReadMopidyPosition(QNetworkReply*)));
 }
 
 void MopidyReader::Update()
-{
-    titleManager->post(this->getRequest(), getCurrentTrack() );
-  //  stateManager->post(this->getRequest(), getState() );
-    positionManager->post(this->getRequest(), getCurrentPos() );
+{   
+    if(currentUpdate == 0)
+    {
+        titleManager->post(this->getRequest(), getCurrentTrack() );
+    }
+    if(currentUpdate == 1)
+    {
+        stateManager->post(this->getRequest(), getState() );
+    }
+    if(currentUpdate == 2)
+    {
+        positionManager->post(this->getRequest(), getCurrentPos() );
+    }
+    currentUpdate++;
+
+    currentUpdate = currentUpdate % 3;
+
 }
 
 QByteArray MopidyReader::getCurrentTrack()
@@ -75,6 +91,7 @@ QNetworkRequest MopidyReader::getRequest()
 
 void MopidyReader::ReadMopidyTitle(QNetworkReply* reply)
 {
+
     QJsonParseError jsonError;
     QJsonDocument json = QJsonDocument::fromJson(reply->readAll(),&jsonError);
 
