@@ -140,7 +140,7 @@ void MainWindow::UpdateSong()
     QString song = mopidyReader->artist + " - " + mopidyReader->title;
     ui->songLabel->setText(song);
     ui->playStateLabel->setText(mopidyReader->state);
-    //mopidyReader->Update();
+    mopidyReader->Update();
 
     ui->volumeBar->setValue(mopidyReader->songProgress);
 }
