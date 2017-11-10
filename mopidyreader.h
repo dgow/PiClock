@@ -21,6 +21,8 @@ public:
     int position;
     int songProgress;
 
+    int currentUpdate;
+
 signals:
 
 public slots:
