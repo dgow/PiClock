@@ -88,7 +88,7 @@ void MopidyReader::ReadMopidyTitle(QNetworkReply* reply)
     length = json.object()["result"].toObject()["length"].toInt();
     artist = json.object()["result"].toObject()["artists"].toArray()[0].toObject()["name"].toString();
 
-    delete reply;
+    //delete reply;
 
 }
 
