@@ -39,7 +39,7 @@ void MusicPlayer::SetupVolumeKnob()
 
 void MusicPlayer::VolumeUp()
 {   
-//    StartProcess("amixer", "sset 'Speaker' 1%+");
+//    StartProcess("amixer", "sset 'Speaker' 2%+");
     curentVolume += 2;
     StartProcess("amixer", QString("sset 'Speaker' \%1%").arg(curentVolume));
 
@@ -47,7 +47,7 @@ void MusicPlayer::VolumeUp()
 
 void MusicPlayer::VolumeDown()
 {
-    //StartProcess("amixer", "sset 'Speaker' 1%-");
+    //StartProcess("amixer", "sset 'Speaker' 2%-");
     curentVolume -= 2;
     StartProcess("amixer", QString("sset 'Speaker' \%1%").arg(curentVolume));
 }
