@@ -120,6 +120,8 @@ void MopidyReader::ReadMopidyTitle(QNetworkReply* reply)
     length = json.object()["result"].toObject()["length"].toInt();
     artist = json.object()["result"].toObject()["artists"].toArray()[0].toObject()["name"].toString();
 
+    emit DataChanged();
+
     reply->deleteLater();
 }
 
@@ -140,6 +142,8 @@ void MopidyReader::ReadMopidyPosition(QNetworkReply* reply)
     songProgress = ((float)this->position / (float)this->length) * 100;
 
     //qDebug() << ":::" << songProgress;
+
+    emit DataChanged();
 
     reply->deleteLater();
 }
@@ -167,6 +171,8 @@ void MopidyReader::ReadMopidyState(QNetworkReply* reply)
     {
         this->state = "||";
     }
+
+    emit DataChanged();
 
     reply->deleteLater();
 }

@@ -12,11 +12,7 @@ class MopidyReader : public QObject
 public:
     explicit MopidyReader(QObject *parent);
 
-    void Update();
 
-    void UpdateSong();
-    void UpdateState();
-    void UpdatePosition();
 
     QString title;
     QString artist;
@@ -28,11 +24,19 @@ public:
     int currentUpdate;
 
 signals:
+    void DataChanged();
 
 public slots:
     void ReadMopidyTitle(QNetworkReply* reply);
     void ReadMopidyState(QNetworkReply* reply);
     void ReadMopidyPosition(QNetworkReply* reply);
+
+    void Update();
+
+    void UpdateSong();
+    void UpdateState();
+    void UpdatePosition();
+
 
 private:
     QNetworkAccessManager *titleManager;

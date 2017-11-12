@@ -81,8 +81,10 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->musicPlayer->volThread, SIGNAL(up()),   this, SLOT(UpdateVolume()));
     connect(ui->musicPlayer->volThread, SIGNAL(down()), this, SLOT(UpdateVolume()));
 
-    connect(ui->musicPlayer, SIGNAL(SongChanged()), this,   SLOT(UpdateSong()));
-    connect(ui->musicPlayer, SIGNAL(StateChanged()), this,  SLOT(UpdateSong()));
+    connect(ui->musicPlayer, SIGNAL(SongChanged()), mopidyReader,   SLOT(UpdateSong()));
+    connect(ui->musicPlayer, SIGNAL(StateChanged()), mopidyReader,  SLOT(UpdateState());
+
+    connect(mopidyReader, SIGNAL(DataChanged()), this,  SLOT(UpdateSong()));
 
     ui->volumeBar->setValue(mopidyReader->songProgress);
 }
@@ -139,8 +141,6 @@ void MainWindow::UpdateTime()
 
 void MainWindow::UpdateSong()
 {
-    mopidyReader->Update();
-
     QString song = mopidyReader->artist + " - " + mopidyReader->title;
     ui->songLabel->setText(song);
     ui->playStateLabel->setText(mopidyReader->state);
