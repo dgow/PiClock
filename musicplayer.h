@@ -34,6 +34,11 @@ public slots:
    void VolumeDown();
    void Mute();
 
+   void Stop();
+
+   void NextSong();
+   void PrevSong();
+
    void StartProcess(QString command, QString argsString);
 
 private slots:

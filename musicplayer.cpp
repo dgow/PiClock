@@ -63,6 +63,21 @@ void MusicPlayer::Mute()
     StartProcess("mpc", "toggle");
 }
 
+void MusicPlayer::Stop()
+{
+    StartProcess("mpc", "stop");
+}
+
+void MusicPlayer::NextSong()
+{
+    StartProcess("mpc", "next");
+}
+
+void MusicPlayer::PrevSong()
+{
+    StartProcess("mpc", "prev");
+}
+
 void MusicPlayer::on_okButton_clicked()
 {
     emit this->GoBack();

@@ -227,21 +227,11 @@ void MainWindow::mousePressEvent(QMouseEvent *event)
     {
         if(event->x() > 240)
         {
-            /*
-            QProcess *process = new QProcess(this);
-            QStringList args;
-            args << "sset" << "'Speaker'" << "5%+";
-            process->start("amixer", args);
-            */
-            ui->musicPlayer->StartProcess("amixer", "sset 'Speaker' 5%+");
-        } else {
-            /*
-            QProcess *process = new QProcess(this);
-            QStringList args;
-            args << "sset" << "'Speaker'" << "5%-";
-            process->start("amixer", args);
-            */
-            ui->musicPlayer->StartProcess("amixer", "sset 'Speaker' 5%+");
+            ui->musicPlayer->VolumeUp();
+        }
+        else
+        {
+            ui->musicPlayer->VolumeDown();
         }
     }
     else if(event->y() < 240)
@@ -252,17 +242,11 @@ void MainWindow::mousePressEvent(QMouseEvent *event)
     {
         if(event->x() < 240)
         {
-            QProcess *process = new QProcess(this);
-            QStringList args;
-            args << "prev";
-            process->start("mpc", args);
+            ui->musicPlayer->PrevSong();
             mopidyReader->Update();
             UpdateSong();
         } else {
-            QProcess *process = new QProcess(this);
-            QStringList args;
-            args << "next";
-            process->start("mpc", args);
+            ui->musicPlayer->NextSong();
             mopidyReader->Update();
             UpdateSong();
         }
@@ -299,11 +283,7 @@ void MainWindow::on_alarmButton_clicked()
 
 void MainWindow::on_stopAlarmButton_clicked()
 {
-    QProcess *process = new QProcess(this);
-    QStringList args;
-    args << "stop";
-    process->start("mpc", args);
-
+    ui->musicPlayer->Stop();
     ui->stackedWidget->setCurrentIndex(0);
 }
 
