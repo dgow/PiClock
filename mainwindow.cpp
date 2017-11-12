@@ -134,7 +134,7 @@ void MainWindow::UpdateTime()
 
     UpdateSong();
 
-    QString volume = QString("VOL: %1").arg(ui->musicPlayer->curentVolume);
+    QString volume = QString("🔊 %1").arg(ui->musicPlayer->curentVolume);
     ui->volumeLabel->setText(volume);
 }
 
