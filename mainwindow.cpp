@@ -44,6 +44,8 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->line->setAttribute(Qt::WA_TranslucentBackground);
     ui->playStateLabel->setAttribute(Qt::WA_TranslucentBackground);
     ui->volumeLabel->setAttribute(Qt::WA_TranslucentBackground);
+    ui->volumeIcon->setAttribute(Qt::WA_TranslucentBackground);
+
 
     SetShadow(ui->timeLabel);
     SetShadow(ui->weatherLabel);
