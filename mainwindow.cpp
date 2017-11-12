@@ -36,7 +36,6 @@ MainWindow::MainWindow(QWidget *parent) :
 
     ui->setupUi(this);
     ui->centralWidget->setStyleSheet("background-image: url(:/images/kurt_face.jpg);");
- //ui->centralWidget->setStyleSheet("background-color: #000000");
     ui->timeLabel->setAttribute(Qt::WA_TranslucentBackground);
     ui->weatherLabel->setAttribute(Qt::WA_TranslucentBackground);
     ui->dateLabel->setAttribute(Qt::WA_TranslucentBackground);
@@ -44,9 +43,6 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->songLabel->setAttribute(Qt::WA_TranslucentBackground);
     ui->line->setAttribute(Qt::WA_TranslucentBackground);
     ui->playStateLabel->setAttribute(Qt::WA_TranslucentBackground);
-
-    //ui->timeLabel->raise();
-
 
     SetShadow(ui->timeLabel);
     SetShadow(ui->weatherLabel);
@@ -202,6 +198,8 @@ void MainWindow::ReadWeather(QNetworkReply* reply)
     {
         lightButtonTimer->start(1000);
     }
+
+    reply->deleteLater();
 }
 
 void MainWindow::PressLightButton()
