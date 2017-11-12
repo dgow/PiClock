@@ -61,21 +61,25 @@ void MusicPlayer::VolumeDown()
 void MusicPlayer::Mute()
 {
     StartProcess("mpc", "toggle");
+    emit StateChanged();
 }
 
 void MusicPlayer::Stop()
 {
     StartProcess("mpc", "stop");
+    emit StateChanged();
 }
 
 void MusicPlayer::NextSong()
 {
     StartProcess("mpc", "next");
+    emit SongChanged();
 }
 
 void MusicPlayer::PrevSong()
 {
     StartProcess("mpc", "prev");
+    emit SongChanged();
 }
 
 void MusicPlayer::on_okButton_clicked()

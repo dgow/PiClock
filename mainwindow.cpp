@@ -53,6 +53,7 @@ MainWindow::MainWindow(QWidget *parent) :
     SetShadow(ui->weatherIcon);
     SetShadow(ui->songLabel);
     SetShadow(ui->volumeLabel);
+    SetShadow(ui->volumeIcon);
 
     QTimer *timer = new QTimer(this);
     connect(timer, SIGNAL(timeout()), this, SLOT(UpdateTime()));
@@ -80,6 +81,8 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->musicPlayer->volThread, SIGNAL(up()),   this, SLOT(UpdateVolume()));
     connect(ui->musicPlayer->volThread, SIGNAL(down()), this, SLOT(UpdateVolume()));
 
+    connect(ui->musicPlayer, SIGNAL(SongChanged()), this, SLOT(UpdateSong()));
+    connect(ui->musicPlayer, SIGNAL(StateChanged()), this, SLOT(UpdateSong()));
 
     ui->volumeBar->setValue(mopidyReader->songProgress);
 }
@@ -132,12 +135,11 @@ void MainWindow::UpdateTime()
     }
 
     UpdateSong();
-    UpdateVolume();
 }
 
 void MainWindow::UpdateSong()
 {
-    mopidyReader->Update();
+//    mopidyReader->Update();
 
     QString song = mopidyReader->artist + " - " + mopidyReader->title;
     ui->songLabel->setText(song);

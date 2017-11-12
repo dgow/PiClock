@@ -30,20 +30,35 @@ void MopidyReader::Update()
 {   
     if(currentUpdate == 0)
     {
-        titleManager->post(this->getRequest(), getCurrentTrack() );
+        UpdateSong();
     }
     if(currentUpdate == 1)
     {
-        stateManager->post(this->getRequest(), getState() );
+        UpdateState();
     }
     if(currentUpdate == 2)
     {
-        positionManager->post(this->getRequest(), getCurrentPos() );
+        UpdatePosition();
     }
-    currentUpdate++;
 
+    currentUpdate++;
     currentUpdate = currentUpdate % 3;
 
+}
+
+void MopidyReader::UpdateSong()
+{
+    titleManager->post(this->getRequest(), getCurrentTrack() );
+}
+
+void MopidyReader::UpdateState()
+{
+    stateManager->post(this->getRequest(), getState() );
+}
+
+void MopidyReader::UpdatePosition()
+{
+    positionManager->post(this->getRequest(), getCurrentPos() );
 }
 
 QByteArray MopidyReader::getCurrentTrack()

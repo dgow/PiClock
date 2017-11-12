@@ -30,6 +30,7 @@ public slots:
     void GoBack();
 
     void UpdateVolume();
+    void UpdateSong();
 
 private slots:
     void on_alarmButton_clicked();
@@ -54,7 +55,7 @@ private:
 
     void mousePressEvent (QMouseEvent *event);
 
-    void UpdateSong();
+
 
     MopidyReader *mopidyReader;
 };

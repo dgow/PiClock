@@ -14,6 +14,10 @@ public:
 
     void Update();
 
+    void UpdateSong();
+    void UpdateState();
+    void UpdatePosition();
+
     QString title;
     QString artist;
     QString state;

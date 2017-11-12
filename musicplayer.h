@@ -24,6 +24,9 @@ public:
 signals:
    void GoBack();
 
+   void SongChanged();
+   void StateChanged();
+
 public slots:
    void on_okButton_clicked();
    void on_chillOutButton_clicked();
