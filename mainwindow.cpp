@@ -57,7 +57,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     QTimer *timer = new QTimer(this);
     connect(timer, SIGNAL(timeout()), this, SLOT(UpdateTime()));
-    timer->start(500);
+    timer->start(250);
 
     QTimer *weatherTimer = new QTimer(this);
     connect(weatherTimer, SIGNAL(timeout()), this, SLOT(GetWeather()));
@@ -120,17 +120,9 @@ void MainWindow::UpdateTime()
         if(minute != lastMinute)
         {
             lastMinute = minute;
-            qDebug() << "ARLARM";
 
-            QProcess *processSpeaker = new QProcess(this);
-            QStringList argsSpeaker;
-            argsSpeaker << "sset" << "'Speaker'" << "40%";
-            processSpeaker->start("amixer", argsSpeaker);
-
-            QProcess *process = new QProcess(this);
-            QStringList args;
-            args << "play";
-            process->start("mpc", args);
+            ui->musicPlayer->StartProcess("amixer", "sset 'Speaker' 40%");
+            ui->musicPlayer->StartProcess("mpc", "play");
 
             ui->stackedWidget->setCurrentIndex(2);
         }
