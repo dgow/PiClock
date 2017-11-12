@@ -87,6 +87,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(mopidyReader, SIGNAL(DataChanged()), this,  SLOT(UpdateSong()));
 
     UpdateSong();
+    UpdateVolume();
 }
 
 void MainWindow::UpdateVolume()
