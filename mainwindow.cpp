@@ -227,23 +227,26 @@ void MainWindow::mousePressEvent(QMouseEvent *event)
     {
         if(event->x() > 240)
         {
+            /*
             QProcess *process = new QProcess(this);
             QStringList args;
             args << "sset" << "'Speaker'" << "5%+";
             process->start("amixer", args);
+            */
+            ui->musicPlayer->StartProcess("amixer", "sset 'Speaker' 5%+");
         } else {
+            /*
             QProcess *process = new QProcess(this);
             QStringList args;
             args << "sset" << "'Speaker'" << "5%-";
             process->start("amixer", args);
+            */
+            ui->musicPlayer->StartProcess("amixer", "sset 'Speaker' 5%+");
         }
     }
     else if(event->y() < 240)
     {
-        QProcess *process = new QProcess(this);
-        QStringList args;
-        args << "toggle";
-        process->start("mpc", args);
+        ui->musicPlayer->StartProcess("mpc", "toggle");
     }
     else
     {
