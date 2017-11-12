@@ -24,6 +24,7 @@ MusicPlayer::MusicPlayer(QWidget *parent) :
     pinMode (22, INPUT) ; //links/rechts
     pinMode (25, OUTPUT) ;
 #endif
+    StartProcess("mpc", "random on");
 
 }
 
