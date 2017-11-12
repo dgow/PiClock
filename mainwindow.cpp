@@ -141,6 +141,11 @@ void MainWindow::UpdateTime()
 
 void MainWindow::UpdateSong()
 {
+    QTimer::singleShot(100, this, SLOT(UpdateSong2()));
+}
+
+void MainWindow::UpdateSong2()
+{
     QString song = mopidyReader->artist + " - " + mopidyReader->title;
     ui->songLabel->setText(song);
     ui->playStateLabel->setText(mopidyReader->state);

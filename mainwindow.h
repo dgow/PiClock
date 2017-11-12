@@ -31,6 +31,7 @@ public slots:
 
     void UpdateVolume();
     void UpdateSong();
+    void UpdateSong2();
 
 private slots:
     void on_alarmButton_clicked();

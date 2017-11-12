@@ -3,6 +3,7 @@
 
 #include <QDebug>
 #include <QProcess>
+#include <QTimer>
 
 #include <WiringPi/wiringPi/wiringPi.h>
 
