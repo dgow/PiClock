@@ -158,7 +158,7 @@ void MopidyReader::ReadMopidyState(QNetworkReply* reply)
         qDebug() << "Failed to parse json: " << jsonError.errorString();
     }
 
-    //qDebug() << json.toJson();
+    qDebug() << json.toJson();
 
     this->state = json.object()["result"].toString();
 
