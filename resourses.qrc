@@ -4,6 +4,7 @@
         <file>kurt_nala.jpg</file>
         <file>kurt.jpg</file>
         <file>kurt_face.jpg</file>
+        <file>loud_sound.png</file>
     </qresource>
     <qresource prefix="/weather">
         <file>weatherIcons/01d.png</file>
