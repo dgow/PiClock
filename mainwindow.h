@@ -29,8 +29,7 @@ public slots:
 
     void GoBack();
 
-    void VolumeUp();
-    void VolumeDown();
+    void UpdateVolume();
 
 private slots:
     void on_alarmButton_clicked();

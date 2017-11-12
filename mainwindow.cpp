@@ -75,20 +75,17 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->stackedWidget->setCurrentIndex(0);
 
     ui->musicPlayer->SetupVolumeKnob();
-    connect(ui->musicPlayer->volThread, SIGNAL(up()),   this, SLOT(VolumeUp()));
-    connect(ui->musicPlayer->volThread, SIGNAL(down()), this, SLOT(VolumeDown()));
+    connect(ui->musicPlayer->volThread, SIGNAL(up()),   this, SLOT(UpdateVolume()));
+    connect(ui->musicPlayer->volThread, SIGNAL(down()), this, SLOT(UpdateVolume()));
+
 
     ui->volumeBar->setValue(mopidyReader->songProgress);
 }
 
-void MainWindow::VolumeUp()
+void MainWindow::UpdateVolume()
 {
-    //ui->volumeBar->setValue(mopidyReader->songProgress);
-}
-
-void MainWindow::VolumeDown()
-{
-    //ui->volumeBar->setValue(mopidyReader->songProgress);
+    QString volume = QString("%1").arg(ui->musicPlayer->curentVolume);
+    ui->volumeLabel->setText(volume);
 }
 
 void MainWindow::SetShadow(QLabel *label)
@@ -133,9 +130,7 @@ void MainWindow::UpdateTime()
     }
 
     UpdateSong();
-
-    QString volume = QString("%1").arg(ui->musicPlayer->curentVolume);
-    ui->volumeLabel->setText(volume);
+    UpdateVolume();
 }
 
 void MainWindow::UpdateSong()
