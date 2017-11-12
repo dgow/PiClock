@@ -43,12 +43,14 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->songLabel->setAttribute(Qt::WA_TranslucentBackground);
     ui->line->setAttribute(Qt::WA_TranslucentBackground);
     ui->playStateLabel->setAttribute(Qt::WA_TranslucentBackground);
+    ui->volumeLabel->setAttribute(Qt::WA_TranslucentBackground);
 
     SetShadow(ui->timeLabel);
     SetShadow(ui->weatherLabel);
     SetShadow(ui->dateLabel);
     SetShadow(ui->weatherIcon);
     SetShadow(ui->songLabel);
+    SetShadow(ui->volumeLabel);
 
     QTimer *timer = new QTimer(this);
     connect(timer, SIGNAL(timeout()), this, SLOT(UpdateTime()));
@@ -131,6 +133,9 @@ void MainWindow::UpdateTime()
     }
 
     UpdateSong();
+
+    QString volume = QString("VOL: %1").arg(ui->musicPlayer->curentVolume);
+    ui->volumeLabel->setText(volume);
 }
 
 void MainWindow::UpdateSong()
