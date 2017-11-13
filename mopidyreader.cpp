@@ -33,7 +33,7 @@ void MopidyReader::Connect()
 
     QString url = "ws://raspiclock:6680/mopidy/ws";
 
-    if( QHostInfo::localHostName() == "raspiclock")
+  /*  if( QHostInfo::localHostName() == "raspiclock")
     {
         url = "ws://localhost:6680/mopidy/ws";
     }
@@ -41,6 +41,7 @@ void MopidyReader::Connect()
     {
 
     }
+    */
     m_webSocket.open(QUrl(url));
 }
 
