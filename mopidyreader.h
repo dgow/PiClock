@@ -23,7 +23,8 @@ public:
             Play = 666,
             Next = 777
     };
-    Q_ENUM(MessageId)
+    Q_ENUMS(MessageId)
+
 
 
     //
