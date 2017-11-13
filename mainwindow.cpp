@@ -45,7 +45,6 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->volumeLabel->setAttribute(Qt::WA_TranslucentBackground);
     ui->volumeIcon->setAttribute(Qt::WA_TranslucentBackground);
 
-
     SetShadow(ui->timeLabel);
     SetShadow(ui->weatherLabel);
     SetShadow(ui->dateLabel);
@@ -136,7 +135,7 @@ void MainWindow::UpdateSong()
 
 void MainWindow::GetWeather()
 {
-    QString weatherLink = "http://api.openweathermap.org/data/2.5/weather?q=Nuremberg,uk&appid=25879e4404560e805fb4878ea5d57ae2&units=metric&mode=json";
+    QString weatherLink = "http://api.openweathermap.org/data/2.5/weather?q=nuremberg&appid=25879e4404560e805fb4878ea5d57ae2&units=metric&mode=json";
     QUrl url(weatherLink);
     QNetworkRequest request;
     request.setUrl(url);
@@ -148,6 +147,7 @@ void MainWindow::ReadWeather(QNetworkReply* reply)
     if(reply->error())
     {
         qDebug() << "Failed to get weather: " << reply->errorString();
+        qDebug() << reply->readAll();
         return;
     }
 
