@@ -7,19 +7,23 @@
 #include <QtWebSockets/QWebSocket>
 #include <QMetaEnum>
 
-enum MessageId {
-        Play = 666,
-        Next = 777
-};
+
 
 class MopidyReader : public QObject
 {
+
+
     Q_OBJECT
-    Q_ENUM(MessageId)
+
 
 public:
     explicit MopidyReader(QObject *parent);
 
+    enum MessageId {
+            Play = 666,
+            Next = 777
+    };
+    Q_ENUM(MessageId)
 
 
     //
