@@ -17,8 +17,8 @@ public:
     enum MessageId {
             Play = 666,
             Next = 777
-        };
-    Q_ENUM(MessageId)
+    };
+    Q_ENUM(MessageId);
 
     QString title;
     QString artist;
