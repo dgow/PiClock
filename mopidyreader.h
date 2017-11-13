@@ -4,7 +4,8 @@
 #include <QObject>
 #include <QNetworkReply>
 #include <QNetworkAccessManager>
-
+#include <QtWebSockets/QWebSocket>
+#include <QMetaEnum>
 
 class MopidyReader : public QObject
 {
@@ -13,6 +14,11 @@ public:
     explicit MopidyReader(QObject *parent);
 
 
+    enum MessageId {
+            Play = 666,
+            Next = 777
+        };
+    Q_ENUM(MessageId)
 
     QString title;
     QString artist;
@@ -23,13 +29,13 @@ public:
 
     int currentUpdate;
 
+    void Test();
+    void onConnected();
+    void onTextMessageReceived(QString message);
 signals:
     void DataChanged();
 
 public slots:
-    void ReadMopidyTitle(QNetworkReply* reply);
-    void ReadMopidyState(QNetworkReply* reply);
-    void ReadMopidyPosition(QNetworkReply* reply);
 
     void Update();
 
@@ -39,14 +45,13 @@ public slots:
 
 
 private:
-    QNetworkAccessManager *titleManager;
-    QNetworkAccessManager *stateManager;
-    QNetworkAccessManager *positionManager;
 
     QNetworkRequest getRequest();
     QByteArray getCurrentTrack();
     QByteArray getState();
     QByteArray getCurrentPos();
+
+    QWebSocket m_webSocket;
 
 };
 

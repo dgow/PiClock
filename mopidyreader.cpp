@@ -6,9 +6,10 @@
 #include <QString>
 #include <QJsonDocument>
 
+
+
 MopidyReader::MopidyReader(QObject *parent) : QObject(parent)
 {
-
     currentUpdate = 0;
 
     title = "-";
@@ -17,17 +18,14 @@ MopidyReader::MopidyReader(QObject *parent) : QObject(parent)
     length = -1;
     songProgress = 0;
 
-    titleManager = new QNetworkAccessManager(this);
-    stateManager = new QNetworkAccessManager(this);
-    positionManager = new QNetworkAccessManager(this);
-
-    connect(titleManager, SIGNAL(finished(QNetworkReply*)), this, SLOT(ReadMopidyTitle(QNetworkReply*)));
-    connect(stateManager, SIGNAL(finished(QNetworkReply*)), this, SLOT(ReadMopidyState(QNetworkReply*)));
-    connect(positionManager, SIGNAL(finished(QNetworkReply*)), this, SLOT(ReadMopidyPosition(QNetworkReply*)));
+    this->Test();
 }
 
 void MopidyReader::Update()
 {   
+
+    return;
+
     if(currentUpdate == 0)
     {
         UpdateSong();
@@ -46,19 +44,132 @@ void MopidyReader::Update()
 
 }
 
+
+
+
+void MopidyReader::Test()
+{
+
+    qDebug() << "connecting...";
+
+    connect(&m_webSocket, &QWebSocket::connected, this, &MopidyReader::onConnected);
+    //connect(&m_webSocket, &QWebSocket::disconnected, this, &MopidyReader::closed);
+
+    QString url = "ws://raspiclock:6680/mopidy/ws";
+    m_webSocket.open(QUrl(url));
+}
+
+void MopidyReader::onConnected()
+{
+        qDebug() << "Connected";
+    connect(&m_webSocket, &QWebSocket::textMessageReceived,
+            this, &MopidyReader::onTextMessageReceived);
+
+
+    QByteArray a = this->getState();
+
+
+    m_webSocket.sendTextMessage(QString("{\"jsonrpc\": \"2.0\", \"id\": %1, \"method\": \"core.playback.next\"}").arg(MessageId::Play));
+
+
+    QJsonObject json;
+    json["jsonrpc"] = "2.0";
+    json["id"] = 1;
+    json["method"] = "core.playback.get_current_track";
+    QJsonDocument doc(json);
+    QString jstring = doc.toJson();
+
+ //   qDebug() << "ASDFASDFASDFASDF : " << jstring;
+
+ //   m_webSocket.sendTextMessage(jstring);
+}
+
+void MopidyReader::onTextMessageReceived(QString message)
+{
+    //qDebug() << "Message received:" << message;
+
+
+    QJsonParseError jsonError;
+    QJsonDocument json = QJsonDocument::fromJson(message.toUtf8(),&jsonError);
+
+
+
+
+    if (jsonError.error != QJsonParseError::NoError){
+        qDebug() << "ARSCH: " << jsonError.errorString();
+    }
+
+    qDebug() << json.toJson(QJsonDocument::Compact);
+
+    MessageId id = (MessageId)json.object()["id"].toInt();
+
+    if(json.object()["event"].isNull())
+    {
+        qDebug() << "this is not an event";
+
+        if(id == MessageId::Play)
+        {
+            qDebug() << "YEAH you hit play";
+        }
+        else
+        {
+            qDebug() << "Sorry cant read this";
+        }
+        qDebug() << "AND THE ID IS: "  << id;
+    }
+    else
+    {
+
+        QString event = json.object()["event"].toString();
+        qDebug() << "YEAH event received: " << event;
+
+        if( event == "playback_state_changed")
+        {
+            QString newState = json.object()["new_state"].toString();
+            qDebug() << "new state: " << newState;
+
+            if(this->state == "playing")
+            {
+                this->state = "▶";
+            }
+
+            if(this->state == "paused")
+            {
+                this->state = "||";
+            }
+
+            emit DataChanged();
+        }
+    }
+
+
+
+
+
+
+    //m_webSocket.close();
+}
+
+
+
+
+
+
+
+
 void MopidyReader::UpdateSong()
 {
-    titleManager->post(this->getRequest(), getCurrentTrack() );
+    //titleManager->post(this->getRequest(), getCurrentTrack() );
 }
 
 void MopidyReader::UpdateState()
 {
-    stateManager->post(this->getRequest(), getState() );
+    //stateManager->post(this->getRequest(), getState() );
 }
 
 void MopidyReader::UpdatePosition()
 {
-    positionManager->post(this->getRequest(), getCurrentPos() );
+    //positionManager->post(this->getRequest(), getCurrentPos() );
 }
 
 QByteArray MopidyReader::getCurrentTrack()
@@ -104,6 +215,7 @@ QNetworkRequest MopidyReader::getRequest()
     return request;
 }
 
+/*
 void MopidyReader::ReadMopidyTitle(QNetworkReply* reply)
 {
 
@@ -114,7 +226,7 @@ void MopidyReader::ReadMopidyTitle(QNetworkReply* reply)
         qDebug() << "Failed to parse json: " << jsonError.errorString();
     }
 
-   // qDebug() << json.toJson();
+    // qDebug() << json.toJson();
 
     title = json.object()["result"].toObject()["name"].toString();
     length = json.object()["result"].toObject()["length"].toInt();
@@ -176,3 +288,4 @@ void MopidyReader::ReadMopidyState(QNetworkReply* reply)
 
     reply->deleteLater();
 }
+*/
