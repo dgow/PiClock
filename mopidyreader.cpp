@@ -14,53 +14,26 @@ MopidyReader::MopidyReader(QObject *parent) : QObject(parent)
 
     title = "-";
     artist = "-";
-    state = "*";
+    state = "XXX";
     length = -1;
     songProgress = 0;
 
-    this->Test();
-
-
+    this->Connect();
 }
 
-void MopidyReader::Test()
+void MopidyReader::Connect()
 {
-
-    qDebug() << "connecting...";
-
+    qDebug() << "connecting to modipy ...";
     connect(&m_webSocket, &QWebSocket::connected, this, &MopidyReader::onConnected);
-    //connect(&m_webSocket, &QWebSocket::disconnected, this, &MopidyReader::closed);
-
     QString url = "ws://raspiclock:6680/mopidy/ws";
     m_webSocket.open(QUrl(url));
 }
 
 void MopidyReader::onConnected()
 {
-        qDebug() << "Connected";
-    connect(&m_webSocket, &QWebSocket::textMessageReceived,
-            this, &MopidyReader::onTextMessageReceived);
-
-
-    QByteArray a = this->getState();
-
-
+    qDebug() << "Connected";
+    connect(&m_webSocket, &QWebSocket::textMessageReceived, this, &MopidyReader::onTextMessageReceived);
     //m_webSocket.sendTextMessage(QString("{\"jsonrpc\": \"2.0\", \"id\": %1, \"method\": \"core.playback.get_time_position\"}").arg(Play));
-
-
-    QJsonObject json;
-    json["jsonrpc"] = "2.0";
-    json["id"] = 1;
-    json["method"] = "core.playback.get_current_track";
-    QJsonDocument doc(json);
-    QString jstring = doc.toJson();
-
- //   qDebug() << "ASDFASDFASDFASDF : " << jstring;
-
- //   m_webSocket.sendTextMessage(jstring);
-
-
-
 }
 
 void MopidyReader::onTextMessageReceived(QString message)
@@ -144,13 +117,6 @@ void MopidyReader::PrevSong()
     QString jstring = doc.toJson();
     m_webSocket.sendTextMessage(jstring);
 }
-
-
-
-
-
-
-
 
 void MopidyReader::UpdateSong()
 {
