@@ -99,7 +99,7 @@ void MopidyReader::onTextMessageReceived(QString message)
         qDebug() << "ARSCH: " << jsonError.errorString();
     }
 
-    qDebug() << json.toJson(QJsonDocument::Compact);
+    //qDebug() << json.toJson(QJsonDocument::Compact);
 
     MessageId id = (MessageId)json.object()["id"].toInt();
 
