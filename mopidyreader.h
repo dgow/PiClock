@@ -36,7 +36,7 @@ public:
 
     int currentUpdate;
 
-    void Test();
+    void Connect();
     void onConnected();
     void onTextMessageReceived(QString message);
 
