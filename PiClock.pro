@@ -50,4 +50,4 @@ RESOURCES += \
     resourses.qrc
 
 
-LIBS += wiringPi
+LIBS += wiringpi
