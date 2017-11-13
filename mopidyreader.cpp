@@ -107,7 +107,7 @@ void MopidyReader::onTextMessageReceived(QString message)
     {
         qDebug() << "this is not an event";
 
-        if(id == MessageId::Play)
+        if(id == Play)
         {
             qDebug() << "YEAH you hit play";
         }
