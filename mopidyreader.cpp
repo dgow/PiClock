@@ -48,6 +48,10 @@ void MopidyReader::Connect()
 void MopidyReader::onConnected()
 {
     qDebug() << "Connected";
+
+    state = "connected";
+
+
     connect(&m_webSocket, &QWebSocket::textMessageReceived, this, &MopidyReader::onTextMessageReceived);
     //m_webSocket.sendTextMessage(QString("{\"jsonrpc\": \"2.0\", \"id\": %1, \"method\": \"core.playback.get_time_position\"}").arg(Play));
 
