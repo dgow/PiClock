@@ -232,9 +232,11 @@ void MainWindow::mousePressEvent(QMouseEvent *event)
     {
         if(event->x() < 240)
         {
-            ui->musicPlayer->PrevSong();
-        } else {
-            ui->musicPlayer->NextSong();
+            mopidyReader->PrevSong();
+        }
+        else
+        {
+            mopidyReader->NextSong();
         }
     }
 }

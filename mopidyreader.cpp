@@ -80,8 +80,6 @@ void MopidyReader::onTextMessageReceived(QString message)
 
     if(json.object()["event"].isNull())
     {
-        qDebug() << "this is not an event";
-
         if(id == Play)
         {
             qDebug() << "YEAH you hit play";
@@ -95,13 +93,10 @@ void MopidyReader::onTextMessageReceived(QString message)
         {
             qDebug() << "Unknown messageId " << id;
         }
-        qDebug() << "AND THE ID IS: "  << id;
     }
     else
     {
-
         QString event = json.object()["event"].toString();
-        qDebug() << "YEAH event received: " << event;
 
         if( event == "playback_state_changed")
         {
@@ -132,11 +127,22 @@ void MopidyReader::NextSong()
 {
     QJsonObject json;
     json["jsonrpc"] = "2.0";
-    json["id"] = 1;
-    json["method"] = "core.playback.get_current_track";
+    json["id"] = Next;
+    json["method"] = "core.playback.next";
     QJsonDocument doc(json);
     QString jstring = doc.toJson();
+    m_webSocket.sendTextMessage(jstring);
+}
 
+void MopidyReader::PrevSong()
+{
+    QJsonObject json;
+    json["jsonrpc"] = "2.0";
+    json["id"] = Next;
+    json["method"] = "core.playback.previous";
+    QJsonDocument doc(json);
+    QString jstring = doc.toJson();
+    m_webSocket.sendTextMessage(jstring);
 }
 
 

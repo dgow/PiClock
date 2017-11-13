@@ -22,7 +22,8 @@ public:
     enum MessageId {
             Play = 1,
             Next = 2,
-            Position = 3
+            Prev = 3,
+            Position = 4
     };
     Q_ENUMS(MessageId)
 
@@ -40,6 +41,7 @@ public:
     void onTextMessageReceived(QString message);
 
     void NextSong();
+    void PrevSong();
 
 signals:
     void DataChanged();
