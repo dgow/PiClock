@@ -28,7 +28,6 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     mopidyReader = new MopidyReader(this);
-    mopidyReader->Update();
 
     currentLight = 80;
     sunRise = -1;
@@ -233,12 +232,8 @@ void MainWindow::mousePressEvent(QMouseEvent *event)
         if(event->x() < 240)
         {
             ui->musicPlayer->PrevSong();
-            mopidyReader->Update();
-            UpdateSong();
         } else {
             ui->musicPlayer->NextSong();
-            mopidyReader->Update();
-            UpdateSong();
         }
     }
 }
