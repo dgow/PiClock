@@ -39,6 +39,8 @@ public:
     void onConnected();
     void onTextMessageReceived(QString message);
 
+    void NextSong();
+
 signals:
     void DataChanged();
 

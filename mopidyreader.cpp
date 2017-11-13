@@ -65,8 +65,7 @@ void MopidyReader::onConnected()
 
 void MopidyReader::onTextMessageReceived(QString message)
 {
-    qDebug() << "Message received:" << message;
-
+//    qDebug() << "Message received:" << message;
 
     QJsonParseError jsonError;
     QJsonDocument json = QJsonDocument::fromJson(message.toUtf8(),&jsonError);
@@ -89,16 +88,12 @@ void MopidyReader::onTextMessageReceived(QString message)
         }
         else if(id == Position)
         {
-
             this->position = json.object()["result"].toInt();
-
-            qDebug() << "Position update: " << this->position << " / " << this->length;
-
-            emit DataChanged();
+            this->songProgress = (((float)this->position) / (float)this->length) * 100;
         }
         else
         {
-            qDebug() << "Sorry cant read this";
+            qDebug() << "Unknown messageId " << id;
         }
         qDebug() << "AND THE ID IS: "  << id;
     }
@@ -110,10 +105,7 @@ void MopidyReader::onTextMessageReceived(QString message)
 
         if( event == "playback_state_changed")
         {
-            QString newState = json.object()["new_state"].toString();
-            qDebug() << "new state: " << newState;
-
-            this->state = newState;
+            this->state = json.object()["new_state"].toString();
 
             if(this->state == "playing")
             {
@@ -124,27 +116,27 @@ void MopidyReader::onTextMessageReceived(QString message)
             {
                 this->state = "||";
             }
-
-            emit DataChanged();
         }
         else if(event == "track_playback_started")
         {
             this->title = json.object()["tl_track"].toObject()["track"].toObject()["name"].toString();
             this->artist = json.object()["tl_track"].toObject()["track"].toObject()["artists"].toArray()[0].toObject()["name"].toString();
             this->length = json.object()["tl_track"].toObject()["track"].toObject()["length"].toInt();
-
-            qDebug() << "Length: " << this->length;
-
-            emit DataChanged();
         }
     }
 
+    emit DataChanged();
+}
 
+void MopidyReader::NextSong()
+{
+    QJsonObject json;
+    json["jsonrpc"] = "2.0";
+    json["id"] = 1;
+    json["method"] = "core.playback.get_current_track";
+    QJsonDocument doc(json);
+    QString jstring = doc.toJson();
 
-
-
-
-    //m_webSocket.close();
 }
 
 
