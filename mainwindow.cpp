@@ -123,6 +123,7 @@ void MainWindow::UpdateTime()
             ui->stackedWidget->setCurrentIndex(2);
         }
     }
+    mopidyReader->UpdatePosition();
 }
 
 void MainWindow::UpdateSong()

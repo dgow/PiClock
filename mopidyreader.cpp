@@ -19,6 +19,8 @@ MopidyReader::MopidyReader(QObject *parent) : QObject(parent)
     songProgress = 0;
 
     this->Test();
+
+
 }
 
 void MopidyReader::Test()
@@ -43,7 +45,7 @@ void MopidyReader::onConnected()
     QByteArray a = this->getState();
 
 
-    //m_webSocket.sendTextMessage(QString("{\"jsonrpc\": \"2.0\", \"id\": %1, \"method\": \"core.playback.next\"}").arg(Play));
+    //m_webSocket.sendTextMessage(QString("{\"jsonrpc\": \"2.0\", \"id\": %1, \"method\": \"core.playback.get_time_position\"}").arg(Play));
 
 
     QJsonObject json;
@@ -56,6 +58,9 @@ void MopidyReader::onConnected()
  //   qDebug() << "ASDFASDFASDFASDF : " << jstring;
 
  //   m_webSocket.sendTextMessage(jstring);
+
+
+
 }
 
 void MopidyReader::onTextMessageReceived(QString message)
@@ -81,6 +86,15 @@ void MopidyReader::onTextMessageReceived(QString message)
         if(id == Play)
         {
             qDebug() << "YEAH you hit play";
+        }
+        else if(id == Position)
+        {
+
+            this->position = json.object()["result"].toInt();
+
+            qDebug() << "Position update: " << this->position << " / " << this->length;
+
+            emit DataChanged();
         }
         else
         {
@@ -117,6 +131,10 @@ void MopidyReader::onTextMessageReceived(QString message)
         {
             this->title = json.object()["tl_track"].toObject()["track"].toObject()["name"].toString();
             this->artist = json.object()["tl_track"].toObject()["track"].toObject()["artists"].toArray()[0].toObject()["name"].toString();
+            this->length = json.object()["tl_track"].toObject()["track"].toObject()["length"].toInt();
+
+            qDebug() << "Length: " << this->length;
+
             emit DataChanged();
         }
     }
@@ -149,6 +167,8 @@ void MopidyReader::UpdateState()
 void MopidyReader::UpdatePosition()
 {
     //positionManager->post(this->getRequest(), getCurrentPos() );
+    m_webSocket.sendTextMessage(this->getCurrentPos());
+
 }
 
 QByteArray MopidyReader::getCurrentTrack()
@@ -162,11 +182,11 @@ QByteArray MopidyReader::getCurrentTrack()
     return doc.toJson();
 }
 
-QByteArray MopidyReader::getCurrentPos()
+QString MopidyReader::getCurrentPos()
 {
     QJsonObject json;
     json["jsonrpc"] = "2.0";
-    json["id"] = 1;
+    json["id"] = Position;
     json["method"] = "core.playback.get_time_position";
     QJsonDocument doc(json);
 

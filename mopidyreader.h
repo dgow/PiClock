@@ -20,8 +20,9 @@ public:
     explicit MopidyReader(QObject *parent);
 
     enum MessageId {
-            Play = 666,
-            Next = 777
+            Play = 1,
+            Next = 2,
+            Position = 3
     };
     Q_ENUMS(MessageId)
 
@@ -51,7 +52,7 @@ private:
     QNetworkRequest getRequest();
     QByteArray getCurrentTrack();
     QByteArray getState();
-    QByteArray getCurrentPos();
+    QString getCurrentPos();
 
     QWebSocket m_webSocket;
 
