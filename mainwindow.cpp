@@ -57,7 +57,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     QTimer *timer = new QTimer(this);
     connect(timer, SIGNAL(timeout()), this, SLOT(UpdateTime()));
-    timer->start(250);
+    timer->start(1000);
 
     QTimer *weatherTimer = new QTimer(this);
     connect(weatherTimer, SIGNAL(timeout()), this, SLOT(GetWeather()));
@@ -80,9 +80,6 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->musicPlayer->SetupVolumeKnob();
     connect(ui->musicPlayer->volThread, SIGNAL(up()),   this, SLOT(UpdateVolume()));
     connect(ui->musicPlayer->volThread, SIGNAL(down()), this, SLOT(UpdateVolume()));
-
-    //connect(ui->musicPlayer, SIGNAL(SongChanged()), mopidyReader,   SLOT(UpdateSong()));
-    //connect(ui->musicPlayer, SIGNAL(StateChanged()), mopidyReader,  SLOT(UpdateState()));
 
     connect(mopidyReader, SIGNAL(DataChanged()), this,  SLOT(UpdateSong()));
 
@@ -128,9 +125,6 @@ void MainWindow::UpdateTime()
             ui->stackedWidget->setCurrentIndex(2);
         }
     }
-
-    mopidyReader->Update();
-    UpdateSong();
 }
 
 void MainWindow::UpdateSong()

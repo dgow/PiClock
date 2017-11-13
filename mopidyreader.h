@@ -25,10 +25,6 @@ public:
     };
     Q_ENUMS(MessageId)
 
-
-
-    //
-
     QString title;
     QString artist;
     QString state;
@@ -41,17 +37,14 @@ public:
     void Test();
     void onConnected();
     void onTextMessageReceived(QString message);
+
 signals:
     void DataChanged();
 
 public slots:
-
-    void Update();
-
     void UpdateSong();
     void UpdateState();
     void UpdatePosition();
-
 
 private:
 

@@ -21,32 +21,6 @@ MopidyReader::MopidyReader(QObject *parent) : QObject(parent)
     this->Test();
 }
 
-void MopidyReader::Update()
-{   
-
-    return;
-
-    if(currentUpdate == 0)
-    {
-        UpdateSong();
-    }
-    if(currentUpdate == 1)
-    {
-        UpdateState();
-    }
-    if(currentUpdate == 2)
-    {
-        UpdatePosition();
-    }
-
-    currentUpdate++;
-    currentUpdate = currentUpdate % 3;
-
-}
-
-
-
-
 void MopidyReader::Test()
 {
 
@@ -91,9 +65,6 @@ void MopidyReader::onTextMessageReceived(QString message)
 
     QJsonParseError jsonError;
     QJsonDocument json = QJsonDocument::fromJson(message.toUtf8(),&jsonError);
-
-
-
 
     if (jsonError.error != QJsonParseError::NoError){
         qDebug() << "ARSCH: " << jsonError.errorString();
@@ -222,78 +193,3 @@ QNetworkRequest MopidyReader::getRequest()
 
     return request;
 }
-
-/*
-void MopidyReader::ReadMopidyTitle(QNetworkReply* reply)
-{
-
-    QJsonParseError jsonError;
-    QJsonDocument json = QJsonDocument::fromJson(reply->readAll(),&jsonError);
-
-    if (jsonError.error != QJsonParseError::NoError){
-        qDebug() << "Failed to parse json: " << jsonError.errorString();
-    }
-
-    // qDebug() << json.toJson();
-
-    title = json.object()["result"].toObject()["name"].toString();
-    length = json.object()["result"].toObject()["length"].toInt();
-    artist = json.object()["result"].toObject()["artists"].toArray()[0].toObject()["name"].toString();
-
-    emit DataChanged();
-
-    reply->deleteLater();
-}
-
-void MopidyReader::ReadMopidyPosition(QNetworkReply* reply)
-{
-
-    QJsonParseError jsonError;
-    QJsonDocument json = QJsonDocument::fromJson(reply->readAll(),&jsonError);
-
-    if (jsonError.error != QJsonParseError::NoError){
-        qDebug() << "Failed to parse json: " << jsonError.errorString();
-    }
-
-    //qDebug() << json.toJson();
-
-    position = json.object()["result"].toInt();
-
-    songProgress = ((float)this->position / (float)this->length) * 100;
-
-    //qDebug() << ":::" << songProgress;
-
-    emit DataChanged();
-
-    reply->deleteLater();
-}
-
-void MopidyReader::ReadMopidyState(QNetworkReply* reply)
-{
-
-    QJsonParseError jsonError;
-    QJsonDocument json = QJsonDocument::fromJson(reply->readAll(),&jsonError);
-
-    if (jsonError.error != QJsonParseError::NoError){
-        qDebug() << "Failed to parse json: " << jsonError.errorString();
-    }
-
-    //qDebug() << json.toJson();
-
-    this->state = json.object()["result"].toString();
-
-    if(this->state == "playing")
-    {
-        this->state = "▶";
-    }
-
-    if(this->state == "paused")
-    {
-        this->state = "||";
-    }
-
-    emit DataChanged();
-
-    reply->deleteLater();
-}
-*/
