@@ -86,7 +86,7 @@ void MopidyReader::onConnected()
 
 void MopidyReader::onTextMessageReceived(QString message)
 {
-    //qDebug() << "Message received:" << message;
+    qDebug() << "Message received:" << message;
 
 
     QJsonParseError jsonError;
@@ -99,7 +99,7 @@ void MopidyReader::onTextMessageReceived(QString message)
         qDebug() << "ARSCH: " << jsonError.errorString();
     }
 
-    //qDebug() << json.toJson(QJsonDocument::Compact);
+    //qDebug() << json.toJson(QJsonDocument::Indented);
 
     MessageId id = (MessageId)json.object()["id"].toInt();
 
@@ -140,6 +140,12 @@ void MopidyReader::onTextMessageReceived(QString message)
                 this->state = "||";
             }
 
+            emit DataChanged();
+        }
+        else if(event == "track_playback_started")
+        {
+            this->title = json.object()["tl_track"].toObject()["track"].toObject()["name"].toString();
+            this->artist = json.object()["tl_track"].toObject()["track"].toObject()["artists"].toArray()[0].toObject()["name"].toString();
             emit DataChanged();
         }
     }

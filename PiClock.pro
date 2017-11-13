@@ -49,5 +49,6 @@ FORMS += \
 RESOURCES += \
     resourses.qrc
 
-
-LIBS += WiringPi/wiringPi/libwiringPi.so.2.44
+!macx {
+    LIBS += WiringPi/wiringPi/libwiringPi.so.2.44
+}
