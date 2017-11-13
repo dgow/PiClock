@@ -128,7 +128,7 @@ void MopidyReader::onTextMessageReceived(QString message)
             QString newState = json.object()["new_state"].toString();
             qDebug() << "new state: " << newState;
 
-            this->state = "arsch";
+            this->state = newState;
 
             if(this->state == "\"playing\"")
             {
