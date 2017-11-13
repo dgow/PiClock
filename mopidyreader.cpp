@@ -69,7 +69,7 @@ void MopidyReader::onConnected()
     QByteArray a = this->getState();
 
 
-    m_webSocket.sendTextMessage(QString("{\"jsonrpc\": \"2.0\", \"id\": %1, \"method\": \"core.playback.next\"}").arg(MessageId::Play));
+    m_webSocket.sendTextMessage(QString("{\"jsonrpc\": \"2.0\", \"id\": %1, \"method\": \"core.playback.next\"}").arg(Play));
 
 
     QJsonObject json;
