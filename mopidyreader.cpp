@@ -130,7 +130,7 @@ void MopidyReader::onTextMessageReceived(QString message)
 
             this->state = newState;
 
-            if(this->state == "\"playing\"")
+            if(this->state == "playing")
             {
                 this->state = "▶";
             }
