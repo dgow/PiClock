@@ -50,4 +50,4 @@ RESOURCES += \
     resourses.qrc
 
 
-LIBS += wiringpi
+LIBS += WiringPi/wiringPi/libwiringPi.so.2.44
