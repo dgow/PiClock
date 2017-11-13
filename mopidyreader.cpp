@@ -23,7 +23,8 @@ MopidyReader::MopidyReader(QObject *parent) : QObject(parent)
 
     connectTimer = new QTimer(this);
     connect(connectTimer, SIGNAL(timeout()), this, SLOT(Connect()));
-    connectTimer->start(1000);
+   // connectTimer->start(1000);
+    QTimer::singleShot(60000,this, SLOT(Connect()));
 }
 
 void MopidyReader::Connect()
