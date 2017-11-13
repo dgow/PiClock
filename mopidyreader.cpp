@@ -5,8 +5,7 @@
 #include <QJsonArray>
 #include <QString>
 #include <QJsonDocument>
-
-
+#include <QHostInfo>
 
 MopidyReader::MopidyReader(QObject *parent) : QObject(parent)
 {
@@ -18,14 +17,28 @@ MopidyReader::MopidyReader(QObject *parent) : QObject(parent)
     length = -1;
     songProgress = 0;
 
-    this->Connect();
+    //this->Connect();
+
+    connectTimer = new QTimer(this);
+    connect(connectTimer, SIGNAL(timeout()), this, SLOT(Connect()));
+    connectTimer->start(1000);
 }
 
 void MopidyReader::Connect()
 {
     qDebug() << "connecting to modipy ...";
     connect(&m_webSocket, &QWebSocket::connected, this, &MopidyReader::onConnected);
+
     QString url = "ws://raspiclock:6680/mopidy/ws";
+
+    if( QHostInfo::localHostName() == "raspiclock")
+    {
+        url = "ws://loalhost:6680/mopidy/ws";
+    }
+    else
+    {
+
+    }
     m_webSocket.open(QUrl(url));
 }
 
@@ -34,6 +47,8 @@ void MopidyReader::onConnected()
     qDebug() << "Connected";
     connect(&m_webSocket, &QWebSocket::textMessageReceived, this, &MopidyReader::onTextMessageReceived);
     //m_webSocket.sendTextMessage(QString("{\"jsonrpc\": \"2.0\", \"id\": %1, \"method\": \"core.playback.get_time_position\"}").arg(Play));
+
+    connectTimer->stop();
 }
 
 void MopidyReader::onTextMessageReceived(QString message)

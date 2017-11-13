@@ -6,15 +6,11 @@
 #include <QNetworkAccessManager>
 #include <QtWebSockets/QWebSocket>
 #include <QMetaEnum>
-
-
+#include <QTimer>
 
 class MopidyReader : public QObject
 {
-
-
     Q_OBJECT
-
 
 public:
     explicit MopidyReader(QObject *parent);
@@ -36,12 +32,14 @@ public:
 
     int currentUpdate;
 
-    void Connect();
+
     void onConnected();
     void onTextMessageReceived(QString message);
 
     void NextSong();
     void PrevSong();
+
+    QTimer *connectTimer;
 
 signals:
     void DataChanged();
@@ -50,6 +48,8 @@ public slots:
     void UpdateSong();
     void UpdateState();
     void UpdatePosition();
+
+    void Connect();
 
 private:
 
