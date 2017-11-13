@@ -19,6 +19,8 @@ MopidyReader::MopidyReader(QObject *parent) : QObject(parent)
 
     //this->Connect();
 
+    connect(&m_webSocket, &QWebSocket::connected, this, &MopidyReader::onConnected);
+
     connectTimer = new QTimer(this);
     connect(connectTimer, SIGNAL(timeout()), this, SLOT(Connect()));
     connectTimer->start(1000);
@@ -27,13 +29,13 @@ MopidyReader::MopidyReader(QObject *parent) : QObject(parent)
 void MopidyReader::Connect()
 {
     qDebug() << "connecting to modipy ...";
-    connect(&m_webSocket, &QWebSocket::connected, this, &MopidyReader::onConnected);
+
 
     QString url = "ws://raspiclock:6680/mopidy/ws";
 
     if( QHostInfo::localHostName() == "raspiclock")
     {
-        url = "ws://loalhost:6680/mopidy/ws";
+        url = "ws://localhost:6680/mopidy/ws";
     }
     else
     {
