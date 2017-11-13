@@ -48,3 +48,6 @@ FORMS += \
 
 RESOURCES += \
     resourses.qrc
+
+
+LIBS += wiringPi
