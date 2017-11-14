@@ -36,30 +36,14 @@ void MopidyReader::Connect()
     this->state = "connecting";
     emit DataChanged();
 
-
     QString url = "ws://raspiclock:6680/mopidy/ws";
-
-  /*  if( QHostInfo::localHostName() == "raspiclock")
-    {
-        url = "ws://localhost:6680/mopidy/ws";
-    }
-    else
-    {
-
-    }
-    */
-
-
-
     m_webSocket.open(QUrl(url));
 }
 
 void MopidyReader::onConnected()
 {
     qDebug() << "Connected";
-
     state = "connected";
-
 
     connect(&m_webSocket, &QWebSocket::textMessageReceived, this, &MopidyReader::onTextMessageReceived);
 
@@ -101,6 +85,9 @@ void MopidyReader::onTextMessageReceived(QString message)
     }
     else
     {
+
+        qDebug() << "Message received:" << message;
+
         QString event = json.object()["event"].toString();
 
         if( event == "playback_state_changed")
