@@ -90,7 +90,7 @@ void ScrollText::paintEvent(QPaintEvent*)
         }
 
 
-        /*
+
         //Apply Alpha Channel
         pb.setCompositionMode(QPainter::CompositionMode_DestinationIn);
         pb.setClipRect(width() - 15, 0, 15, height());
@@ -100,7 +100,7 @@ void ScrollText::paintEvent(QPaintEvent*)
         if(scrollPos < 0)
             pb.setOpacity((qreal)(qMax(-8, scrollPos) + 8) / 8.0);
         pb.drawImage(0, 0, alphaChannel);
-*/
+
         pb.end();
 
         p.drawImage(0, 0, buffer);
