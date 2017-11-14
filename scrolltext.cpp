@@ -14,7 +14,7 @@ ScrollText::ScrollText(QWidget *parent) :
     setSeparator("   ◆   ");
 
     connect(&timer, SIGNAL(timeout()), this, SLOT(timer_timeout()));
-    timer.setInterval(100);
+    timer.setInterval(50);
 }
 
 QString ScrollText::text() const
@@ -82,9 +82,12 @@ void ScrollText::paintEvent(QPaintEvent*)
         int x = qMin(-scrollPos, 0) + leftMargin;
         while(x < width())
         {
+
+            //qDebug() << "DARW";
             pb.drawStaticText(QPointF(x, (height() - wholeTextSize.height()) / 2) + QPoint(2, 2), staticText);
             x += wholeTextSize.width();
         }
+
 
         /*
         //Apply Alpha Channel
