@@ -111,9 +111,9 @@ void ScrollText::paintEvent(QPaintEvent*)
     }
     else
     {
-        p.drawStaticText(QPointF(leftMargin, (height() - wholeTextSize.height()) / 2), staticText);
-
-    }}
+        p.drawStaticText(QPointF(leftMargin, (height() - wholeTextSize.height()) / 2) + QPoint(2, -5), staticText);
+    }
+}
 
 void ScrollText::resizeEvent(QResizeEvent*)
 {
