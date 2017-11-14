@@ -41,6 +41,7 @@ private:
     QImage alphaChannel;
     QImage buffer;
     QTimer timer;
+    float timerUpdate;
 
 private slots:
     virtual void timer_timeout();
