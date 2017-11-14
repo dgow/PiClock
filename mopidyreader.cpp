@@ -112,8 +112,8 @@ void MopidyReader::onTextMessageReceived(QString message)
         }
         else if(event == "stream_title_changed")
         {
-            this->artist = this->title;
-            this->title = json.object()["title"].toString();
+
+            this->artist = json.object()["title"].toString();
             this->state = "▶";
         }
     }
