@@ -15,7 +15,7 @@ ScrollText::ScrollText(QWidget *parent) :
 
     connect(&timer, SIGNAL(timeout()), this, SLOT(timer_timeout()));
 
-    timerUpdate = 1.0/15.0 * 1000; //30fps
+    timerUpdate = 1.0/25.0 * 1000; //30fps
 
     timer.setInterval(timerUpdate);
 }
