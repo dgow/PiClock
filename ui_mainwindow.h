@@ -119,7 +119,6 @@ public:
 
         playStateLabel = new QLabel(clock);
         playStateLabel->setObjectName(QStringLiteral("playStateLabel"));
-        playStateLabel->setMaximumSize(QSize(20, 16777215));
         QFont font2;
         font2.setPointSize(17);
         playStateLabel->setFont(font2);
