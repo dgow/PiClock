@@ -14,7 +14,7 @@ ScrollText::ScrollText(QWidget *parent) :
     setSeparator("   ◆   ");
 
     connect(&timer, SIGNAL(timeout()), this, SLOT(timer_timeout()));
-    timer.setInterval(1.0/60.0 * 1000);
+    timer.setInterval(1.0/30.0 * 1000);
 }
 
 QString ScrollText::text() const
@@ -149,7 +149,7 @@ void ScrollText::resizeEvent(QResizeEvent*)
 void ScrollText::timer_timeout()
 {
     //timer.setInterval(50);
-    scrollPos = (scrollPos + 2) % wholeTextSize.width();
+    scrollPos = (scrollPos + 1) % wholeTextSize.width();
     update();
 }
 
