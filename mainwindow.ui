@@ -114,9 +114,9 @@
             <property name="font">
              <font>
               <family>Helvetica</family>
-              <pointsize>25</pointsize>
-              <weight>50</weight>
-              <bold>false</bold>
+              <pointsize>20</pointsize>
+              <weight>75</weight>
+              <bold>true</bold>
              </font>
             </property>
             <property name="styleSheet">
