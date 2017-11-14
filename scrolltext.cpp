@@ -58,7 +58,7 @@ void ScrollText::updateText()
     if(scrollEnabled)
     {
         staticText.setText(_text + _separator);
-        timer.start(2000);
+        //timer.start(2000);
         timer.start();
     }
     else
