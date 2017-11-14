@@ -121,3 +121,10 @@ void MusicPlayer::on_gongButton_clicked()
     StartProcess("mpc", "clear");
     StartProcess("mpc", "load Gong");
 }
+
+
+void MusicPlayer::on_mixTapeButton_clicked()
+{
+    StartProcess("mpc", "clear");
+    StartProcess("mpc", "load MixTape");
+}

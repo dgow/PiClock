@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'musicplayer.ui'
 **
-** Created by: Qt User Interface Compiler version 5.3.2
+** Created by: Qt User Interface Compiler version 5.9.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -26,6 +26,8 @@ public:
     QVBoxLayout *verticalLayout;
     QPushButton *HDMButton;
     QPushButton *chillOutButton;
+    QPushButton *gongButton;
+    QPushButton *mixTapeButton;
     QPushButton *lightButton;
     QPushButton *okButton;
 
@@ -33,7 +35,7 @@ public:
     {
         if (MusicPlayer->objectName().isEmpty())
             MusicPlayer->setObjectName(QStringLiteral("MusicPlayer"));
-        MusicPlayer->resize(480, 320);
+        MusicPlayer->resize(480, 322);
         verticalLayout = new QVBoxLayout(MusicPlayer);
         verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
         HDMButton = new QPushButton(MusicPlayer);
@@ -43,8 +45,10 @@ public:
         sizePolicy.setVerticalStretch(0);
         sizePolicy.setHeightForWidth(HDMButton->sizePolicy().hasHeightForWidth());
         HDMButton->setSizePolicy(sizePolicy);
+        QFont font;
+        font.setPointSize(30);
+        HDMButton->setFont(font);
         HDMButton->setStyleSheet(QStringLiteral("color: rgb(255, 255, 255);"));
-        HDMButton->setDefault(false);
         HDMButton->setFlat(false);
 
         verticalLayout->addWidget(HDMButton);
@@ -53,16 +57,35 @@ public:
         chillOutButton->setObjectName(QStringLiteral("chillOutButton"));
         sizePolicy.setHeightForWidth(chillOutButton->sizePolicy().hasHeightForWidth());
         chillOutButton->setSizePolicy(sizePolicy);
+        chillOutButton->setFont(font);
         chillOutButton->setStyleSheet(QStringLiteral("color: rgb(255, 255, 255);"));
-        chillOutButton->setDefault(false);
         chillOutButton->setFlat(false);
 
         verticalLayout->addWidget(chillOutButton);
+
+        gongButton = new QPushButton(MusicPlayer);
+        gongButton->setObjectName(QStringLiteral("gongButton"));
+        sizePolicy.setHeightForWidth(gongButton->sizePolicy().hasHeightForWidth());
+        gongButton->setSizePolicy(sizePolicy);
+        gongButton->setFont(font);
+        gongButton->setStyleSheet(QStringLiteral("color: rgb(255, 255, 255);"));
+        gongButton->setFlat(false);
+
+        verticalLayout->addWidget(gongButton);
+
+        mixTapeButton = new QPushButton(MusicPlayer);
+        mixTapeButton->setObjectName(QStringLiteral("mixTapeButton"));
+        mixTapeButton->setFont(font);
+        mixTapeButton->setStyleSheet(QStringLiteral("color: rgb(255, 255, 255);"));
+        mixTapeButton->setFlat(false);
+
+        verticalLayout->addWidget(mixTapeButton);
 
         lightButton = new QPushButton(MusicPlayer);
         lightButton->setObjectName(QStringLiteral("lightButton"));
         sizePolicy.setHeightForWidth(lightButton->sizePolicy().hasHeightForWidth());
         lightButton->setSizePolicy(sizePolicy);
+        lightButton->setFont(font);
         lightButton->setStyleSheet(QStringLiteral("color: rgb(255, 255, 255);"));
 
         verticalLayout->addWidget(lightButton);
@@ -74,8 +97,8 @@ public:
         sizePolicy1.setVerticalStretch(0);
         sizePolicy1.setHeightForWidth(okButton->sizePolicy().hasHeightForWidth());
         okButton->setSizePolicy(sizePolicy1);
+        okButton->setFont(font);
         okButton->setStyleSheet(QStringLiteral("color: rgb(255, 255, 255);"));
-        okButton->setDefault(false);
         okButton->setFlat(false);
 
         verticalLayout->addWidget(okButton);
@@ -83,16 +106,25 @@ public:
 
         retranslateUi(MusicPlayer);
 
+        HDMButton->setDefault(false);
+        chillOutButton->setDefault(false);
+        gongButton->setDefault(false);
+        mixTapeButton->setDefault(false);
+        okButton->setDefault(false);
+
+
         QMetaObject::connectSlotsByName(MusicPlayer);
     } // setupUi
 
     void retranslateUi(QWidget *MusicPlayer)
     {
-        MusicPlayer->setWindowTitle(QApplication::translate("MusicPlayer", "Form", 0));
-        HDMButton->setText(QApplication::translate("MusicPlayer", "HDM", 0));
-        chillOutButton->setText(QApplication::translate("MusicPlayer", "ChillOut++", 0));
-        lightButton->setText(QApplication::translate("MusicPlayer", "Light", 0));
-        okButton->setText(QApplication::translate("MusicPlayer", "OK", 0));
+        MusicPlayer->setWindowTitle(QApplication::translate("MusicPlayer", "Form", Q_NULLPTR));
+        HDMButton->setText(QApplication::translate("MusicPlayer", "HDM", Q_NULLPTR));
+        chillOutButton->setText(QApplication::translate("MusicPlayer", "ChillOut++", Q_NULLPTR));
+        gongButton->setText(QApplication::translate("MusicPlayer", "Gong", Q_NULLPTR));
+        mixTapeButton->setText(QApplication::translate("MusicPlayer", "MixTape", Q_NULLPTR));
+        lightButton->setText(QApplication::translate("MusicPlayer", "Light", Q_NULLPTR));
+        okButton->setText(QApplication::translate("MusicPlayer", "OK", Q_NULLPTR));
     } // retranslateUi
 
 };

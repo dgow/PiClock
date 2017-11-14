@@ -47,6 +47,9 @@ public slots:
 private slots:
    void on_gongButton_clicked();
 
+
+   void on_mixTapeButton_clicked();
+
 private:
     Ui::MusicPlayer *ui;
 
