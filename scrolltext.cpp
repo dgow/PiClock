@@ -79,12 +79,13 @@ void ScrollText::paintEvent(QPaintEvent*)
         pb.setPen(p.pen());
         pb.setFont(p.font());
 
+
         int x = qMin(-scrollPos, 0) + leftMargin;
-        while(x < width())
+        //while(x < width())
         {
 
             //qDebug() << "DARW";
-            pb.drawStaticText(QPointF(x, (height() - wholeTextSize.height()) / 2) + QPoint(2, 2), staticText);
+            pb.drawStaticText(QPointF(scrollPos, (height() - wholeTextSize.height()) / 2) + QPoint(2, 2), staticText);
             x += wholeTextSize.width();
         }
 
