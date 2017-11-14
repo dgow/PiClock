@@ -11,7 +11,7 @@ ScrollText::ScrollText(QWidget *parent) :
     setFixedHeight(fontMetrics().height());
     leftMargin = width() / 10;
 
-    setSeparator("   ---   ");
+    setSeparator("   ◆   ");
 
     connect(&timer, SIGNAL(timeout()), this, SLOT(timer_timeout()));
     timer.setInterval(50);
