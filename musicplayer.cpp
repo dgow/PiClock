@@ -89,12 +89,14 @@ void MusicPlayer::on_chillOutButton_clicked()
 {
     StartProcess("mpc", "clear");
     StartProcess("mpc", "load ChillOut++");
+    emit this->GoBack();
 }
 
 void MusicPlayer::on_HDMButton_clicked()
 {   
     StartProcess("mpc", "clear");
     StartProcess("mpc", "load HDM");
+    emit this->GoBack();
 }
 
 void MusicPlayer::on_lightButton_clicked()
@@ -120,6 +122,7 @@ void MusicPlayer::on_gongButton_clicked()
 {
     StartProcess("mpc", "clear");
     StartProcess("mpc", "load Gong");
+    emit this->GoBack();
 }
 
 
@@ -127,4 +130,5 @@ void MusicPlayer::on_mixTapeButton_clicked()
 {
     StartProcess("mpc", "clear");
     StartProcess("mpc", "load MixTape");
+    emit this->GoBack();
 }
