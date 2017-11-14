@@ -114,7 +114,7 @@
             <property name="font">
              <font>
               <family>Helvetica</family>
-              <pointsize>20</pointsize>
+              <pointsize>17</pointsize>
               <weight>50</weight>
               <bold>false</bold>
              </font>
