@@ -110,6 +110,10 @@ void MopidyReader::onTextMessageReceived(QString message)
             this->artist = json.object()["tl_track"].toObject()["track"].toObject()["artists"].toArray()[0].toObject()["name"].toString();
             this->length = json.object()["tl_track"].toObject()["track"].toObject()["length"].toInt();
         }
+        else if(event == "stream_title_changed")
+        {
+            this->title = json.object()["title"].toString();
+        }
     }
 
     emit DataChanged();
