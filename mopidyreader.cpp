@@ -20,16 +20,21 @@ MopidyReader::MopidyReader(QObject *parent) : QObject(parent)
     //this->Connect();
 
     connect(&m_webSocket, &QWebSocket::connected, this, &MopidyReader::onConnected);
+    connect(&m_webSocket, SIGNAL(error(QAbstractSocket::SocketError)), this, SLOT(onError(QAbstractSocket::SocketError)) );
+    connect(&m_webSocket, SIGNAL(disconnected()), this, SLOT(onDisconnect()));
 
     connectTimer = new QTimer(this);
     connect(connectTimer, SIGNAL(timeout()), this, SLOT(Connect()));
    // connectTimer->start(1000);
-    QTimer::singleShot(60000,this, SLOT(Connect()));
+
+    QTimer::singleShot(1000,this, SLOT(Connect()));
 }
 
 void MopidyReader::Connect()
 {
     qDebug() << "connecting to modipy ...";
+    this->state = "connecting";
+    emit DataChanged();
 
 
     QString url = "ws://raspiclock:6680/mopidy/ws";
@@ -43,6 +48,9 @@ void MopidyReader::Connect()
 
     }
     */
+
+
+
     m_webSocket.open(QUrl(url));
 }
 
@@ -54,6 +62,7 @@ void MopidyReader::onConnected()
 
 
     connect(&m_webSocket, &QWebSocket::textMessageReceived, this, &MopidyReader::onTextMessageReceived);
+
     //m_webSocket.sendTextMessage(QString("{\"jsonrpc\": \"2.0\", \"id\": %1, \"method\": \"core.playback.get_time_position\"}").arg(Play));
 
     connectTimer->stop();
@@ -119,6 +128,14 @@ void MopidyReader::onTextMessageReceived(QString message)
     emit DataChanged();
 }
 
+void MopidyReader::onError(QAbstractSocket::SocketError error)
+{
+    qDebug() << "ERROR - trying to reconnect";
+    qDebug() << error;
+
+    QTimer::singleShot(2000,this, SLOT(Connect()));
+}
+
 void MopidyReader::NextSong()
 {
     QJsonObject json;
@@ -156,6 +173,13 @@ void MopidyReader::UpdatePosition()
     //positionManager->post(this->getRequest(), getCurrentPos() );
     m_webSocket.sendTextMessage(this->getCurrentPos());
 
+}
+
+void MopidyReader::onDisconnect()
+{
+    qDebug() << "DISCONNECTED";
+    this->state = "disconnected";
+    emit DataChanged();
 }
 
 QByteArray MopidyReader::getCurrentTrack()

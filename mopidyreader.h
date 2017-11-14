@@ -49,7 +49,9 @@ public slots:
     void UpdateState();
     void UpdatePosition();
 
+    void onDisconnect();
     void Connect();
+    void onError(QAbstractSocket::SocketError error);
 
 private:
 
