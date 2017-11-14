@@ -152,7 +152,7 @@ void ScrollText::resizeEvent(QResizeEvent*)
 void ScrollText::timer_timeout()
 {
     timer.setInterval(timerUpdate);
-    scrollPos = (scrollPos + 1) % wholeTextSize.width();
+    scrollPos = (scrollPos + 2) % wholeTextSize.width();
     update();
 }
 
