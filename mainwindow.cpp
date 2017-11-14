@@ -52,7 +52,7 @@ MainWindow::MainWindow(QWidget *parent) :
     SetShadow(ui->songLabel);
     SetShadow(ui->volumeLabel);
     SetShadow(ui->volumeIcon);
-    SetShadow(ui->fancyWidget);
+    //SetShadow(ui->fancyWidget);
 
     QTimer *timer = new QTimer(this);
     connect(timer, SIGNAL(timeout()), this, SLOT(UpdateTime()));
