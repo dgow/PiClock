@@ -50,7 +50,7 @@ private:
     Ui::MainWindow *ui;
     QNetworkAccessManager *manager;
 
-    void SetShadow(QLabel *label);
+    void SetShadow(QWidget *label);
     int TargetBrightness();
 
     void mousePressEvent (QMouseEvent *event);

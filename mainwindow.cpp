@@ -52,6 +52,7 @@ MainWindow::MainWindow(QWidget *parent) :
     SetShadow(ui->songLabel);
     SetShadow(ui->volumeLabel);
     SetShadow(ui->volumeIcon);
+    SetShadow(ui->fancyWidget);
 
     QTimer *timer = new QTimer(this);
     connect(timer, SIGNAL(timeout()), this, SLOT(UpdateTime()));
@@ -91,7 +92,7 @@ void MainWindow::UpdateVolume()
     ui->volumeLabel->setText(volume);
 }
 
-void MainWindow::SetShadow(QLabel *label)
+void MainWindow::SetShadow(QWidget *label)
 {
     QGraphicsDropShadowEffect *sh = new QGraphicsDropShadowEffect();
     sh->setColor(QColor(0,0,0));
@@ -129,9 +130,11 @@ void MainWindow::UpdateTime()
 void MainWindow::UpdateSong()
 {
     QString song = mopidyReader->artist + " - " + mopidyReader->title;
-    ui->songLabel->setText(song);
+    //ui->songLabel->setText(song);
     ui->playStateLabel->setText(mopidyReader->state);
     ui->volumeBar->setValue(mopidyReader->songProgress);
+
+    ui->fancyWidget->setText(song);
 }
 
 void MainWindow::GetWeather()

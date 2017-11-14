@@ -86,7 +86,7 @@ void MopidyReader::onTextMessageReceived(QString message)
     else
     {
 
-        qDebug() << "Message received:" << message;
+     //   qDebug() << "Message received:" << message;
 
         QString event = json.object()["event"].toString();
 
@@ -114,6 +114,7 @@ void MopidyReader::onTextMessageReceived(QString message)
         {
             this->artist = this->title;
             this->title = json.object()["title"].toString();
+            this->state = "▶";
         }
     }
 

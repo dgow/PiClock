@@ -31,7 +31,8 @@ SOURCES += \
     weekdaybutton.cpp \
     musicplayer.cpp \
     volumeknobthread.cpp \
-    mopidyreader.cpp
+    mopidyreader.cpp \
+    scrolltext.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -39,7 +40,8 @@ HEADERS += \
     weekdaybutton.h \
     musicplayer.h \
     volumeknobthread.h \
-    mopidyreader.h
+    mopidyreader.h \
+    scrolltext.h
 
 FORMS += \
         mainwindow.ui \

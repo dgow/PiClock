@@ -68,9 +68,21 @@
          <number>0</number>
         </property>
         <item>
-         <layout class="QHBoxLayout" name="horizontalLayout_4" stretch="10,0">
+         <layout class="QHBoxLayout" name="horizontalLayout_4" stretch="10,0,0">
           <item>
            <widget class="QLabel" name="songLabel">
+            <property name="minimumSize">
+             <size>
+              <width>1</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>0</width>
+              <height>16777215</height>
+             </size>
+            </property>
             <property name="font">
              <font>
               <pointsize>15</pointsize>
@@ -80,7 +92,7 @@
              <string notr="true">color: rgb(255, 255, 255);</string>
             </property>
             <property name="text">
-             <string>TextLabel</string>
+             <string/>
             </property>
             <property name="alignment">
              <set>Qt::AlignCenter</set>
@@ -91,7 +103,31 @@
            </widget>
           </item>
           <item>
+           <widget class="ScrollText" name="fancyWidget" native="true">
+            <property name="minimumSize">
+             <size>
+              <width>100</width>
+              <height>28</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <pointsize>25</pointsize>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">color: rgb(255, 255, 255);</string>
+            </property>
+           </widget>
+          </item>
+          <item>
            <widget class="QLabel" name="playStateLabel">
+            <property name="maximumSize">
+             <size>
+              <width>20</width>
+              <height>16777215</height>
+             </size>
+            </property>
             <property name="font">
              <font>
               <pointsize>17</pointsize>
@@ -105,6 +141,9 @@
             </property>
             <property name="alignment">
              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+            </property>
+            <property name="margin">
+             <number>3</number>
             </property>
             <property name="indent">
              <number>-10</number>
@@ -505,6 +544,12 @@
    <class>MusicPlayer</class>
    <extends>QWidget</extends>
    <header>musicplayer.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>ScrollText</class>
+   <extends>QWidget</extends>
+   <header>scrolltext.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>
