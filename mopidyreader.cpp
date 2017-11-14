@@ -76,7 +76,7 @@ void MopidyReader::onTextMessageReceived(QString message)
         else if(id == Position)
         {
             this->position = json.object()["result"].toInt();
-            this->songProgress = (((float)this->position) / (float)this->length) * 100;
+            this->songProgress = (((float)this->position) / (float)this->length) * 100 + 1;
         }
         else
         {
