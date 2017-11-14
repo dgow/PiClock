@@ -85,7 +85,8 @@
             </property>
             <property name="font">
              <font>
-              <pointsize>15</pointsize>
+              <family>Arial</family>
+              <pointsize>10</pointsize>
              </font>
             </property>
             <property name="styleSheet">
@@ -112,7 +113,10 @@
             </property>
             <property name="font">
              <font>
-              <pointsize>25</pointsize>
+              <family>Helvetica</family>
+              <pointsize>20</pointsize>
+              <weight>50</weight>
+              <bold>false</bold>
              </font>
             </property>
             <property name="styleSheet">
