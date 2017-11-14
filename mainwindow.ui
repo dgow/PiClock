@@ -68,7 +68,7 @@
          <number>0</number>
         </property>
         <item>
-         <layout class="QHBoxLayout" name="horizontalLayout_4" stretch="10,0,0">
+         <layout class="QHBoxLayout" name="horizontalLayout_4" stretch="0,10,0">
           <item>
            <widget class="QLabel" name="songLabel">
             <property name="minimumSize">
