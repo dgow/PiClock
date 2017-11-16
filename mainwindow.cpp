@@ -116,12 +116,12 @@ void MainWindow::UpdateTime()
 
     int minuteDiff = minute - ui->arschPage->minute;
 
-    qDebug() << "DIFF: " << minuteDiff;
+    //qDebug() << "DIFF: " << minuteDiff;
 
     bool mayBeWeLostTheLastMinute = (minuteDiff >= 0) && (minuteDiff < 5);
 
 
-    if( hour >= ui->arschPage->hour && ui->arschPage->minute && ui->arschPage->isButtonActive(day))
+    if( hour == ui->arschPage->hour && minute == ui->arschPage->minute && ui->arschPage->isButtonActive(day))
     {
 
 //if(!button->expired)
