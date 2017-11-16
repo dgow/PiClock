@@ -115,7 +115,7 @@ void MainWindow::UpdateTime()
     WeekDayButton *button = ui->arschPage->dayButtons->at(day - 1);
 
     int minuteDiff = minute - ui->arschPage->minute;
-    bool mayBeWeLostTheLastMinute = (minDiff >= 0) && (minDiff < 5);
+    bool mayBeWeLostTheLastMinute = (minuteDiff >= 0) && (minuteDiff < 5);
 
     if( hour >= ui->arschPage->hour && mayBeWeLostTheLastMinute && ui->arschPage->isButtonActive(day))
     {
@@ -138,7 +138,7 @@ void MainWindow::UpdateTime()
     mopidyReader->UpdatePosition();
 
     //new day check - to unexpire the last day
-    if(currentWeekDayButton == null)
+    if(currentWeekDayButton == NULL)
     {
         currentWeekDayButton = button;
     }
