@@ -138,6 +138,8 @@ void MainWindow::UpdateTime()
     mopidyReader->UpdatePosition();
 
     //new day check - to unexpire the last day
+
+    /*
     if(currentWeekDayButton == NULL)
     {
         currentWeekDayButton = button;
@@ -157,6 +159,7 @@ void MainWindow::UpdateTime()
             currentWeekDayButton = button;
         }
     }
+    */
 }
 
 void MainWindow::UpdateSong()
