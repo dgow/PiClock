@@ -122,6 +122,7 @@ void MainWindow::UpdateTime()
 
         if(!button->expired)
         {
+            ui->stackedWidget->setCurrentIndex(2);
             qDebug() << "ALARM";
 
             button->Expire();
@@ -130,7 +131,7 @@ void MainWindow::UpdateTime()
             ui->musicPlayer->StartProcess("amixer", "sset 'Speaker' 30%");
             ui->musicPlayer->StartProcess("mpc", "play");
 
-            ui->stackedWidget->setCurrentIndex(2);
+
         }
     }
     mopidyReader->UpdatePosition();
