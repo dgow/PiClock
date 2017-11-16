@@ -121,17 +121,17 @@ void MainWindow::UpdateTime()
     bool mayBeWeLostTheLastMinute = (minuteDiff >= 0) && (minuteDiff < 5);
 
 
-    if( hour >= ui->arschPage->hour && mayBeWeLostTheLastMinute && ui->arschPage->isButtonActive(day))
+    if( hour >= ui->arschPage->hour && ui->arschPage->minute && ui->arschPage->isButtonActive(day))
     {
-//        if(minute != lastMinute)
 
-        if(!button->expired)
+//if(!button->expired)
+        if(minute != lastMinute)
         {
             ui->stackedWidget->setCurrentIndex(2);
             qDebug() << "ALARM";
 
             button->Expire();
-            //lastMinute = minute;
+            lastMinute = minute;
 
             ui->musicPlayer->StartProcess("amixer", "sset 'Speaker' 30%");
             ui->musicPlayer->StartProcess("mpc", "play");
