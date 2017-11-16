@@ -68,7 +68,7 @@ MainWindow::MainWindow(QWidget *parent) :
     manager = new QNetworkAccessManager(this);
     connect(manager, SIGNAL(finished(QNetworkReply*)), this, SLOT(ReadWeather(QNetworkReply*)));
 
-    UpdateTime();
+//    UpdateTime();
     GetWeather();
 
     connect(ui->arschPage, SIGNAL(GoBack()), this, SLOT(GoBack()));
