@@ -148,6 +148,7 @@ void MopidyReader::PrevSong()
     json["method"] = "core.playback.previous";
     QJsonDocument doc(json);
     QString jstring = doc.toJson();
+
     m_webSocket.sendTextMessage(jstring);
 }
 

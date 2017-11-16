@@ -15,10 +15,12 @@ public:
 
     void SetActive(bool active);
     void LoadState();
+    void Expire();
 
     int dayOfTheWeek;
 
     bool active;
+    bool expired;
 
 };
 

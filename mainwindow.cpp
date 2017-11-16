@@ -112,13 +112,18 @@ void MainWindow::UpdateTime()
     QDate date = time.date();
     int day = date.dayOfWeek();
 
-    if( hour == ui->arschPage->hour && minute == ui->arschPage->minute && ui->arschPage->isButtonActive(day))
+    if( hour >= ui->arschPage->hour && minute >= ui->arschPage->minute && ui->arschPage->isButtonActive(day))
     {
-        if(minute != lastMinute)
-        {
-            lastMinute = minute;
+//        if(minute != lastMinute)
 
-            ui->musicPlayer->StartProcess("amixer", "sset 'Speaker' 40%");
+        WeekDayButton *button = ui->arschPage->dayButtons->at(day - 1);
+
+        if(!button->expired)
+        {
+            button->Expire();
+            //lastMinute = minute;
+
+            ui->musicPlayer->StartProcess("amixer", "sset 'Speaker' 30%");
             ui->musicPlayer->StartProcess("mpc", "play");
 
             ui->stackedWidget->setCurrentIndex(2);

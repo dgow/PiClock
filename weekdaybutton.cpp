@@ -12,16 +12,28 @@ WeekDayButton::WeekDayButton(QWidget *parent) : QPushButton(parent)
     this->setStyleSheet("WeekDayButton:checked { background-color: green; color: rgb(0, 255, 0); }"
                         "WeekDayButton{background-color: white; color: rgb(255, 255, 255);}"
                         );
+    expired = false;
 }
 
 void WeekDayButton::LoadState()
 {
     QString st = QString ("activeDay%1").arg(this->dayOfTheWeek);
+    QString expSt = QString ("expired%1").arg(this->dayOfTheWeek);
     QSettings settings("Joe", "PiClock");
 
     this->active = settings.value(st).toBool();
+    this->expired = settings.value(expSt).toBool();
+
     this->setCheckable(true);
     this->setChecked(this->active);
+}
+
+void WeekDayButton::Expire()
+{
+    expired = true;
+    QSettings settings("Joe", "PiClock");
+    QString st = QString ("expired%1").arg(this->dayOfTheWeek);
+    settings.setValue(st, expired);
 }
 
 void WeekDayButton::SetActive(bool active)

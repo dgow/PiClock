@@ -129,7 +129,7 @@ public:
 
         horizontalLayout_4->addWidget(playStateLabel);
 
-        horizontalLayout_4->setStretch(0, 10);
+        horizontalLayout_4->setStretch(1, 10);
 
         verticalLayout->addLayout(horizontalLayout_4);
 
