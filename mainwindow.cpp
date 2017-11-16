@@ -116,12 +116,14 @@ void MainWindow::UpdateTime()
     {
 //        if(minute != lastMinute)
 
-        qDebug() << "ALARM";
+
 
         WeekDayButton *button = ui->arschPage->dayButtons->at(day - 1);
 
         if(!button->expired)
         {
+            qDebug() << "ALARM";
+
             button->Expire();
             //lastMinute = minute;
 
