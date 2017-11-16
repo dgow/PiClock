@@ -115,7 +115,11 @@ void MainWindow::UpdateTime()
     WeekDayButton *button = ui->arschPage->dayButtons->at(day - 1);
 
     int minuteDiff = minute - ui->arschPage->minute;
+
+    qDebug() << "DIFF: " << minuteDiff;
+
     bool mayBeWeLostTheLastMinute = (minuteDiff >= 0) && (minuteDiff < 5);
+
 
     if( hour >= ui->arschPage->hour && mayBeWeLostTheLastMinute && ui->arschPage->isButtonActive(day))
     {
