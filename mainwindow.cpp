@@ -112,13 +112,14 @@ void MainWindow::UpdateTime()
     QDate date = time.date();
     int day = date.dayOfWeek();
 
-    if( hour >= ui->arschPage->hour && minute >= ui->arschPage->minute && ui->arschPage->isButtonActive(day))
+    WeekDayButton *button = ui->arschPage->dayButtons->at(day - 1);
+
+    int minuteDiff = minute - ui->arschPage->minute;
+    bool mayBeWeLostTheLastMinute = (minDiff >= 0) && (minDiff < 5);
+
+    if( hour >= ui->arschPage->hour && mayBeWeLostTheLastMinute && ui->arschPage->isButtonActive(day))
     {
 //        if(minute != lastMinute)
-
-
-
-        WeekDayButton *button = ui->arschPage->dayButtons->at(day - 1);
 
         if(!button->expired)
         {
@@ -135,6 +136,27 @@ void MainWindow::UpdateTime()
         }
     }
     mopidyReader->UpdatePosition();
+
+    //new day check - to unexpire the last day
+    if(currentWeekDayButton == null)
+    {
+        currentWeekDayButton = button;
+    }
+    else
+    {
+        if(currentWeekDayButton->dayOfTheWeek < button->dayOfTheWeek)
+        {
+            currentWeekDayButton->UnExpire();
+            currentWeekDayButton = button;
+        }
+
+        //sunday to monday
+        if(button->dayOfTheWeek == 1)
+        {
+            currentWeekDayButton->UnExpire();
+            currentWeekDayButton = button;
+        }
+    }
 }
 
 void MainWindow::UpdateSong()
@@ -287,7 +309,7 @@ void MainWindow::on_alarmButton_clicked()
 
 void MainWindow::on_stopAlarmButton_clicked()
 {
-    ui->musicPlayer->Stop();
+//    ui->musicPlayer->Stop();
     ui->stackedWidget->setCurrentIndex(0);
 }
 

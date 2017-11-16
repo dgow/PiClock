@@ -16,6 +16,7 @@ public:
     void SetActive(bool active);
     void LoadState();
     void Expire();
+    void UnExpire();
 
     int dayOfTheWeek;
 

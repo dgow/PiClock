@@ -7,6 +7,7 @@
 #include <QTimer>
 
 #include "mopidyreader.h"
+#include "weekdaybutton.h"
 
 namespace Ui {
 class MainWindow;
@@ -46,6 +47,8 @@ private:
     int sunSet;
 
     int lastMinute;
+
+    WeekDayButton *currentWeekDayButton;
 
     Ui::MainWindow *ui;
     QNetworkAccessManager *manager;

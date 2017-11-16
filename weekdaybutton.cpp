@@ -22,7 +22,7 @@ void WeekDayButton::LoadState()
     QSettings settings("Joe", "PiClock");
 
     this->active = settings.value(st).toBool();
-    //this->expired = settings.value(expSt).toBool();
+    this->expired = settings.value(expSt).toBool();
 
     this->setCheckable(true);
     this->setChecked(this->active);
@@ -31,6 +31,14 @@ void WeekDayButton::LoadState()
 void WeekDayButton::Expire()
 {
     expired = true;
+    QSettings settings("Joe", "PiClock");
+    QString st = QString ("expired%1").arg(this->dayOfTheWeek);
+    settings.setValue(st, expired);
+}
+
+void WeekDayButton::UnExpire()
+{
+    expired = false;
     QSettings settings("Joe", "PiClock");
     QString st = QString ("expired%1").arg(this->dayOfTheWeek);
     settings.setValue(st, expired);
