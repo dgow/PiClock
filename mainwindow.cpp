@@ -142,7 +142,7 @@ void MainWindow::UpdateTime()
             //ui->musicPlayer->StartProcess("mpc", "play");
             //ui->musicPlayer->StartProcess("mpc", "play");
 
-            mopidyReader->Play();
+            mopidyReader->PlaySong();
             qDebug() << "ALARM - play";
         }
     }

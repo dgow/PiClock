@@ -123,7 +123,7 @@ void MopidyReader::onError(QAbstractSocket::SocketError error)
     QTimer::singleShot(2000,this, SLOT(Connect()));
 }
 
-void MopidyReader::Play()
+void MopidyReader::PlaySong()
 {
     QJsonObject json;
     json["jsonrpc"] = "2.0";
