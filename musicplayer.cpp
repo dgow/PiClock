@@ -105,10 +105,16 @@ void MusicPlayer::on_lightButton_clicked()
     process->start("/home/pi/Desktop/pressBrightness.sh");
 }
 
-void MusicPlayer::StartProcess(QString command, QString argsString)
+void MusicPlayer::StartProcess(QString command, QString argsString, bool wait)
 {
     QStringList args = argsString.split(' ');
     QProcess *process = new QProcess(this);
+
+    if(wait)
+    {
+        process->waitForFinished(1000);
+    }
+
     process->start(command, args);
     connect(process, SIGNAL(finished(int)), process, SLOT(deleteLater()));
 }

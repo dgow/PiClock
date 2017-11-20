@@ -133,9 +133,9 @@ void MainWindow::UpdateTime()
             button->Expire();
             lastMinute = minute;
 
-            ui->musicPlayer->StartProcess("mpc", "clear");
-            ui->musicPlayer->StartProcess("mpc", "load ChillOut++");
-            ui->musicPlayer->StartProcess("amixer", "sset 'Speaker' 30%");
+            ui->musicPlayer->StartProcess("mpc", "clear", true);
+            ui->musicPlayer->StartProcess("mpc", "load ChillOut++", true);
+            ui->musicPlayer->StartProcess("amixer", "sset 'Speaker' 30%", true);
             ui->musicPlayer->StartProcess("mpc", "play");
 
 

@@ -21,8 +21,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_MusicPlayer_t {
-    QByteArrayData data[20];
-    char stringdata0[262];
+    QByteArrayData data[21];
+    char stringdata0[267];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -49,8 +49,9 @@ QT_MOC_LITERAL(14, 174, 8), // "PrevSong"
 QT_MOC_LITERAL(15, 183, 12), // "StartProcess"
 QT_MOC_LITERAL(16, 196, 7), // "command"
 QT_MOC_LITERAL(17, 204, 10), // "argsString"
-QT_MOC_LITERAL(18, 215, 21), // "on_gongButton_clicked"
-QT_MOC_LITERAL(19, 237, 24) // "on_mixTapeButton_clicked"
+QT_MOC_LITERAL(18, 215, 4), // "wait"
+QT_MOC_LITERAL(19, 220, 21), // "on_gongButton_clicked"
+QT_MOC_LITERAL(20, 242, 24) // "on_mixTapeButton_clicked"
 
     },
     "MusicPlayer\0GoBack\0\0SongChanged\0"
@@ -59,7 +60,8 @@ QT_MOC_LITERAL(19, 237, 24) // "on_mixTapeButton_clicked"
     "on_HDMButton_clicked\0on_lightButton_clicked\0"
     "VolumeUp\0VolumeDown\0Mute\0Stop\0NextSong\0"
     "PrevSong\0StartProcess\0command\0argsString\0"
-    "on_gongButton_clicked\0on_mixTapeButton_clicked"
+    "wait\0on_gongButton_clicked\0"
+    "on_mixTapeButton_clicked"
 };
 #undef QT_MOC_LITERAL
 
@@ -69,7 +71,7 @@ static const uint qt_meta_data_MusicPlayer[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-      16,   14, // methods
+      17,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -77,24 +79,25 @@ static const uint qt_meta_data_MusicPlayer[] = {
        3,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    0,   94,    2, 0x06 /* Public */,
-       3,    0,   95,    2, 0x06 /* Public */,
-       4,    0,   96,    2, 0x06 /* Public */,
+       1,    0,   99,    2, 0x06 /* Public */,
+       3,    0,  100,    2, 0x06 /* Public */,
+       4,    0,  101,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-       5,    0,   97,    2, 0x0a /* Public */,
-       6,    0,   98,    2, 0x0a /* Public */,
-       7,    0,   99,    2, 0x0a /* Public */,
-       8,    0,  100,    2, 0x0a /* Public */,
-       9,    0,  101,    2, 0x0a /* Public */,
-      10,    0,  102,    2, 0x0a /* Public */,
-      11,    0,  103,    2, 0x0a /* Public */,
-      12,    0,  104,    2, 0x0a /* Public */,
-      13,    0,  105,    2, 0x0a /* Public */,
-      14,    0,  106,    2, 0x0a /* Public */,
-      15,    2,  107,    2, 0x0a /* Public */,
-      18,    0,  112,    2, 0x08 /* Private */,
-      19,    0,  113,    2, 0x08 /* Private */,
+       5,    0,  102,    2, 0x0a /* Public */,
+       6,    0,  103,    2, 0x0a /* Public */,
+       7,    0,  104,    2, 0x0a /* Public */,
+       8,    0,  105,    2, 0x0a /* Public */,
+       9,    0,  106,    2, 0x0a /* Public */,
+      10,    0,  107,    2, 0x0a /* Public */,
+      11,    0,  108,    2, 0x0a /* Public */,
+      12,    0,  109,    2, 0x0a /* Public */,
+      13,    0,  110,    2, 0x0a /* Public */,
+      14,    0,  111,    2, 0x0a /* Public */,
+      15,    3,  112,    2, 0x0a /* Public */,
+      15,    2,  119,    2, 0x2a /* Public | MethodCloned */,
+      19,    0,  124,    2, 0x08 /* Private */,
+      20,    0,  125,    2, 0x08 /* Private */,
 
  // signals: parameters
     QMetaType::Void,
@@ -112,6 +115,7 @@ static const uint qt_meta_data_MusicPlayer[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
+    QMetaType::Void, QMetaType::QString, QMetaType::QString, QMetaType::Bool,   16,   17,   18,
     QMetaType::Void, QMetaType::QString, QMetaType::QString,   16,   17,
     QMetaType::Void,
     QMetaType::Void,
@@ -138,9 +142,10 @@ void MusicPlayer::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id,
         case 10: _t->Stop(); break;
         case 11: _t->NextSong(); break;
         case 12: _t->PrevSong(); break;
-        case 13: _t->StartProcess((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2]))); break;
-        case 14: _t->on_gongButton_clicked(); break;
-        case 15: _t->on_mixTapeButton_clicked(); break;
+        case 13: _t->StartProcess((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2])),(*reinterpret_cast< bool(*)>(_a[3]))); break;
+        case 14: _t->StartProcess((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2]))); break;
+        case 15: _t->on_gongButton_clicked(); break;
+        case 16: _t->on_mixTapeButton_clicked(); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -195,13 +200,13 @@ int MusicPlayer::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 16)
+        if (_id < 17)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 16;
+        _id -= 17;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 16)
+        if (_id < 17)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 16;
+        _id -= 17;
     }
     return _id;
 }

@@ -42,7 +42,7 @@ public slots:
    void NextSong();
    void PrevSong();
 
-   void StartProcess(QString command, QString argsString);
+   void StartProcess(QString command, QString argsString, bool wait = false);
 
 private slots:
    void on_gongButton_clicked();
