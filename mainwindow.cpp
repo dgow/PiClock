@@ -114,7 +114,7 @@ void MainWindow::UpdateTime()
 
     WeekDayButton *button = ui->arschPage->dayButtons->at(day - 1);
 
-    int minuteDiff = minute - ui->arschPage->minute;
+    //int minuteDiff = minute - ui->arschPage->minute;
 
     //qDebug() << "DIFF: " << minuteDiff;
 

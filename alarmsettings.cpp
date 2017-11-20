@@ -134,13 +134,8 @@ void AlarmSettings::on_minuteUp_clicked()
 
 void AlarmSettings::day_clicked(bool checked)
 {
-    QDateTime time = QDateTime::currentDateTime();
-    QDate date = time.date();
-
     WeekDayButton *button = (WeekDayButton*)QObject::sender();
     button->SetActive(checked);
-
-    //qDebug() << "BUTTON: " << button->dayOfTheWeek << " " << date.dayOfWeek() << "CHECKED: " << checked;
 }
 
 bool AlarmSettings::isButtonActive(int day)
@@ -148,7 +143,6 @@ bool AlarmSettings::isButtonActive(int day)
     WeekDayButton *button = dayButtons->at(day - 1);
     return button->active;
 }
-
 
 AlarmSettings::~AlarmSettings()
 {
