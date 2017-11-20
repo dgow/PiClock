@@ -134,9 +134,13 @@ void MainWindow::UpdateTime()
             lastMinute = minute;
 
             ui->musicPlayer->StartProcess("mpc", "clear", true);
+            qDebug() << "ALARM - clear";
             ui->musicPlayer->StartProcess("mpc", "load ChillOut++", true);
+            qDebug() << "ALARM - load";
             ui->musicPlayer->StartProcess("amixer", "sset 'Speaker' 30%", true);
+            qDebug() << "ALARM - sset";
             ui->musicPlayer->StartProcess("mpc", "play");
+            qDebug() << "ALARM - play";
 
 
         }
