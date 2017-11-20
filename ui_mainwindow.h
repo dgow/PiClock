@@ -23,7 +23,7 @@
 #include <QtWidgets/QStackedWidget>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
-#include "arsch.h"
+#include "alarmsettings.h"
 #include "musicplayer.h"
 #include "scrolltext.h"
 
@@ -53,7 +53,7 @@ public:
     QPushButton *soundButton;
     QLabel *dateLabel;
     QPushButton *alarmButton;
-    Arsch *arschPage;
+    AlarmSettings *arschPage;
     QWidget *page;
     QVBoxLayout *verticalLayout_3;
     QVBoxLayout *verticalLayout_2;
@@ -275,7 +275,7 @@ public:
         verticalLayout->addLayout(horizontalLayout_2);
 
         stackedWidget->addWidget(clock);
-        arschPage = new Arsch();
+        arschPage = new AlarmSettings();
         arschPage->setObjectName(QStringLiteral("arschPage"));
         stackedWidget->addWidget(arschPage);
         page = new QWidget();
@@ -323,7 +323,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        stackedWidget->setCurrentIndex(2);
+        stackedWidget->setCurrentIndex(1);
 
 
         QMetaObject::connectSlotsByName(MainWindow);

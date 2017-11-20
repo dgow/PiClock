@@ -4,18 +4,20 @@
 #include <QWidget>
 #include <QVector>
 #include <QList>
+#include <QSettings>
+
 #include <weekdaybutton.h>
 
 namespace Ui {
-class Arsch;
+class AlarmSettings;
 }
 
-class Arsch : public QWidget
+class AlarmSettings : public QWidget
 {
     Q_OBJECT
 
 public:
-    explicit Arsch(QWidget *parent = 0);
+    explicit AlarmSettings(QWidget *parent = 0);
 
     int hour;
     int minute;
@@ -23,13 +25,15 @@ public:
     int hourStep;
     int minuteStep;
 
+    QSettings *settings;
+
     QList<WeekDayButton*> *dayButtons;
 
     bool isButtonActive(int day);
 
-    ~Arsch();
+    ~AlarmSettings();
 
- signals:
+signals:
     void GoBack();
 
 private slots:
@@ -46,8 +50,10 @@ private slots:
     void Blink();
 private:
     void UpdateTime();
+    QString FormatTime(int hour, int minute);
 
-    Ui::Arsch *ui;
+    Ui::AlarmSettings *ui;
+
 };
 
 #endif // ARSCH_H

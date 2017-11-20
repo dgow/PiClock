@@ -17,8 +17,6 @@ MopidyReader::MopidyReader(QObject *parent) : QObject(parent)
     length = -1;
     songProgress = 0;
 
-    //this->Connect();
-
     connect(&m_webSocket, &QWebSocket::connected, this, &MopidyReader::onConnected);
     connect(&m_webSocket, SIGNAL(error(QAbstractSocket::SocketError)), this, SLOT(onError(QAbstractSocket::SocketError)) );
     connect(&m_webSocket, SIGNAL(disconnected()), this, SLOT(onDisconnect()));
@@ -46,9 +44,6 @@ void MopidyReader::onConnected()
     state = "connected";
 
     connect(&m_webSocket, &QWebSocket::textMessageReceived, this, &MopidyReader::onTextMessageReceived);
-
-    //m_webSocket.sendTextMessage(QString("{\"jsonrpc\": \"2.0\", \"id\": %1, \"method\": \"core.playback.get_time_position\"}").arg(Play));
-
     connectTimer->stop();
 }
 
@@ -112,7 +107,6 @@ void MopidyReader::onTextMessageReceived(QString message)
         }
         else if(event == "stream_title_changed")
         {
-
             this->artist = json.object()["title"].toString();
             this->state = "▶";
         }

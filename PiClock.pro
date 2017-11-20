@@ -29,26 +29,26 @@ CONFIG += c++11
 SOURCES += \
         main.cpp \
         mainwindow.cpp \
-    arsch.cpp \
     weekdaybutton.cpp \
     musicplayer.cpp \
     volumeknobthread.cpp \
     mopidyreader.cpp \
-    scrolltext.cpp
+    scrolltext.cpp \
+    alarmsettings.cpp
 
 HEADERS += \
         mainwindow.h \
-    arsch.h \
     weekdaybutton.h \
     musicplayer.h \
     volumeknobthread.h \
     mopidyreader.h \
-    scrolltext.h
+    scrolltext.h \
+    alarmsettings.h
 
 FORMS += \
         mainwindow.ui \
-    arsch.ui \
-    musicplayer.ui
+    musicplayer.ui \
+    alarmsettings.ui
 
 RESOURCES += \
     resourses.qrc

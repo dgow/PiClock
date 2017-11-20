@@ -51,7 +51,7 @@
     <item>
      <widget class="QStackedWidget" name="stackedWidget">
       <property name="currentIndex">
-       <number>2</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="clock">
        <layout class="QVBoxLayout" name="verticalLayout">
@@ -476,7 +476,7 @@
         </item>
        </layout>
       </widget>
-      <widget class="Arsch" name="arschPage"/>
+      <widget class="AlarmSettings" name="arschPage"/>
       <widget class="QWidget" name="page">
        <layout class="QVBoxLayout" name="verticalLayout_3">
         <item>
@@ -533,12 +533,6 @@
  <layoutdefault spacing="6" margin="11"/>
  <customwidgets>
   <customwidget>
-   <class>Arsch</class>
-   <extends>QWidget</extends>
-   <header>arsch.h</header>
-   <container>1</container>
-  </customwidget>
-  <customwidget>
    <class>MusicPlayer</class>
    <extends>QWidget</extends>
    <header>musicplayer.h</header>
@@ -548,6 +542,12 @@
    <class>ScrollText</class>
    <extends>QWidget</extends>
    <header>scrolltext.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>AlarmSettings</class>
+   <extends>QWidget</extends>
+   <header>alarmsettings.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

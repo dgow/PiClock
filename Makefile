@@ -52,35 +52,35 @@ OBJECTS_DIR   = ./
 
 SOURCES       = main.cpp \
 		mainwindow.cpp \
-		arsch.cpp \
 		weekdaybutton.cpp \
 		musicplayer.cpp \
 		volumeknobthread.cpp \
 		mopidyreader.cpp \
-		scrolltext.cpp qrc_resourses.cpp \
+		scrolltext.cpp \
+		alarmsettings.cpp qrc_resourses.cpp \
 		moc_mainwindow.cpp \
-		moc_arsch.cpp \
 		moc_weekdaybutton.cpp \
 		moc_musicplayer.cpp \
 		moc_volumeknobthread.cpp \
 		moc_mopidyreader.cpp \
-		moc_scrolltext.cpp
+		moc_scrolltext.cpp \
+		moc_alarmsettings.cpp
 OBJECTS       = main.o \
 		mainwindow.o \
-		arsch.o \
 		weekdaybutton.o \
 		musicplayer.o \
 		volumeknobthread.o \
 		mopidyreader.o \
 		scrolltext.o \
+		alarmsettings.o \
 		qrc_resourses.o \
 		moc_mainwindow.o \
-		moc_arsch.o \
 		moc_weekdaybutton.o \
 		moc_musicplayer.o \
 		moc_volumeknobthread.o \
 		moc_mopidyreader.o \
-		moc_scrolltext.o
+		moc_scrolltext.o \
+		moc_alarmsettings.o
 DIST          = ../../../Qt/5.9.1/clang_64/mkspecs/features/spec_pre.prf \
 		../../../Qt/5.9.1/clang_64/mkspecs/qdevice.pri \
 		../../../Qt/5.9.1/clang_64/mkspecs/features/device_config.prf \
@@ -239,6 +239,7 @@ DIST          = ../../../Qt/5.9.1/clang_64/mkspecs/features/spec_pre.prf \
 		../../../Qt/5.9.1/clang_64/mkspecs/features/qt_config.prf \
 		../../../Qt/5.9.1/clang_64/mkspecs/macx-clang/qmake.conf \
 		../../../Qt/5.9.1/clang_64/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		../../../Qt/5.9.1/clang_64/mkspecs/features/exclusive_builds.prf \
 		../../../Qt/5.9.1/clang_64/mkspecs/features/mac/sdk.prf \
 		../../../Qt/5.9.1/clang_64/mkspecs/features/toolchain.prf \
@@ -266,19 +267,19 @@ DIST          = ../../../Qt/5.9.1/clang_64/mkspecs/features/spec_pre.prf \
 		../../../Qt/5.9.1/clang_64/mkspecs/features/yacc.prf \
 		../../../Qt/5.9.1/clang_64/mkspecs/features/lex.prf \
 		PiClock.pro mainwindow.h \
-		arsch.h \
 		weekdaybutton.h \
 		musicplayer.h \
 		volumeknobthread.h \
 		mopidyreader.h \
-		scrolltext.h main.cpp \
+		scrolltext.h \
+		alarmsettings.h main.cpp \
 		mainwindow.cpp \
-		arsch.cpp \
 		weekdaybutton.cpp \
 		musicplayer.cpp \
 		volumeknobthread.cpp \
 		mopidyreader.cpp \
-		scrolltext.cpp
+		scrolltext.cpp \
+		alarmsettings.cpp
 QMAKE_TARGET  = PiClock
 DESTDIR       = 
 TARGET        = PiClock.app/Contents/MacOS/PiClock
@@ -292,7 +293,7 @@ EXPORT_ARCH_ARGS = $(foreach arch, $(if $(EXPORT_ACTIVE_ARCHS), $(EXPORT_ACTIVE_
 first: all
 ####### Build rules
 
-$(TARGET): ui_mainwindow.h ui_arsch.h ui_musicplayer.h $(OBJECTS)  
+$(TARGET): ui_mainwindow.h ui_musicplayer.h ui_alarmsettings.h $(OBJECTS)  
 	@test -d PiClock.app/Contents/MacOS/ || mkdir -p PiClock.app/Contents/MacOS/
 	$(LINK) $(LFLAGS) -o $(TARGET) $(OBJECTS) $(OBJCOMP) $(LIBS)
 
@@ -454,6 +455,7 @@ Makefile: PiClock.pro ../../../Qt/5.9.1/clang_64/mkspecs/macx-clang/qmake.conf .
 		../../../Qt/5.9.1/clang_64/mkspecs/features/qt_config.prf \
 		../../../Qt/5.9.1/clang_64/mkspecs/macx-clang/qmake.conf \
 		../../../Qt/5.9.1/clang_64/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		../../../Qt/5.9.1/clang_64/mkspecs/features/exclusive_builds.prf \
 		../../../Qt/5.9.1/clang_64/mkspecs/features/mac/sdk.prf \
 		../../../Qt/5.9.1/clang_64/mkspecs/features/toolchain.prf \
@@ -646,6 +648,7 @@ Makefile: PiClock.pro ../../../Qt/5.9.1/clang_64/mkspecs/macx-clang/qmake.conf .
 ../../../Qt/5.9.1/clang_64/mkspecs/features/qt_config.prf:
 ../../../Qt/5.9.1/clang_64/mkspecs/macx-clang/qmake.conf:
 ../../../Qt/5.9.1/clang_64/mkspecs/features/spec_post.prf:
+.qmake.stash:
 ../../../Qt/5.9.1/clang_64/mkspecs/features/exclusive_builds.prf:
 ../../../Qt/5.9.1/clang_64/mkspecs/features/mac/sdk.prf:
 ../../../Qt/5.9.1/clang_64/mkspecs/features/toolchain.prf:
@@ -710,9 +713,9 @@ distdir: FORCE
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents resourses.qrc $(DISTDIR)/
 	$(COPY_FILE) --parents ../../../Qt/5.9.1/clang_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents mainwindow.h arsch.h weekdaybutton.h musicplayer.h volumeknobthread.h mopidyreader.h scrolltext.h $(DISTDIR)/
-	$(COPY_FILE) --parents main.cpp mainwindow.cpp arsch.cpp weekdaybutton.cpp musicplayer.cpp volumeknobthread.cpp mopidyreader.cpp scrolltext.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents mainwindow.ui arsch.ui musicplayer.ui $(DISTDIR)/
+	$(COPY_FILE) --parents mainwindow.h weekdaybutton.h musicplayer.h volumeknobthread.h mopidyreader.h scrolltext.h alarmsettings.h $(DISTDIR)/
+	$(COPY_FILE) --parents main.cpp mainwindow.cpp weekdaybutton.cpp musicplayer.cpp volumeknobthread.cpp mopidyreader.cpp scrolltext.cpp alarmsettings.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents mainwindow.ui musicplayer.ui alarmsettings.ui $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -722,6 +725,7 @@ clean: compiler_clean
 
 distclean: clean 
 	-$(DEL_FILE) -r PiClock.app
+	-$(DEL_FILE) .qmake.stash
 	-$(DEL_FILE) Makefile
 
 
@@ -771,9 +775,9 @@ compiler_moc_predefs_clean:
 moc_predefs.h: ../../../Qt/5.9.1/clang_64/mkspecs/features/data/dummy.cpp
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++ -pipe -stdlib=libc++ -std=c++0x -g -std=gnu++11 $(EXPORT_ARCH_ARGS) -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -mmacosx-version-min=10.10 -Wall -W -dM -E -o moc_predefs.h ../../../Qt/5.9.1/clang_64/mkspecs/features/data/dummy.cpp
 
-compiler_moc_header_make_all: moc_mainwindow.cpp moc_arsch.cpp moc_weekdaybutton.cpp moc_musicplayer.cpp moc_volumeknobthread.cpp moc_mopidyreader.cpp moc_scrolltext.cpp
+compiler_moc_header_make_all: moc_mainwindow.cpp moc_weekdaybutton.cpp moc_musicplayer.cpp moc_volumeknobthread.cpp moc_mopidyreader.cpp moc_scrolltext.cpp moc_alarmsettings.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_mainwindow.cpp moc_arsch.cpp moc_weekdaybutton.cpp moc_musicplayer.cpp moc_volumeknobthread.cpp moc_mopidyreader.cpp moc_scrolltext.cpp
+	-$(DEL_FILE) moc_mainwindow.cpp moc_weekdaybutton.cpp moc_musicplayer.cpp moc_volumeknobthread.cpp moc_mopidyreader.cpp moc_scrolltext.cpp moc_alarmsettings.cpp
 moc_mainwindow.cpp: ../../../Qt/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QMainWindow \
 		../../../Qt/5.9.1/clang_64/lib/QtWidgets.framework/Headers/qmainwindow.h \
 		../../../Qt/5.9.1/clang_64/lib/QtNetwork.framework/Headers/QNetworkAccessManager \
@@ -789,28 +793,17 @@ moc_mainwindow.cpp: ../../../Qt/5.9.1/clang_64/lib/QtWidgets.framework/Headers/Q
 		../../../Qt/5.9.1/clang_64/lib/QtNetwork.framework/Headers/qnetworkreply.h \
 		../../../Qt/5.9.1/clang_64/lib/QtCore.framework/Headers/QMetaEnum \
 		../../../Qt/5.9.1/clang_64/lib/QtCore.framework/Headers/qmetaobject.h \
-		mainwindow.h \
-		moc_predefs.h \
-		../../../Qt/5.9.1/clang_64/bin/moc
-	/Users/johann/Qt/5.9.1/clang_64/bin/moc $(DEFINES) --include ./moc_predefs.h -I/Users/johann/Qt/5.9.1/clang_64/mkspecs/macx-clang -I/Users/johann/Development/Qt/PiClock -I/Users/johann/Qt/5.9.1/clang_64/lib/QtWidgets.framework/Headers -I/Users/johann/Qt/5.9.1/clang_64/lib/QtGui.framework/Headers -I/Users/johann/Qt/5.9.1/clang_64/lib/QtWebSockets.framework/Headers -I/Users/johann/Qt/5.9.1/clang_64/lib/QtNetwork.framework/Headers -I/Users/johann/Qt/5.9.1/clang_64/lib/QtCore.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/9.0.0/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/usr/include -F/Users/johann/Qt/5.9.1/clang_64/lib mainwindow.h -o moc_mainwindow.cpp
-
-moc_arsch.cpp: ../../../Qt/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QWidget \
-		../../../Qt/5.9.1/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
-		../../../Qt/5.9.1/clang_64/lib/QtCore.framework/Headers/QVector \
-		../../../Qt/5.9.1/clang_64/lib/QtCore.framework/Headers/qvector.h \
-		../../../Qt/5.9.1/clang_64/lib/QtGui.framework/Headers/QList \
-		../../../Qt/5.9.1/clang_64/lib/QtGui.framework/Headers/qevent.h \
 		weekdaybutton.h \
-		../../../Qt/5.9.1/clang_64/lib/QtCore.framework/Headers/QObject \
-		../../../Qt/5.9.1/clang_64/lib/QtCore.framework/Headers/qobject.h \
+		../../../Qt/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QWidget \
+		../../../Qt/5.9.1/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
 		../../../Qt/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QPushButton \
 		../../../Qt/5.9.1/clang_64/lib/QtWidgets.framework/Headers/qpushbutton.h \
 		../../../Qt/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QSplitter \
 		../../../Qt/5.9.1/clang_64/lib/QtWidgets.framework/Headers/qsplitter.h \
-		arsch.h \
+		mainwindow.h \
 		moc_predefs.h \
 		../../../Qt/5.9.1/clang_64/bin/moc
-	/Users/johann/Qt/5.9.1/clang_64/bin/moc $(DEFINES) --include ./moc_predefs.h -I/Users/johann/Qt/5.9.1/clang_64/mkspecs/macx-clang -I/Users/johann/Development/Qt/PiClock -I/Users/johann/Qt/5.9.1/clang_64/lib/QtWidgets.framework/Headers -I/Users/johann/Qt/5.9.1/clang_64/lib/QtGui.framework/Headers -I/Users/johann/Qt/5.9.1/clang_64/lib/QtWebSockets.framework/Headers -I/Users/johann/Qt/5.9.1/clang_64/lib/QtNetwork.framework/Headers -I/Users/johann/Qt/5.9.1/clang_64/lib/QtCore.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/9.0.0/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/usr/include -F/Users/johann/Qt/5.9.1/clang_64/lib arsch.h -o moc_arsch.cpp
+	/Users/johann/Qt/5.9.1/clang_64/bin/moc $(DEFINES) --include ./moc_predefs.h -I/Users/johann/Qt/5.9.1/clang_64/mkspecs/macx-clang -I/Users/johann/Development/Qt/PiClock -I/Users/johann/Qt/5.9.1/clang_64/lib/QtWidgets.framework/Headers -I/Users/johann/Qt/5.9.1/clang_64/lib/QtGui.framework/Headers -I/Users/johann/Qt/5.9.1/clang_64/lib/QtWebSockets.framework/Headers -I/Users/johann/Qt/5.9.1/clang_64/lib/QtNetwork.framework/Headers -I/Users/johann/Qt/5.9.1/clang_64/lib/QtCore.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/9.0.0/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/usr/include -F/Users/johann/Qt/5.9.1/clang_64/lib mainwindow.h -o moc_mainwindow.cpp
 
 moc_weekdaybutton.cpp: ../../../Qt/5.9.1/clang_64/lib/QtCore.framework/Headers/QObject \
 		../../../Qt/5.9.1/clang_64/lib/QtCore.framework/Headers/qobject.h \
@@ -878,22 +871,14 @@ moc_scrolltext.cpp: ../../../Qt/5.9.1/clang_64/lib/QtWidgets.framework/Headers/Q
 		../../../Qt/5.9.1/clang_64/bin/moc
 	/Users/johann/Qt/5.9.1/clang_64/bin/moc $(DEFINES) --include ./moc_predefs.h -I/Users/johann/Qt/5.9.1/clang_64/mkspecs/macx-clang -I/Users/johann/Development/Qt/PiClock -I/Users/johann/Qt/5.9.1/clang_64/lib/QtWidgets.framework/Headers -I/Users/johann/Qt/5.9.1/clang_64/lib/QtGui.framework/Headers -I/Users/johann/Qt/5.9.1/clang_64/lib/QtWebSockets.framework/Headers -I/Users/johann/Qt/5.9.1/clang_64/lib/QtNetwork.framework/Headers -I/Users/johann/Qt/5.9.1/clang_64/lib/QtCore.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/9.0.0/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/usr/include -F/Users/johann/Qt/5.9.1/clang_64/lib scrolltext.h -o moc_scrolltext.cpp
 
-compiler_moc_source_make_all:
-compiler_moc_source_clean:
-compiler_uic_make_all: ui_mainwindow.h ui_arsch.h ui_musicplayer.h
-compiler_uic_clean:
-	-$(DEL_FILE) ui_mainwindow.h ui_arsch.h ui_musicplayer.h
-ui_mainwindow.h: mainwindow.ui \
-		../../../Qt/5.9.1/clang_64/bin/uic \
-		arsch.h \
-		musicplayer.h \
-		scrolltext.h \
-		../../../Qt/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QWidget \
+moc_alarmsettings.cpp: ../../../Qt/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QWidget \
 		../../../Qt/5.9.1/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
 		../../../Qt/5.9.1/clang_64/lib/QtCore.framework/Headers/QVector \
 		../../../Qt/5.9.1/clang_64/lib/QtCore.framework/Headers/qvector.h \
 		../../../Qt/5.9.1/clang_64/lib/QtGui.framework/Headers/QList \
 		../../../Qt/5.9.1/clang_64/lib/QtGui.framework/Headers/qevent.h \
+		../../../Qt/5.9.1/clang_64/lib/QtCore.framework/Headers/QSettings \
+		../../../Qt/5.9.1/clang_64/lib/QtCore.framework/Headers/qsettings.h \
 		weekdaybutton.h \
 		../../../Qt/5.9.1/clang_64/lib/QtCore.framework/Headers/QObject \
 		../../../Qt/5.9.1/clang_64/lib/QtCore.framework/Headers/qobject.h \
@@ -901,6 +886,21 @@ ui_mainwindow.h: mainwindow.ui \
 		../../../Qt/5.9.1/clang_64/lib/QtWidgets.framework/Headers/qpushbutton.h \
 		../../../Qt/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QSplitter \
 		../../../Qt/5.9.1/clang_64/lib/QtWidgets.framework/Headers/qsplitter.h \
+		alarmsettings.h \
+		moc_predefs.h \
+		../../../Qt/5.9.1/clang_64/bin/moc
+	/Users/johann/Qt/5.9.1/clang_64/bin/moc $(DEFINES) --include ./moc_predefs.h -I/Users/johann/Qt/5.9.1/clang_64/mkspecs/macx-clang -I/Users/johann/Development/Qt/PiClock -I/Users/johann/Qt/5.9.1/clang_64/lib/QtWidgets.framework/Headers -I/Users/johann/Qt/5.9.1/clang_64/lib/QtGui.framework/Headers -I/Users/johann/Qt/5.9.1/clang_64/lib/QtWebSockets.framework/Headers -I/Users/johann/Qt/5.9.1/clang_64/lib/QtNetwork.framework/Headers -I/Users/johann/Qt/5.9.1/clang_64/lib/QtCore.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/9.0.0/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/usr/include -F/Users/johann/Qt/5.9.1/clang_64/lib alarmsettings.h -o moc_alarmsettings.cpp
+
+compiler_moc_source_make_all:
+compiler_moc_source_clean:
+compiler_uic_make_all: ui_mainwindow.h ui_musicplayer.h ui_alarmsettings.h
+compiler_uic_clean:
+	-$(DEL_FILE) ui_mainwindow.h ui_musicplayer.h ui_alarmsettings.h
+ui_mainwindow.h: mainwindow.ui \
+		../../../Qt/5.9.1/clang_64/bin/uic \
+		musicplayer.h \
+		scrolltext.h \
+		alarmsettings.h \
 		../../../Qt/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QWidget \
 		../../../Qt/5.9.1/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
 		volumeknobthread.h \
@@ -919,10 +919,29 @@ ui_mainwindow.h: mainwindow.ui \
 		../../../Qt/5.9.1/clang_64/lib/QtGui.framework/Headers/QFont \
 		../../../Qt/5.9.1/clang_64/lib/QtGui.framework/Headers/qfont.h \
 		../../../Qt/5.9.1/clang_64/lib/QtGui.framework/Headers/QPalette \
-		../../../Qt/5.9.1/clang_64/lib/QtGui.framework/Headers/qpalette.h
+		../../../Qt/5.9.1/clang_64/lib/QtGui.framework/Headers/qpalette.h \
+		../../../Qt/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QWidget \
+		../../../Qt/5.9.1/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
+		../../../Qt/5.9.1/clang_64/lib/QtCore.framework/Headers/QVector \
+		../../../Qt/5.9.1/clang_64/lib/QtCore.framework/Headers/qvector.h \
+		../../../Qt/5.9.1/clang_64/lib/QtGui.framework/Headers/QList \
+		../../../Qt/5.9.1/clang_64/lib/QtGui.framework/Headers/qevent.h \
+		../../../Qt/5.9.1/clang_64/lib/QtCore.framework/Headers/QSettings \
+		../../../Qt/5.9.1/clang_64/lib/QtCore.framework/Headers/qsettings.h \
+		weekdaybutton.h \
+		../../../Qt/5.9.1/clang_64/lib/QtCore.framework/Headers/QObject \
+		../../../Qt/5.9.1/clang_64/lib/QtCore.framework/Headers/qobject.h \
+		../../../Qt/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QPushButton \
+		../../../Qt/5.9.1/clang_64/lib/QtWidgets.framework/Headers/qpushbutton.h \
+		../../../Qt/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QSplitter \
+		../../../Qt/5.9.1/clang_64/lib/QtWidgets.framework/Headers/qsplitter.h
 	/Users/johann/Qt/5.9.1/clang_64/bin/uic mainwindow.ui -o ui_mainwindow.h
 
-ui_arsch.h: arsch.ui \
+ui_musicplayer.h: musicplayer.ui \
+		../../../Qt/5.9.1/clang_64/bin/uic
+	/Users/johann/Qt/5.9.1/clang_64/bin/uic musicplayer.ui -o ui_musicplayer.h
+
+ui_alarmsettings.h: alarmsettings.ui \
 		../../../Qt/5.9.1/clang_64/bin/uic \
 		weekdaybutton.h \
 		../../../Qt/5.9.1/clang_64/lib/QtCore.framework/Headers/QObject \
@@ -933,11 +952,7 @@ ui_arsch.h: arsch.ui \
 		../../../Qt/5.9.1/clang_64/lib/QtWidgets.framework/Headers/qpushbutton.h \
 		../../../Qt/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QSplitter \
 		../../../Qt/5.9.1/clang_64/lib/QtWidgets.framework/Headers/qsplitter.h
-	/Users/johann/Qt/5.9.1/clang_64/bin/uic arsch.ui -o ui_arsch.h
-
-ui_musicplayer.h: musicplayer.ui \
-		../../../Qt/5.9.1/clang_64/bin/uic
-	/Users/johann/Qt/5.9.1/clang_64/bin/uic musicplayer.ui -o ui_musicplayer.h
+	/Users/johann/Qt/5.9.1/clang_64/bin/uic alarmsettings.ui -o ui_alarmsettings.h
 
 compiler_rez_source_make_all:
 compiler_rez_source_clean:
@@ -967,6 +982,13 @@ main.o: main.cpp mainwindow.h \
 		../../../Qt/5.9.1/clang_64/lib/QtNetwork.framework/Headers/qnetworkreply.h \
 		../../../Qt/5.9.1/clang_64/lib/QtCore.framework/Headers/QMetaEnum \
 		../../../Qt/5.9.1/clang_64/lib/QtCore.framework/Headers/qmetaobject.h \
+		weekdaybutton.h \
+		../../../Qt/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QWidget \
+		../../../Qt/5.9.1/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
+		../../../Qt/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QPushButton \
+		../../../Qt/5.9.1/clang_64/lib/QtWidgets.framework/Headers/qpushbutton.h \
+		../../../Qt/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QSplitter \
+		../../../Qt/5.9.1/clang_64/lib/QtWidgets.framework/Headers/qsplitter.h \
 		../../../Qt/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QApplication \
 		../../../Qt/5.9.1/clang_64/lib/QtWidgets.framework/Headers/qapplication.h \
 		../../../Qt/5.9.1/clang_64/lib/QtCore.framework/Headers/QDebug \
@@ -991,19 +1013,32 @@ mainwindow.o: mainwindow.cpp mainwindow.h \
 		../../../Qt/5.9.1/clang_64/lib/QtNetwork.framework/Headers/qnetworkreply.h \
 		../../../Qt/5.9.1/clang_64/lib/QtCore.framework/Headers/QMetaEnum \
 		../../../Qt/5.9.1/clang_64/lib/QtCore.framework/Headers/qmetaobject.h \
-		ui_mainwindow.h \
-		arsch.h \
+		weekdaybutton.h \
 		../../../Qt/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QWidget \
 		../../../Qt/5.9.1/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
-		../../../Qt/5.9.1/clang_64/lib/QtCore.framework/Headers/QVector \
-		../../../Qt/5.9.1/clang_64/lib/QtCore.framework/Headers/qvector.h \
-		../../../Qt/5.9.1/clang_64/lib/QtGui.framework/Headers/QList \
-		../../../Qt/5.9.1/clang_64/lib/QtGui.framework/Headers/qevent.h \
-		weekdaybutton.h \
 		../../../Qt/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QPushButton \
 		../../../Qt/5.9.1/clang_64/lib/QtWidgets.framework/Headers/qpushbutton.h \
 		../../../Qt/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QSplitter \
 		../../../Qt/5.9.1/clang_64/lib/QtWidgets.framework/Headers/qsplitter.h \
+		ui_mainwindow.h \
+		alarmsettings.h \
+		../../../Qt/5.9.1/clang_64/lib/QtCore.framework/Headers/QVector \
+		../../../Qt/5.9.1/clang_64/lib/QtCore.framework/Headers/qvector.h \
+		../../../Qt/5.9.1/clang_64/lib/QtGui.framework/Headers/QList \
+		../../../Qt/5.9.1/clang_64/lib/QtGui.framework/Headers/qevent.h \
+		../../../Qt/5.9.1/clang_64/lib/QtCore.framework/Headers/QSettings \
+		../../../Qt/5.9.1/clang_64/lib/QtCore.framework/Headers/qsettings.h \
+		musicplayer.h \
+		volumeknobthread.h \
+		../../../Qt/5.9.1/clang_64/lib/QtCore.framework/Headers/QThread \
+		../../../Qt/5.9.1/clang_64/lib/QtCore.framework/Headers/qthread.h \
+		scrolltext.h \
+		../../../Qt/5.9.1/clang_64/lib/QtGui.framework/Headers/QStaticText \
+		../../../Qt/5.9.1/clang_64/lib/QtGui.framework/Headers/qstatictext.h \
+		../../../Qt/5.9.1/clang_64/lib/QtGui.framework/Headers/QFont \
+		../../../Qt/5.9.1/clang_64/lib/QtGui.framework/Headers/qfont.h \
+		../../../Qt/5.9.1/clang_64/lib/QtGui.framework/Headers/QPalette \
+		../../../Qt/5.9.1/clang_64/lib/QtGui.framework/Headers/qpalette.h \
 		../../../Qt/5.9.1/clang_64/lib/QtCore.framework/Headers/QString \
 		../../../Qt/5.9.1/clang_64/lib/QtCore.framework/Headers/qstring.h \
 		../../../Qt/5.9.1/clang_64/lib/QtCore.framework/Headers/QStringList \
@@ -1027,34 +1062,6 @@ mainwindow.o: mainwindow.cpp mainwindow.h \
 		../../../Qt/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QGraphicsDropShadowEffect \
 		../../../Qt/5.9.1/clang_64/lib/QtWidgets.framework/Headers/qgraphicseffect.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o mainwindow.cpp
-
-arsch.o: arsch.cpp arsch.h \
-		../../../Qt/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QWidget \
-		../../../Qt/5.9.1/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
-		../../../Qt/5.9.1/clang_64/lib/QtCore.framework/Headers/QVector \
-		../../../Qt/5.9.1/clang_64/lib/QtCore.framework/Headers/qvector.h \
-		../../../Qt/5.9.1/clang_64/lib/QtGui.framework/Headers/QList \
-		../../../Qt/5.9.1/clang_64/lib/QtGui.framework/Headers/qevent.h \
-		weekdaybutton.h \
-		../../../Qt/5.9.1/clang_64/lib/QtCore.framework/Headers/QObject \
-		../../../Qt/5.9.1/clang_64/lib/QtCore.framework/Headers/qobject.h \
-		../../../Qt/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QPushButton \
-		../../../Qt/5.9.1/clang_64/lib/QtWidgets.framework/Headers/qpushbutton.h \
-		../../../Qt/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QSplitter \
-		../../../Qt/5.9.1/clang_64/lib/QtWidgets.framework/Headers/qsplitter.h \
-		ui_arsch.h \
-		../../../Qt/5.9.1/clang_64/lib/QtCore.framework/Headers/QDebug \
-		../../../Qt/5.9.1/clang_64/lib/QtCore.framework/Headers/qdebug.h \
-		../../../Qt/5.9.1/clang_64/lib/QtCore.framework/Headers/QSettings \
-		../../../Qt/5.9.1/clang_64/lib/QtCore.framework/Headers/qsettings.h \
-		../../../Qt/5.9.1/clang_64/lib/QtCore.framework/Headers/QVariant \
-		../../../Qt/5.9.1/clang_64/lib/QtCore.framework/Headers/qvariant.h \
-		../../../Qt/5.9.1/clang_64/lib/QtCore.framework/Headers/QDateTime \
-		../../../Qt/5.9.1/clang_64/lib/QtCore.framework/Headers/qdatetime.h \
-		../../../Qt/5.9.1/clang_64/lib/QtCore.framework/Headers/QTime \
-		../../../Qt/5.9.1/clang_64/lib/QtCore.framework/Headers/QTimer \
-		../../../Qt/5.9.1/clang_64/lib/QtCore.framework/Headers/qtimer.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o arsch.o arsch.cpp
 
 weekdaybutton.o: weekdaybutton.cpp weekdaybutton.h \
 		../../../Qt/5.9.1/clang_64/lib/QtCore.framework/Headers/QObject \
@@ -1143,14 +1150,39 @@ scrolltext.o: scrolltext.cpp scrolltext.h \
 		../../../Qt/5.9.1/clang_64/lib/QtCore.framework/Headers/qdebug.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o scrolltext.o scrolltext.cpp
 
+alarmsettings.o: alarmsettings.cpp alarmsettings.h \
+		../../../Qt/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QWidget \
+		../../../Qt/5.9.1/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
+		../../../Qt/5.9.1/clang_64/lib/QtCore.framework/Headers/QVector \
+		../../../Qt/5.9.1/clang_64/lib/QtCore.framework/Headers/qvector.h \
+		../../../Qt/5.9.1/clang_64/lib/QtGui.framework/Headers/QList \
+		../../../Qt/5.9.1/clang_64/lib/QtGui.framework/Headers/qevent.h \
+		../../../Qt/5.9.1/clang_64/lib/QtCore.framework/Headers/QSettings \
+		../../../Qt/5.9.1/clang_64/lib/QtCore.framework/Headers/qsettings.h \
+		weekdaybutton.h \
+		../../../Qt/5.9.1/clang_64/lib/QtCore.framework/Headers/QObject \
+		../../../Qt/5.9.1/clang_64/lib/QtCore.framework/Headers/qobject.h \
+		../../../Qt/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QPushButton \
+		../../../Qt/5.9.1/clang_64/lib/QtWidgets.framework/Headers/qpushbutton.h \
+		../../../Qt/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QSplitter \
+		../../../Qt/5.9.1/clang_64/lib/QtWidgets.framework/Headers/qsplitter.h \
+		ui_alarmsettings.h \
+		../../../Qt/5.9.1/clang_64/lib/QtCore.framework/Headers/QDebug \
+		../../../Qt/5.9.1/clang_64/lib/QtCore.framework/Headers/qdebug.h \
+		../../../Qt/5.9.1/clang_64/lib/QtCore.framework/Headers/QVariant \
+		../../../Qt/5.9.1/clang_64/lib/QtCore.framework/Headers/qvariant.h \
+		../../../Qt/5.9.1/clang_64/lib/QtCore.framework/Headers/QDateTime \
+		../../../Qt/5.9.1/clang_64/lib/QtCore.framework/Headers/qdatetime.h \
+		../../../Qt/5.9.1/clang_64/lib/QtCore.framework/Headers/QTime \
+		../../../Qt/5.9.1/clang_64/lib/QtCore.framework/Headers/QTimer \
+		../../../Qt/5.9.1/clang_64/lib/QtCore.framework/Headers/qtimer.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o alarmsettings.o alarmsettings.cpp
+
 qrc_resourses.o: qrc_resourses.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qrc_resourses.o qrc_resourses.cpp
 
 moc_mainwindow.o: moc_mainwindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mainwindow.o moc_mainwindow.cpp
-
-moc_arsch.o: moc_arsch.cpp 
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_arsch.o moc_arsch.cpp
 
 moc_weekdaybutton.o: moc_weekdaybutton.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_weekdaybutton.o moc_weekdaybutton.cpp
@@ -1166,6 +1198,9 @@ moc_mopidyreader.o: moc_mopidyreader.cpp
 
 moc_scrolltext.o: moc_scrolltext.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_scrolltext.o moc_scrolltext.cpp
+
+moc_alarmsettings.o: moc_alarmsettings.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_alarmsettings.o moc_alarmsettings.cpp
 
 ####### Install
 

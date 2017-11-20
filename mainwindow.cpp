@@ -1,6 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include <arsch.h>
+#include <alarmsettings.h>
 
 #include <QString>
 #include <QStringList>
@@ -118,7 +118,7 @@ void MainWindow::UpdateTime()
 
     //qDebug() << "DIFF: " << minuteDiff;
 
-    bool mayBeWeLostTheLastMinute = (minuteDiff >= 0) && (minuteDiff < 5);
+    //bool mayBeWeLostTheLastMinute = (minuteDiff >= 0) && (minuteDiff < 5);
 
 
     if( hour == ui->arschPage->hour && minute == ui->arschPage->minute && ui->arschPage->isButtonActive(day))
@@ -133,6 +133,8 @@ void MainWindow::UpdateTime()
             button->Expire();
             lastMinute = minute;
 
+            ui->musicPlayer->StartProcess("mpc", "clear");
+            ui->musicPlayer->StartProcess("mpc", "load ChillOut++");
             ui->musicPlayer->StartProcess("amixer", "sset 'Speaker' 30%");
             ui->musicPlayer->StartProcess("mpc", "play");
 
@@ -258,30 +260,33 @@ void MainWindow::PressLightButton()
 
 void MainWindow::mousePressEvent(QMouseEvent *event)
 {
-    if(event->y() < 150)
+    if( ui->stackedWidget->currentIndex() == 0)
     {
-        if(event->x() > 240)
+        if(event->y() < 150)
         {
-            ui->musicPlayer->VolumeUp();
+            if(event->x() > 240)
+            {
+                ui->musicPlayer->VolumeUp();
+            }
+            else
+            {
+                ui->musicPlayer->VolumeDown();
+            }
+        }
+        else if(event->y() < 240)
+        {
+            ui->musicPlayer->StartProcess("mpc", "toggle");
         }
         else
         {
-            ui->musicPlayer->VolumeDown();
-        }
-    }
-    else if(event->y() < 240)
-    {
-        ui->musicPlayer->StartProcess("mpc", "toggle");
-    }
-    else
-    {
-        if(event->x() < 240)
-        {
-            mopidyReader->PrevSong();
-        }
-        else
-        {
-            mopidyReader->NextSong();
+            if(event->x() < 240)
+            {
+                mopidyReader->PrevSong();
+            }
+            else
+            {
+                mopidyReader->NextSong();
+            }
         }
     }
 }
@@ -316,7 +321,6 @@ void MainWindow::on_alarmButton_clicked()
 
 void MainWindow::on_stopAlarmButton_clicked()
 {
-//    ui->musicPlayer->Stop();
     ui->stackedWidget->setCurrentIndex(0);
 }
 
