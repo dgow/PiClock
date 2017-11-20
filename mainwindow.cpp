@@ -139,8 +139,10 @@ void MainWindow::UpdateTime()
             qDebug() << "ALARM - load";
             ui->musicPlayer->StartProcess("amixer", "sset 'Speaker' 30%", true);
             qDebug() << "ALARM - sset";
-            ui->musicPlayer->StartProcess("mpc", "play");
-            ui->musicPlayer->StartProcess("mpc", "play");
+            //ui->musicPlayer->StartProcess("mpc", "play");
+            //ui->musicPlayer->StartProcess("mpc", "play");
+
+            mopidyReader->Play();
             qDebug() << "ALARM - play";
         }
     }
