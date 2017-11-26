@@ -42,6 +42,7 @@ public:
     QTimer *connectTimer;
 
     void PlaySong();
+    void Clear();
 signals:
     void DataChanged();
 

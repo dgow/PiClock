@@ -134,6 +134,17 @@ void MopidyReader::PlaySong()
     m_webSocket.sendTextMessage(jstring);
 }
 
+void MopidyReader::Clear()
+{
+    QJsonObject json;
+    json["jsonrpc"] = "2.0";
+    json["id"] = Next;
+    json["method"] = "core.tracklist.clear";
+    QJsonDocument doc(json);
+    QString jstring = doc.toJson();
+    m_webSocket.sendTextMessage(jstring);
+}
+
 void MopidyReader::NextSong()
 {
     QJsonObject json;

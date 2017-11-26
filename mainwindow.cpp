@@ -133,14 +133,15 @@ void MainWindow::UpdateTime()
             button->Expire();
             lastMinute = minute;
 
+            mopidyReader->Clear();
+
             //ui->musicPlayer->StartProcess("mpc", "clear", true);
             qDebug() << "ALARM - clear";
-            //ui->musicPlayer->StartProcess("mpc", "load ChillOut++", true);
+            ui->musicPlayer->StartProcess("mpc", "-w load ChillOut++", true);
             qDebug() << "ALARM - load";
             //ui->musicPlayer->StartProcess("amixer", "sset 'Speaker' 30%", true);
             qDebug() << "ALARM - sset";
-            //ui->musicPlayer->StartProcess("mpc", "play");
-            //ui->musicPlayer->StartProcess("mpc", "play");
+
 
             mopidyReader->PlaySong();
             qDebug() << "ALARM - play";
