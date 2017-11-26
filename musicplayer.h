@@ -28,6 +28,8 @@ signals:
    void SongChanged();
    void StateChanged();
 
+   void VolumeChanged();
+
 public slots:
    void on_okButton_clicked();
    void on_chillOutButton_clicked();
