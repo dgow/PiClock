@@ -19,7 +19,9 @@ public:
             Play = 1,
             Next = 2,
             Prev = 3,
-            Position = 4
+            Position = 4,
+            Clear = 5,
+
     };
     Q_ENUMS(MessageId)
 
