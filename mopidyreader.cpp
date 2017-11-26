@@ -138,7 +138,7 @@ void MopidyReader::Clear()
 {
     QJsonObject json;
     json["jsonrpc"] = "2.0";
-    json["id"] = Clear;
+    json["id"] = ClearPlaylist;
     json["method"] = "core.tracklist.clear";
     QJsonDocument doc(json);
     QString jstring = doc.toJson();
