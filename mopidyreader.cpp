@@ -46,8 +46,7 @@ void MopidyReader::onConnected()
     connect(&m_webSocket, &QWebSocket::textMessageReceived, this, &MopidyReader::onTextMessageReceived);
     connectTimer->stop();
 
-
-    this->setRandom();
+    m_webSocket.sendTextMessage(this->setRandom());
 }
 
 void MopidyReader::onTextMessageReceived(QString message)
