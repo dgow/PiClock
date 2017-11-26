@@ -133,9 +133,9 @@ void MainWindow::UpdateTime()
             button->Expire();
             lastMinute = minute;
 
-            mopidyReader->Clear();
-            ui->musicPlayer->SetVolume(23);
-            ui->musicPlayer->StartProcess("mpc", "-w load ChillOut++"); //TODO: websocket call - kein plan wie das gehen soll
+            //mopidyReader->Clear();
+            ui->musicPlayer->SetVolume(45);
+            //ui->musicPlayer->StartProcess("mpc", "-w load ChillOut++"); //TODO: websocket call - kein plan wie das gehen soll
             mopidyReader->PlaySong();
         }
     }
