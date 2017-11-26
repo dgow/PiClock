@@ -222,7 +222,7 @@ QByteArray MopidyReader::setRandom()
     json["jsonrpc"] = "2.0";
     json["id"] = 28;
     json["method"] = "core.tracklist.set_random";
-    json["params"] = "{\"value\" : true}";
+    json["params"] = "[true]";
     QJsonDocument doc(json);
 
     return doc.toJson();
