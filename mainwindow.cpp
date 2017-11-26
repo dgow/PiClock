@@ -137,18 +137,24 @@ void MainWindow::UpdateTime()
             //mopidyReader->Clear();
 
             ui->musicPlayer->StartProcess("mpc", "-w clear", true);
-
-            QThread::sleep(1000);
+            qDebug() << "Clear Playlist";
+            QThread::sleep(2);
 
             ui->musicPlayer->SetVolume(46);
 
-            QThread::sleep(1000);
+            qDebug() << "Set Volume";
+            QThread::sleep(2);
+
 
             ui->musicPlayer->StartProcess("mpc", "-w load ChillOut++", true); //TODO: websocket call - kein plan wie das gehen soll
 
-            QThread::sleep(1000);
+            qDebug() << "Set Chillout Playlist";
+
+            QThread::sleep(2);
 
             mopidyReader->PlaySong();
+
+            qDebug() << "Play";
         }
     }
     mopidyReader->UpdatePosition();
