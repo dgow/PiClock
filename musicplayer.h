@@ -21,6 +21,7 @@ public:
 
     ~MusicPlayer();
 
+    void SetVolume(int volume);
 signals:
    void GoBack();
 

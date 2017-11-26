@@ -77,8 +77,8 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->stackedWidget->setCurrentIndex(0);
 
     ui->musicPlayer->SetupVolumeKnob();
-    connect(ui->musicPlayer->volThread, SIGNAL(up()),   this, SLOT(UpdateVolume()));
-    connect(ui->musicPlayer->volThread, SIGNAL(down()), this, SLOT(UpdateVolume()));
+
+    connect(ui->musicPlayer, SIGNAL(VolumeChanged()), this, SLOT(UpdateVolume()));
 
     connect(mopidyReader, SIGNAL(DataChanged()), this,  SLOT(UpdateSong()));
 
@@ -134,17 +134,9 @@ void MainWindow::UpdateTime()
             lastMinute = minute;
 
             mopidyReader->Clear();
-
-            //ui->musicPlayer->StartProcess("mpc", "clear", true);
-            qDebug() << "ALARM - clear";
-            ui->musicPlayer->StartProcess("mpc", "-w load ChillOut++", true);
-            qDebug() << "ALARM - load";
-            //ui->musicPlayer->StartProcess("amixer", "sset 'Speaker' 30%", true);
-            qDebug() << "ALARM - sset";
-
-
+            ui->musicPlayer->SetVolume(23);
+            ui->musicPlayer->StartProcess("mpc", "-w load ChillOut++", true); //TODO: websocket call - kein plan wie das gehen soll
             mopidyReader->PlaySong();
-            qDebug() << "ALARM - play";
         }
     }
     mopidyReader->UpdatePosition();

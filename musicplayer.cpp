@@ -12,8 +12,9 @@ MusicPlayer::MusicPlayer(QWidget *parent) :
     ui(new Ui::MusicPlayer)
 {
     ui->setupUi(this);
+
     curentVolume = 25;
-    StartProcess("amixer", QString("sset 'Speaker' \%1%").arg(curentVolume));
+    this->SetVolume(curentVolume);
 
 #ifndef Q_OS_MACOS
     wiringPiSetup();
@@ -36,24 +37,33 @@ void MusicPlayer::SetupVolumeKnob()
     connect(volThread, SIGNAL(pressed()), this, SLOT(Mute()));
 }
 
+void MusicPlayer::SetVolume(int volume)
+{
+    curentVolume = volume;
+    StartProcess("amixer", QString("sset 'Speaker' \%1%").arg(curentVolume));
+
+    emit VolumeChanged();
+}
+
 void MusicPlayer::VolumeUp()
 {   
     curentVolume += 2;
-    StartProcess("amixer", QString("sset 'Speaker' \%1%").arg(curentVolume));
+
     if(curentVolume >100)
     {
         curentVolume = 100;
     }
+    SetVolume(curentVolume);
 }
 
 void MusicPlayer::VolumeDown()
 {
     curentVolume -= 2;
-    StartProcess("amixer", QString("sset 'Speaker' \%1%").arg(curentVolume));
     if(curentVolume < 0 )
     {
         curentVolume = 0;
     }
+    SetVolume(curentVolume);
 }
 
 void MusicPlayer::Mute()
