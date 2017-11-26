@@ -140,7 +140,7 @@ void MainWindow::UpdateTime()
             qDebug() << "Clear Playlist";
             QThread::sleep(2);
 
-            ui->musicPlayer->SetVolume(46);
+            ui->musicPlayer->SetVolume(30);
 
             qDebug() << "Set Volume";
             QThread::sleep(2);
