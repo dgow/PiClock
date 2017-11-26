@@ -222,7 +222,7 @@ QByteArray MopidyReader::setRandom()
     QJsonObject json;
     json["jsonrpc"] = "2.0";
     json["id"] = Random;
-    json["method"] = "core.playback.get_state";
+    json["method"] = "core.playback.set_random";
     json["params"] = "{\"value\" : True}";
     QJsonDocument doc(json);
 
