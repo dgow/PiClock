@@ -21,7 +21,7 @@ public:
             Prev = 3,
             Position = 4,
             ClearPlaylist = 5,
-            Random
+            Random = 6
 
     };
     Q_ENUMS(MessageId)
