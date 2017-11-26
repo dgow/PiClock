@@ -5,6 +5,7 @@
 #include <QJsonArray>
 #include <QString>
 #include <QJsonDocument>
+#include <QJsonArray>
 #include <QHostInfo>
 
 MopidyReader::MopidyReader(QObject *parent) : QObject(parent)
@@ -222,7 +223,14 @@ QByteArray MopidyReader::setRandom()
     json["jsonrpc"] = "2.0";
     json["id"] = 28;
     json["method"] = "core.tracklist.set_random";
-    json["params"] = "[true]";
+
+    //QJSONArray params = new JSONArray();
+    QJsonArray params;
+    params.append(true);
+
+
+
+    json["params"] = params;
     QJsonDocument doc(json);
 
     return doc.toJson();
