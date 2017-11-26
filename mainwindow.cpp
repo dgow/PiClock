@@ -127,15 +127,15 @@ void MainWindow::UpdateTime()
 //if(!button->expired)
         if(minute != lastMinute)
         {
-            ui->stackedWidget->setCurrentIndex(2);
+            //ui->stackedWidget->setCurrentIndex(2);
             qDebug() << "ALARM";
 
             button->Expire();
             lastMinute = minute;
 
             //mopidyReader->Clear();
-            ui->musicPlayer->SetVolume(45);
-            //ui->musicPlayer->StartProcess("mpc", "-w load ChillOut++"); //TODO: websocket call - kein plan wie das gehen soll
+            ui->musicPlayer->SetVolume(46);
+            ui->musicPlayer->StartProcess("mpc", "-w load ChillOut++"); //TODO: websocket call - kein plan wie das gehen soll
             mopidyReader->PlaySong();
         }
     }
