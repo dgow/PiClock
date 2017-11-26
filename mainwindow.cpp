@@ -133,11 +133,11 @@ void MainWindow::UpdateTime()
             button->Expire();
             lastMinute = minute;
 
-            ui->musicPlayer->StartProcess("mpc", "clear", true);
+            //ui->musicPlayer->StartProcess("mpc", "clear", true);
             qDebug() << "ALARM - clear";
-            ui->musicPlayer->StartProcess("mpc", "load ChillOut++", true);
+            //ui->musicPlayer->StartProcess("mpc", "load ChillOut++", true);
             qDebug() << "ALARM - load";
-            ui->musicPlayer->StartProcess("amixer", "sset 'Speaker' 30%", true);
+            //ui->musicPlayer->StartProcess("amixer", "sset 'Speaker' 30%", true);
             qDebug() << "ALARM - sset";
             //ui->musicPlayer->StartProcess("mpc", "play");
             //ui->musicPlayer->StartProcess("mpc", "play");
@@ -240,7 +240,7 @@ void MainWindow::ReadWeather(QNetworkReply* reply)
 
     if(currentLight != TargetBrightness())
     {
-        lightButtonTimer->start(1000);
+        //lightButtonTimer->start(1000);
     }
 
     reply->deleteLater();
