@@ -21,8 +21,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_MopidyReader_t {
-    QByteArrayData data[16];
-    char stringdata0[162];
+    QByteArrayData data[17];
+    char stringdata0[176];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -46,13 +46,15 @@ QT_MOC_LITERAL(11, 128, 9), // "MessageId"
 QT_MOC_LITERAL(12, 138, 4), // "Play"
 QT_MOC_LITERAL(13, 143, 4), // "Next"
 QT_MOC_LITERAL(14, 148, 4), // "Prev"
-QT_MOC_LITERAL(15, 153, 8) // "Position"
+QT_MOC_LITERAL(15, 153, 8), // "Position"
+QT_MOC_LITERAL(16, 162, 13) // "ClearPlaylist"
 
     },
     "MopidyReader\0DataChanged\0\0UpdateSong\0"
     "UpdateState\0UpdatePosition\0onDisconnect\0"
     "Connect\0onError\0QAbstractSocket::SocketError\0"
-    "error\0MessageId\0Play\0Next\0Prev\0Position"
+    "error\0MessageId\0Play\0Next\0Prev\0Position\0"
+    "ClearPlaylist"
 };
 #undef QT_MOC_LITERAL
 
@@ -92,13 +94,14 @@ static const uint qt_meta_data_MopidyReader[] = {
     QMetaType::Void, 0x80000000 | 9,   10,
 
  // enums: name, flags, count, data
-      11, 0x0,    4,   62,
+      11, 0x0,    5,   62,
 
  // enum data: key, value
       12, uint(MopidyReader::Play),
       13, uint(MopidyReader::Next),
       14, uint(MopidyReader::Prev),
       15, uint(MopidyReader::Position),
+      16, uint(MopidyReader::ClearPlaylist),
 
        0        // eod
 };
