@@ -16,6 +16,7 @@
 #include <QMouseEvent>
 #include <qglobal.h>
 #include <QProcess>
+#include <QThread>
 #include <QGraphicsDropShadowEffect>
 
 /*
@@ -137,8 +138,16 @@ void MainWindow::UpdateTime()
 
             ui->musicPlayer->StartProcess("mpc", "-w clear", true);
 
+            QThread::sleep(1000);
+
             ui->musicPlayer->SetVolume(46);
-            ui->musicPlayer->StartProcess("mpc", "-w load ChillOut++"); //TODO: websocket call - kein plan wie das gehen soll
+
+            QThread::sleep(1000);
+
+            ui->musicPlayer->StartProcess("mpc", "-w load ChillOut++", true); //TODO: websocket call - kein plan wie das gehen soll
+
+            QThread::sleep(1000);
+
             mopidyReader->PlaySong();
         }
     }
