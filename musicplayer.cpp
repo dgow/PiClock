@@ -24,7 +24,6 @@ MusicPlayer::MusicPlayer(QWidget *parent) :
     pinMode (25, OUTPUT) ;
 #endif
 
-    StartProcess("mpc", "random on");
 }
 
 void MusicPlayer::SetupVolumeKnob()

@@ -20,7 +20,8 @@ public:
             Next = 2,
             Prev = 3,
             Position = 4,
-            ClearPlaylist = 5
+            ClearPlaylist = 5,
+            Random
 
     };
     Q_ENUMS(MessageId)
@@ -45,6 +46,7 @@ public:
 
     void PlaySong();
     void Clear();
+    QByteArray setRandom();
 signals:
     void DataChanged();
 

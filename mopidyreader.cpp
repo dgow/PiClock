@@ -45,6 +45,9 @@ void MopidyReader::onConnected()
 
     connect(&m_webSocket, &QWebSocket::textMessageReceived, this, &MopidyReader::onTextMessageReceived);
     connectTimer->stop();
+
+
+    this->setRandom();
 }
 
 void MopidyReader::onTextMessageReceived(QString message)
@@ -209,6 +212,18 @@ QString MopidyReader::getCurrentPos()
     json["jsonrpc"] = "2.0";
     json["id"] = Position;
     json["method"] = "core.playback.get_time_position";
+    QJsonDocument doc(json);
+
+    return doc.toJson();
+}
+
+QByteArray MopidyReader::setRandom()
+{
+    QJsonObject json;
+    json["jsonrpc"] = "2.0";
+    json["id"] = Random;
+    json["method"] = "core.playback.get_state";
+    json["params"] = "{\"value\" : True}";
     QJsonDocument doc(json);
 
     return doc.toJson();
