@@ -128,11 +128,10 @@ void MainWindow::UpdateTime()
 //if(!button->expired)
         if(minute != lastMinute)
         {
-            //ui->stackedWidget->setCurrentIndex(2);
+            ui->stackedWidget->setCurrentIndex(2);
             qDebug() << "ALARM";
 
             button->Expire();
-            lastMinute = minute;
 
             //mopidyReader->Clear();
 
@@ -156,6 +155,8 @@ void MainWindow::UpdateTime()
 
             qDebug() << "Play";
         }
+
+        lastMinute = minute;
     }
     mopidyReader->UpdatePosition();
 
