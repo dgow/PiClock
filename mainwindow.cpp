@@ -156,8 +156,11 @@ void MainWindow::UpdateTime()
             qDebug() << "Play";
         }
 
-        lastMinute = minute;
+
     }
+
+    lastMinute = minute;
+
     mopidyReader->UpdatePosition();
 
     //new day check - to unexpire the last day
@@ -252,7 +255,7 @@ void MainWindow::ReadWeather(QNetworkReply* reply)
 
     if(currentLight != TargetBrightness())
     {
-        //lightButtonTimer->start(1000);
+        lightButtonTimer->start(1000);
     }
 
     reply->deleteLater();
