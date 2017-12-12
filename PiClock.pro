@@ -34,7 +34,8 @@ SOURCES += \
     volumeknobthread.cpp \
     mopidyreader.cpp \
     scrolltext.cpp \
-    alarmsettings.cpp
+    alarmsettings.cpp \
+    temperature.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -43,7 +44,8 @@ HEADERS += \
     volumeknobthread.h \
     mopidyreader.h \
     scrolltext.h \
-    alarmsettings.h
+    alarmsettings.h \
+    temperature.h
 
 FORMS += \
         mainwindow.ui \

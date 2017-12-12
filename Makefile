@@ -57,14 +57,16 @@ SOURCES       = main.cpp \
 		volumeknobthread.cpp \
 		mopidyreader.cpp \
 		scrolltext.cpp \
-		alarmsettings.cpp qrc_resourses.cpp \
+		alarmsettings.cpp \
+		temperature.cpp qrc_resourses.cpp \
 		moc_mainwindow.cpp \
 		moc_weekdaybutton.cpp \
 		moc_musicplayer.cpp \
 		moc_volumeknobthread.cpp \
 		moc_mopidyreader.cpp \
 		moc_scrolltext.cpp \
-		moc_alarmsettings.cpp
+		moc_alarmsettings.cpp \
+		moc_temperature.cpp
 OBJECTS       = main.o \
 		mainwindow.o \
 		weekdaybutton.o \
@@ -73,6 +75,7 @@ OBJECTS       = main.o \
 		mopidyreader.o \
 		scrolltext.o \
 		alarmsettings.o \
+		temperature.o \
 		qrc_resourses.o \
 		moc_mainwindow.o \
 		moc_weekdaybutton.o \
@@ -80,7 +83,8 @@ OBJECTS       = main.o \
 		moc_volumeknobthread.o \
 		moc_mopidyreader.o \
 		moc_scrolltext.o \
-		moc_alarmsettings.o
+		moc_alarmsettings.o \
+		moc_temperature.o
 DIST          = ../../../Qt/5.9.1/clang_64/mkspecs/features/spec_pre.prf \
 		../../../Qt/5.9.1/clang_64/mkspecs/qdevice.pri \
 		../../../Qt/5.9.1/clang_64/mkspecs/features/device_config.prf \
@@ -272,14 +276,16 @@ DIST          = ../../../Qt/5.9.1/clang_64/mkspecs/features/spec_pre.prf \
 		volumeknobthread.h \
 		mopidyreader.h \
 		scrolltext.h \
-		alarmsettings.h main.cpp \
+		alarmsettings.h \
+		temperature.h main.cpp \
 		mainwindow.cpp \
 		weekdaybutton.cpp \
 		musicplayer.cpp \
 		volumeknobthread.cpp \
 		mopidyreader.cpp \
 		scrolltext.cpp \
-		alarmsettings.cpp
+		alarmsettings.cpp \
+		temperature.cpp
 QMAKE_TARGET  = PiClock
 DESTDIR       = 
 TARGET        = PiClock.app/Contents/MacOS/PiClock
@@ -713,8 +719,8 @@ distdir: FORCE
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents resourses.qrc $(DISTDIR)/
 	$(COPY_FILE) --parents ../../../Qt/5.9.1/clang_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents mainwindow.h weekdaybutton.h musicplayer.h volumeknobthread.h mopidyreader.h scrolltext.h alarmsettings.h $(DISTDIR)/
-	$(COPY_FILE) --parents main.cpp mainwindow.cpp weekdaybutton.cpp musicplayer.cpp volumeknobthread.cpp mopidyreader.cpp scrolltext.cpp alarmsettings.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents mainwindow.h weekdaybutton.h musicplayer.h volumeknobthread.h mopidyreader.h scrolltext.h alarmsettings.h temperature.h $(DISTDIR)/
+	$(COPY_FILE) --parents main.cpp mainwindow.cpp weekdaybutton.cpp musicplayer.cpp volumeknobthread.cpp mopidyreader.cpp scrolltext.cpp alarmsettings.cpp temperature.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents mainwindow.ui musicplayer.ui alarmsettings.ui $(DISTDIR)/
 
 
@@ -775,9 +781,9 @@ compiler_moc_predefs_clean:
 moc_predefs.h: ../../../Qt/5.9.1/clang_64/mkspecs/features/data/dummy.cpp
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++ -pipe -stdlib=libc++ -std=c++0x -g -std=gnu++11 $(EXPORT_ARCH_ARGS) -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -mmacosx-version-min=10.10 -Wall -W -dM -E -o moc_predefs.h ../../../Qt/5.9.1/clang_64/mkspecs/features/data/dummy.cpp
 
-compiler_moc_header_make_all: moc_mainwindow.cpp moc_weekdaybutton.cpp moc_musicplayer.cpp moc_volumeknobthread.cpp moc_mopidyreader.cpp moc_scrolltext.cpp moc_alarmsettings.cpp
+compiler_moc_header_make_all: moc_mainwindow.cpp moc_weekdaybutton.cpp moc_musicplayer.cpp moc_volumeknobthread.cpp moc_mopidyreader.cpp moc_scrolltext.cpp moc_alarmsettings.cpp moc_temperature.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_mainwindow.cpp moc_weekdaybutton.cpp moc_musicplayer.cpp moc_volumeknobthread.cpp moc_mopidyreader.cpp moc_scrolltext.cpp moc_alarmsettings.cpp
+	-$(DEL_FILE) moc_mainwindow.cpp moc_weekdaybutton.cpp moc_musicplayer.cpp moc_volumeknobthread.cpp moc_mopidyreader.cpp moc_scrolltext.cpp moc_alarmsettings.cpp moc_temperature.cpp
 moc_mainwindow.cpp: ../../../Qt/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QMainWindow \
 		../../../Qt/5.9.1/clang_64/lib/QtWidgets.framework/Headers/qmainwindow.h \
 		../../../Qt/5.9.1/clang_64/lib/QtNetwork.framework/Headers/QNetworkAccessManager \
@@ -890,6 +896,13 @@ moc_alarmsettings.cpp: ../../../Qt/5.9.1/clang_64/lib/QtWidgets.framework/Header
 		moc_predefs.h \
 		../../../Qt/5.9.1/clang_64/bin/moc
 	/Users/johann/Qt/5.9.1/clang_64/bin/moc $(DEFINES) --include ./moc_predefs.h -I/Users/johann/Qt/5.9.1/clang_64/mkspecs/macx-clang -I/Users/johann/Development/Qt/PiClock -I/Users/johann/Qt/5.9.1/clang_64/lib/QtWidgets.framework/Headers -I/Users/johann/Qt/5.9.1/clang_64/lib/QtGui.framework/Headers -I/Users/johann/Qt/5.9.1/clang_64/lib/QtWebSockets.framework/Headers -I/Users/johann/Qt/5.9.1/clang_64/lib/QtNetwork.framework/Headers -I/Users/johann/Qt/5.9.1/clang_64/lib/QtCore.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/9.0.0/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/usr/include -F/Users/johann/Qt/5.9.1/clang_64/lib alarmsettings.h -o moc_alarmsettings.cpp
+
+moc_temperature.cpp: ../../../Qt/5.9.1/clang_64/lib/QtCore.framework/Headers/QObject \
+		../../../Qt/5.9.1/clang_64/lib/QtCore.framework/Headers/qobject.h \
+		temperature.h \
+		moc_predefs.h \
+		../../../Qt/5.9.1/clang_64/bin/moc
+	/Users/johann/Qt/5.9.1/clang_64/bin/moc $(DEFINES) --include ./moc_predefs.h -I/Users/johann/Qt/5.9.1/clang_64/mkspecs/macx-clang -I/Users/johann/Development/Qt/PiClock -I/Users/johann/Qt/5.9.1/clang_64/lib/QtWidgets.framework/Headers -I/Users/johann/Qt/5.9.1/clang_64/lib/QtGui.framework/Headers -I/Users/johann/Qt/5.9.1/clang_64/lib/QtWebSockets.framework/Headers -I/Users/johann/Qt/5.9.1/clang_64/lib/QtNetwork.framework/Headers -I/Users/johann/Qt/5.9.1/clang_64/lib/QtCore.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/9.0.0/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/usr/include -F/Users/johann/Qt/5.9.1/clang_64/lib temperature.h -o moc_temperature.cpp
 
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
@@ -1178,6 +1191,11 @@ alarmsettings.o: alarmsettings.cpp alarmsettings.h \
 		../../../Qt/5.9.1/clang_64/lib/QtCore.framework/Headers/qtimer.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o alarmsettings.o alarmsettings.cpp
 
+temperature.o: temperature.cpp temperature.h \
+		../../../Qt/5.9.1/clang_64/lib/QtCore.framework/Headers/QObject \
+		../../../Qt/5.9.1/clang_64/lib/QtCore.framework/Headers/qobject.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o temperature.o temperature.cpp
+
 qrc_resourses.o: qrc_resourses.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qrc_resourses.o qrc_resourses.cpp
 
@@ -1201,6 +1219,9 @@ moc_scrolltext.o: moc_scrolltext.cpp
 
 moc_alarmsettings.o: moc_alarmsettings.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_alarmsettings.o moc_alarmsettings.cpp
+
+moc_temperature.o: moc_temperature.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_temperature.o moc_temperature.cpp
 
 ####### Install
 
