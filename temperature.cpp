@@ -35,7 +35,7 @@ void Temperature::UpdateData()
 
     // Send humidity measurement command(0xF5)
     char config[1] = {0xF5};
-    write(file, config, 1);
+ //   write(file, config, 1);
     sleep(1);
 
     // Read 2 bytes of humidity data
