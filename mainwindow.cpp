@@ -110,7 +110,7 @@ void MainWindow::SetShadow(QWidget *label)
 
 void MainWindow::UpdateTime()
 {
-    temp->UpdateData();
+   // temp->UpdateData();
 
     QDateTime time = QDateTime::currentDateTime();
     ui->timeLabel->setText(time.toString("hh:mm"));
