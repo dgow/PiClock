@@ -7,6 +7,9 @@ class Temperature : public QObject
 {
     Q_OBJECT
 public:
+    float temp;
+    float humidity;
+
     explicit Temperature(QObject *parent = nullptr);
 
     void UpdateData();
