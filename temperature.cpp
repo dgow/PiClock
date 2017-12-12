@@ -77,6 +77,7 @@ void Temperature::UpdateData()
             // Output data to screen
             printf("Temperature in Celsius : %.2f C \n", cTemp);
 
+            this->temp = cTemp;
             qDebug() << "Temperatur : " << this->temp;
 
 
