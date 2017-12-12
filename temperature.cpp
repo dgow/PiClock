@@ -54,7 +54,7 @@ void Temperature::UpdateData()
             float humidity = (((data[0] * 256 + data[1]) * 125.0) / 65536.0) - 6;
 
             // Output data to screen
-            qDebug() << "Relative Humidity : << humidity;
+            qDebug() << "Relative Humidity : " << humidity;
     }
 
 #endif
