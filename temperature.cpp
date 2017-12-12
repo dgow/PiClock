@@ -20,6 +20,8 @@ Temperature::Temperature(QObject *parent) : QObject(parent)
 void Temperature::UpdateData()
 {
     qDebug() << "Update Temerature data";
+    printf("Failed to open the bus. neeee luku \n");
+
 
 #ifndef Q_OS_MACOS
     int file;
