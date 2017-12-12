@@ -82,8 +82,6 @@ void Temperature::UpdateData()
             printf("Temperature in Fahrenheit : %.2f F \n", fTemp);
     }
 
-
-
 #endif
 
 }
