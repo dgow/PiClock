@@ -1,4 +1,5 @@
 #include "temperature.h"
+#include <QDebug>
 
 #ifndef Q_OS_MACOS
 #include <linux/i2c-dev.h>
@@ -18,8 +19,7 @@ Temperature::Temperature(QObject *parent) : QObject(parent)
 
 void Temperature::UpdateData()
 {
-
-
+    qDebug() << "Update Temerature data";
 
 #ifndef Q_OS_MACOS
     int file;
