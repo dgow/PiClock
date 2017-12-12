@@ -8,6 +8,7 @@
 
 #include "mopidyreader.h"
 #include "weekdaybutton.h"
+#include <temperature.h>
 
 namespace Ui {
 class MainWindow;
@@ -61,6 +62,8 @@ private:
 
 
     MopidyReader *mopidyReader;
+
+    Temperature *temp;
 };
 
 #endif // MAINWINDOW_H
