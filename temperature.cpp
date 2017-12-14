@@ -50,7 +50,7 @@ void Temperature::OpenDevice()
 
 void Temperature::SendHumidityCommand()
 {
-    char config[1] = 0xF5;
+    char config[1] = {0xF5};
     write(file, config, 1);
 }
 
