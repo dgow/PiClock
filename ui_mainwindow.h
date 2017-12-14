@@ -209,9 +209,7 @@ public:
         palette1.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette1.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
         weatherLabel->setPalette(palette1);
-        QFont font5;
-        font5.setPointSize(30);
-        weatherLabel->setFont(font5);
+        weatherLabel->setFont(font4);
         weatherLabel->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
 
         horizontalLayout->addWidget(weatherLabel);
@@ -238,9 +236,9 @@ public:
         soundButton = new QPushButton(clock);
         soundButton->setObjectName(QStringLiteral("soundButton"));
         soundButton->setMinimumSize(QSize(0, 60));
-        QFont font6;
-        font6.setPointSize(15);
-        soundButton->setFont(font6);
+        QFont font5;
+        font5.setPointSize(15);
+        soundButton->setFont(font5);
         soundButton->setStyleSheet(QStringLiteral("color: rgb(255, 255, 255);"));
 
         horizontalLayout_2->addWidget(soundButton);
@@ -252,10 +250,10 @@ public:
         palette2.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette2.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
         dateLabel->setPalette(palette2);
-        QFont font7;
-        font7.setFamily(QStringLiteral("Helvetica"));
-        font7.setPointSize(17);
-        dateLabel->setFont(font7);
+        QFont font6;
+        font6.setFamily(QStringLiteral("Helvetica"));
+        font6.setPointSize(17);
+        dateLabel->setFont(font6);
         dateLabel->setAlignment(Qt::AlignCenter);
 
         horizontalLayout_2->addWidget(dateLabel);
@@ -263,7 +261,7 @@ public:
         alarmButton = new QPushButton(clock);
         alarmButton->setObjectName(QStringLiteral("alarmButton"));
         alarmButton->setMinimumSize(QSize(0, 60));
-        alarmButton->setFont(font6);
+        alarmButton->setFont(font5);
         alarmButton->setStyleSheet(QStringLiteral("color: rgb(255, 255, 255);"));
 
         horizontalLayout_2->addWidget(alarmButton);
@@ -289,9 +287,9 @@ public:
         verticalLayout_2->setObjectName(QStringLiteral("verticalLayout_2"));
         bigAlarmLabel = new QLabel(page);
         bigAlarmLabel->setObjectName(QStringLiteral("bigAlarmLabel"));
-        QFont font8;
-        font8.setPointSize(100);
-        bigAlarmLabel->setFont(font8);
+        QFont font7;
+        font7.setPointSize(100);
+        bigAlarmLabel->setFont(font7);
         bigAlarmLabel->setStyleSheet(QStringLiteral("color: rgb(255, 255, 255);"));
         bigAlarmLabel->setAlignment(Qt::AlignCenter);
 
@@ -300,9 +298,9 @@ public:
         stopAlarmButton = new QPushButton(page);
         stopAlarmButton->setObjectName(QStringLiteral("stopAlarmButton"));
         stopAlarmButton->setMinimumSize(QSize(0, 100));
-        QFont font9;
-        font9.setPointSize(50);
-        stopAlarmButton->setFont(font9);
+        QFont font8;
+        font8.setPointSize(50);
+        stopAlarmButton->setFont(font8);
         stopAlarmButton->setStyleSheet(QStringLiteral("color: rgb(255, 255, 255);"));
 
         verticalLayout_2->addWidget(stopAlarmButton);
@@ -323,7 +321,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        stackedWidget->setCurrentIndex(1);
+        stackedWidget->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
