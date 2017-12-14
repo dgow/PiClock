@@ -77,7 +77,7 @@ void Temperature::ReadHumididyData()
 
 void Temperature::SendTemperatureCommand()
 {
-    char config = 0xF3;
+    char config[1] = {0xF3};
     write(file, config, 1);
 }
 
