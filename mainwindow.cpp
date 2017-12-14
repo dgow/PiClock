@@ -89,7 +89,7 @@ MainWindow::MainWindow(QWidget *parent) :
     UpdateVolume();
 
 
-    temperatureSensoc = new Temperature(this);
+    temperatureSensor = new Temperature(this);
 }
 
 void MainWindow::UpdateVolume()
@@ -237,9 +237,8 @@ void MainWindow::ReadWeather(QNetworkReply* reply)
     int humidity = main["humidity"].toInt();
     //qDebug() << "Temperature: " << " " << temp;
 
-    QString tempString = QString("%1%" + temp + "°").arg(humidity);
-    QString tempInsizeString = QString("%1%   " + temp + "°").arg(temperatureSensoc->temp);
-    ui->weatherLabel->setText(tempString + " / " + tempInsizeString);
+    QString weatherString = QString("%1%    " + " %2/" + temp + "°").arg(humidity).arg(temperatureSensor->temp);
+    ui->weatherLabel->setText(weatherString);
 
     QJsonObject weather = root_object["weather"].toArray().at(0).toObject();
     QString icon = weather["icon"].toString();
