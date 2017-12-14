@@ -237,7 +237,7 @@ void MainWindow::ReadWeather(QNetworkReply* reply)
     int humidity = main["humidity"].toInt();
     //qDebug() << "Temperature: " << " " << temp;
 
-    QString weatherString = QString("%1%    " + " %2/" + temp + "°").arg(humidity).arg(temperatureSensor->temp);
+    QString weatherString = QString("%1%    %2/%3°").arg(humidity).arg(temperatureSensor->temp).arg(temp);
     ui->weatherLabel->setText(weatherString);
 
     QJsonObject weather = root_object["weather"].toArray().at(0).toObject();
