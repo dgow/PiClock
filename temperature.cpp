@@ -20,7 +20,7 @@
 
 //fake function
 #ifdef Q_OS_MACOS
-//void write(int a, int b, char c) {a = b; a = c;}
+void write(int a, int b, char c) {a = b; a = c;}
 #endif
 
 
@@ -31,7 +31,7 @@ Temperature::Temperature(QObject *parent) : QObject(parent)
     connect(timer, SIGNAL(timeout()), this, SLOT(UpdateData()));
     timer->start(10000);
 
-    UpdateData();
+    //UpdateData();
 }
 
 void Temperature::OpenDevice()
