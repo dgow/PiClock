@@ -20,7 +20,7 @@
 
 //fake function
 #ifdef Q_OS_MACOS
-void write(int a, int b, char c) {a = b; a = c;}
+//void write(int a, int b, char c) {a = b; a = c;}
 #endif
 
 
