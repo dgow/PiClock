@@ -12,10 +12,22 @@ public:
 
     explicit Temperature(QObject *parent = nullptr);
 
-    void UpdateData();
+
 signals:
 
 public slots:
+    void UpdateData();
+
+    void SendHumidityCommand();
+    void ReadHumididyData();
+    void SendTemperatureCommand();
+    void ReadTemperatureCommand();
+
+private:
+    int file;
+
+    void OpenDevice();
+
 };
 
 #endif // TEMPERATURE_H
