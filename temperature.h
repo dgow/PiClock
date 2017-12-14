@@ -25,9 +25,7 @@ public slots:
 
 private:
     int file;
-
     void OpenDevice();
-
 };
 
 #endif // TEMPERATURE_H

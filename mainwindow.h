@@ -63,7 +63,7 @@ private:
 
     MopidyReader *mopidyReader;
 
-    Temperature *temp;
+    Temperature *temperatureSensoc;
 };
 
 #endif // MAINWINDOW_H
