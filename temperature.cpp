@@ -31,7 +31,7 @@ Temperature::Temperature(QObject *parent) : QObject(parent)
     connect(timer, SIGNAL(timeout()), this, SLOT(UpdateData()));
     timer->start(10000);
 
-    //UpdateData();
+    UpdateData();
 }
 
 void Temperature::OpenDevice()
@@ -50,7 +50,7 @@ void Temperature::OpenDevice()
 
 void Temperature::SendHumidityCommand()
 {
-    char config[1] = {0xF5};
+    char config[1] = {static_cast<char>(0xF5)};
     write(file, config, 1);
 }
 
@@ -77,7 +77,7 @@ void Temperature::ReadHumididyData()
 
 void Temperature::SendTemperatureCommand()
 {
-    char config[1] = {0xF3};
+    char config[1] = {static_cast<char>(0xF3)};
     write(file, config, 1);
 }
 
