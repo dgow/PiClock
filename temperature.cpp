@@ -9,7 +9,11 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+
+#ifdef Q_OS_MACOS
 #include <unistd.h>
+#endif
+
 #include <sys/ioctl.h>
 #include <fcntl.h>
 #include <QTimer>
