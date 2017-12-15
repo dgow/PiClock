@@ -63,7 +63,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     QTimer *weatherTimer = new QTimer(this);
     connect(weatherTimer, SIGNAL(timeout()), this, SLOT(GetWeather()));
-    weatherTimer->start(60000);
+    weatherTimer->start(45000);
 
     lightButtonTimer = new QTimer(this);
     connect(lightButtonTimer, SIGNAL(timeout()), this, SLOT(PressLightButton()));
@@ -146,7 +146,7 @@ void MainWindow::UpdateTime()
             qDebug() << "Clear Playlist";
             QThread::sleep(2);
 
-            ui->musicPlayer->SetVolume(30);
+            ui->musicPlayer->SetVolume(25);
 
             qDebug() << "Set Volume";
             QThread::sleep(2);
