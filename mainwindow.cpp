@@ -63,7 +63,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     QTimer *weatherTimer = new QTimer(this);
     connect(weatherTimer, SIGNAL(timeout()), this, SLOT(GetWeather()));
-    weatherTimer->start(45000);
+    weatherTimer->start(60000);
 
     lightButtonTimer = new QTimer(this);
     connect(lightButtonTimer, SIGNAL(timeout()), this, SLOT(PressLightButton()));
