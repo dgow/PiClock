@@ -34,8 +34,10 @@ here some pictures for you.
 
 
 #HARDWARE:
+
+(NO this aren't affiliate links!!!)
+
 Raspberry Pi 3
-(NO this aint no affiliate links!!!)
 
 Display: 3.5" Touchscreen https://www.amazon.de/gp/product/B071JDSS1W/ref=oh_aui_detailpage_o09_s00?ie=UTF8&psc=1
 
