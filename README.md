@@ -1,5 +1,6 @@
 # PiClock
 
-![Screenshot](IMG_0941.jpg)
+![Screenshot](PiClock.png)
+
 
 
