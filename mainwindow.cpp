@@ -74,7 +74,7 @@ MainWindow::MainWindow(QWidget *parent) :
 //    UpdateTime();
     GetWeather();
 
-    connect(ui->arschPage, SIGNAL(GoBack()), this, SLOT(GoBack()));
+    connect(ui->alarmPage, SIGNAL(GoBack()), this, SLOT(GoBack()));
     connect(ui->musicPlayer, SIGNAL(GoBack()), this, SLOT(GoBack()));
 
     ui->stackedWidget->setCurrentIndex(0);
@@ -120,7 +120,7 @@ void MainWindow::UpdateTime()
     QDate date = time.date();
     int day = date.dayOfWeek();
 
-    WeekDayButton *button = ui->arschPage->dayButtons->at(day - 1);
+    WeekDayButton *button = ui->alarmPage->dayButtons->at(day - 1);
 
     //int minuteDiff = minute - ui->arschPage->minute;
 
@@ -129,7 +129,7 @@ void MainWindow::UpdateTime()
     //bool mayBeWeLostTheLastMinute = (minuteDiff >= 0) && (minuteDiff < 5);
 
 
-    if( hour == ui->arschPage->hour && minute == ui->arschPage->minute && ui->arschPage->isButtonActive(day))
+    if( hour == ui->alarmPage->hour && minute == ui->alarmPage->minute && ui->alarmPage->isButtonActive(day))
     {
 
 //if(!button->expired)
