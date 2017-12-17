@@ -54,7 +54,7 @@ Ferrite core: https://www.amazon.de/gp/product/B01E5ALVWQ/ref=oh_aui_detailpage_
 #SOFTWARE: - default raspberry py OS (jessy) - the app is written in QT/C++ - WeatherData https://openweathermap.org/
 //
 
-and this are my cats Nale & Kurt!
+and this are my cats Nala & Kurt!
 
 ![Screenshot](kurt_nala.jpg)
 
