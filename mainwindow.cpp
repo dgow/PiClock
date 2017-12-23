@@ -52,7 +52,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->volumeIcon->setAttribute(Qt::WA_TranslucentBackground);
 
     QFont timeFont("TruenoBd");
-    timeFont.setPixelSize(160);
+    timeFont.setPixelSize(150);
     ui->timeLabel->setFont(timeFont);
 
     SetShadow(ui->timeLabel);
