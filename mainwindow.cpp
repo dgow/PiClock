@@ -51,8 +51,8 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->volumeLabel->setAttribute(Qt::WA_TranslucentBackground);
     ui->volumeIcon->setAttribute(Qt::WA_TranslucentBackground);
 
-    QFont timeFont("Night Machine");
-    timeFont.setPixelSize(150);
+    QFont timeFont("Unique");
+    timeFont.setPixelSize(170);
     ui->timeLabel->setFont(timeFont);
 
     SetShadow(ui->timeLabel);
@@ -98,9 +98,9 @@ MainWindow::MainWindow(QWidget *parent) :
 
     temperatureSensor = new Temperature(this);
 #ifdef Q_OS_MACOS
-    QString fontPath = QDir::currentPath() + "/../../../NightMachine.otf";
+    QString fontPath = QDir::currentPath() + "/../../../Unique.ttf";
 #else
-    QString fontPath = QDir::currentPath() + "/NightMachine.otf";
+    QString fontPath = QDir::currentPath() + "/Unique.ttf";
 #endif
 
     int r = QFontDatabase::addApplicationFont(fontPath);
