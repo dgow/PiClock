@@ -51,7 +51,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->volumeLabel->setAttribute(Qt::WA_TranslucentBackground);
     ui->volumeIcon->setAttribute(Qt::WA_TranslucentBackground);
 
-    QFont timeFont("Unique");
+    QFont timeFont("TruenoBd");
     timeFont.setPixelSize(170);
     ui->timeLabel->setFont(timeFont);
 
@@ -98,9 +98,9 @@ MainWindow::MainWindow(QWidget *parent) :
 
     temperatureSensor = new Temperature(this);
 #ifdef Q_OS_MACOS
-    QString fontPath = QDir::currentPath() + "/../../../Unique.ttf";
+    QString fontPath = QDir::currentPath() + "/../../../TruenoBd.otf";
 #else
-    QString fontPath = QDir::currentPath() + "/Unique.ttf";
+    QString fontPath = QDir::currentPath() + "/TruenoBd.otf";
 #endif
 
     int r = QFontDatabase::addApplicationFont(fontPath);
