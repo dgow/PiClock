@@ -17,7 +17,10 @@
 #include <qglobal.h>
 #include <QProcess>
 #include <QThread>
+#include <QDir>
 #include <QGraphicsDropShadowEffect>
+
+#include <QFontDatabase>
 
 #include <temperature.h>
 
@@ -47,6 +50,10 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->playStateLabel->setAttribute(Qt::WA_TranslucentBackground);
     ui->volumeLabel->setAttribute(Qt::WA_TranslucentBackground);
     ui->volumeIcon->setAttribute(Qt::WA_TranslucentBackground);
+
+    QFont timeFont("Night Machine");
+    timeFont.setPixelSize(150);
+    ui->timeLabel->setFont(timeFont);
 
     SetShadow(ui->timeLabel);
     SetShadow(ui->weatherLabel);
@@ -90,6 +97,11 @@ MainWindow::MainWindow(QWidget *parent) :
 
 
     temperatureSensor = new Temperature(this);
+
+    QString fontPath = QDir::currentPath() + "/../../../NightMachine.otf";
+    int r = QFontDatabase::addApplicationFont(fontPath);
+
+    qDebug() << "loading font: " << fontPath << "--- " << r;
 }
 
 void MainWindow::UpdateVolume()

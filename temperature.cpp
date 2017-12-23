@@ -36,6 +36,8 @@ Temperature::Temperature(QObject *parent) : QObject(parent)
 
 void Temperature::OpenDevice()
 {
+#ifndef Q_OS_MACOS
+
     char *bus = (char *)"/dev/i2c-1";
 
     if((file = open(bus, O_RDWR)) < 0)
@@ -46,6 +48,8 @@ void Temperature::OpenDevice()
 
     // Get I2C device, SI7021 I2C address is 0x40(64)
     ioctl(file, I2C_SLAVE, 0x40);
+#endif
+
 }
 
 void Temperature::SendHumidityCommand()
