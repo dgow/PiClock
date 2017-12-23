@@ -99,7 +99,7 @@ MainWindow::MainWindow(QWidget *parent) :
     temperatureSensor = new Temperature(this);
 #ifdef Q_OS_MACOS
     QString fontPath = QDir::currentPath() + "/../../../NightMachine.otf";
-#elif
+#else
     QString fontPath = QDir::currentPath() + "/NightMachine.otf";
 #endif
 
