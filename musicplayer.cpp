@@ -104,7 +104,7 @@ void MusicPlayer::on_chillOutButton_clicked()
 void MusicPlayer::on_HDMButton_clicked()
 {   
     StartProcess("mpc", "clear");
-    StartProcess("mpc", "load HDM");
+    StartProcess("mpc", "load HDM\ \(by\ 1126702738\)");
     emit this->GoBack();
 }
 
