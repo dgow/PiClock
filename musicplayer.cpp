@@ -97,7 +97,7 @@ void MusicPlayer::on_okButton_clicked()
 void MusicPlayer::on_chillOutButton_clicked()
 {
     StartProcess("mpc", "clear");
-    StartProcess("mpc", "load ChillOut++");
+    StartProcess("mpc", "load ChillOut++\ \(by\ 1126702738\)");
     emit this->GoBack();
 }
 
