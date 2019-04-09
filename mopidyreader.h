@@ -59,6 +59,7 @@ public slots:
     void Connect();
     void onError(QAbstractSocket::SocketError error);
 
+    void openUrl();
 private:
 
     QNetworkRequest getRequest();

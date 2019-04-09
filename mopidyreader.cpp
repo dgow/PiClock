@@ -35,6 +35,11 @@ void MopidyReader::Connect()
     this->state = "connecting";
     emit DataChanged();
 
+    QTimer::singleShot(1000,this, SLOT(openUrl()));
+}
+
+void MopidyReader::openUrl()
+{
     QString url = "ws://raspiclock:6680/mopidy/ws";
     m_webSocket.open(QUrl(url));
 }
