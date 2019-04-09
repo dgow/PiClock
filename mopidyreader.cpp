@@ -40,7 +40,7 @@ void MopidyReader::Connect()
 
 void MopidyReader::openUrl()
 {
-    QString url = "ws://raspiclock:6680/mopidy/ws";
+    QString url = "http://raspiclock:6680/mopidy/ws";
     m_webSocket.open(QUrl(url));
 }
 
