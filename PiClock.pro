@@ -12,6 +12,11 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 TARGET = PiClock
 TEMPLATE = app
 
+
+#remove .qmake.stash in Project folder if this dont work
+QMAKE_MACOSX_DEPLOYMENT_TARGET = 10.14
+QMAKE_MAC_SDK = macosx10.14
+
 # The following define makes your compiler emit warnings if you use
 # any feature of Qt which has been marked as deprecated (the exact warnings
 # depend on your compiler). Please consult the documentation of the
@@ -57,4 +62,9 @@ RESOURCES += \
 
 !macx {
     LIBS += WiringPi/wiringPi/libwiringPi.so.2.44
+}
+    QMAKE_MAC_SDK = macosx10.14
+
+macx {
+    QMAKE_MAC_SDK = macosx10.14
 }
