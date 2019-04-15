@@ -75,7 +75,7 @@ void Temperature::ReadHumididyData()
             this->humidity = humidity;
 
             // Output data to screen
-            qDebug() << "Relative Humidity : " << humidity;
+            //qDebug() << "Relative Humidity : " << humidity;
     }
 }
 
@@ -115,7 +115,7 @@ void Temperature::ReadTemperatureCommand()
 
 void Temperature::UpdateData()
 {
-    qDebug() << "Update Temerature data";
+//    qDebug() << "Update Temerature data";
     printf("Failed to open the bus. neeee luku \n");
 
     SendHumidityCommand();

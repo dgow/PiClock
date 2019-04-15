@@ -175,6 +175,8 @@ void MainWindow::UpdateTime()
 
             QThread::sleep(2);
 
+            ui->musicPlayer->StartProcess("mpc", "-w clear", true);
+
             mopidyReader->PlaySong();
 
             qDebug() << "Play";

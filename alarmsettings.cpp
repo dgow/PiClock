@@ -15,7 +15,7 @@ const QString minuteString = "minute";
 AlarmSettings::AlarmSettings(QWidget *parent) : QWidget(parent),
     ui(new Ui::AlarmSettings)
 {   
-    minuteStep = 5;
+    minuteStep = 1;
 
     settings = new QSettings("Joe", "PiClock");
 
