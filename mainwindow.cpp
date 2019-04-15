@@ -158,9 +158,9 @@ void MainWindow::UpdateTime()
 
             //mopidyReader->Clear();
 
-//            ui->musicPlayer->StartProcess("mpc", "-w clear", true);
-//            qDebug() << "Clear Playlist";
-//            QThread::sleep(2);
+            ui->musicPlayer->StartProcess("mpc", "-w clear", true);
+            qDebug() << "Clear Playlist";
+            QThread::sleep(2);
 
             ui->musicPlayer->SetVolume(25);
 
@@ -170,6 +170,7 @@ void MainWindow::UpdateTime()
 
 //            ui->musicPlayer->StartProcess("mpc", "-w load ChillOut++", true); //TODO: websocket call - kein plan wie das gehen soll
 
+            ui->musicPlayer->StartProcess("mpc", "-w add chill.m4a", true); //TODO: websocket call - kein plan wie das gehen soll
             qDebug() << "Set Chillout Playlist";
 
             QThread::sleep(2);
