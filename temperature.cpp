@@ -106,7 +106,7 @@ void Temperature::ReadTemperatureCommand()
             printf("Temperature in Celsius : %.2f C \n", cTemp);
 
             this->temp = cTemp;
-            qDebug() << "Temperatur : " << this->temp;
+//            qDebug() << "Temperatur : " << this->temp;
 
             printf("Temperature in Fahrenheit : %.2f F \n", fTemp);
     }
