@@ -1,4 +1,4 @@
 #!/bin/bash
 
-killall PiClock; git pull origin master && qmake && make && ./PiClock
+killall PiClock; git pull github master && qmake && make && ./PiClock
 
