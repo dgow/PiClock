@@ -82,7 +82,7 @@ void MopidyReader::onTextMessageReceived(QString message)
 
     if(json.object()["event"].isNull())
     {
-        if(id == Play)
+        if(id == 2)
         {
             qDebug() << "YEAH you hit play";
         }
